@@ -24,8 +24,6 @@
   display: none;
 }
 
-.nav-elements {
-}
 
 .nav-elements ul {
   display: flex;
@@ -59,6 +57,26 @@
   height: 2px;
   /* background-color: #FCDC2A; */
 }
+.nav-elements li a.active {
+  /* styles for active links (optional) */
+}
+
+  
+  
+
+.signup li:last-child a {
+  background-color: #114232; 
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+.signup li:last-child a:hover {
+    /* transform: scale(1.4); */
+    /* transition: transform 0.3s ease; */
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1); 
+    background-color: #4F6F52; 
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.3); /* Slight text shadow */
+  }
 
 @media (max-width: 768px) {
   .nav-elements ul li:not(:last-child) {
@@ -66,17 +84,21 @@
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 650px) {
   .menu-icon {
     display: block;
     cursor: pointer;
   }
-
+  .nav-elements ul a.active {
+    color: #9BCF53;
+    font-weight: 500;
+    position: relative;
+  }
   .nav-elements {
     position: absolute;
     right: 0;
     top: 60px;
-    background-color: #0B8142;
+    background-color: #001524;
     width: 0px;
     height: calc(100vh - 60px);
     transition: all 0.3s ease-in;
