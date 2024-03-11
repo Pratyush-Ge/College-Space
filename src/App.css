@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 .App{
   margin: 0;
   padding: 0;
@@ -17,8 +18,32 @@
   background-color: white;
 }
 
+.menu-horizontal > li {
+  margin-right: 1rem;
+  transition: linear 0.2s;
+}
+
+.menu-horizontal > li:hover{
+  scale: 1.03;
+}
+
+
+
+.modal-content {
+  overflow-y: scroll;
+  -ms-overflow-style: none;  
+  scrollbar-width: none;  
+}
+
+.modal-content::-webkit-scrollbar {
+  display: none;
+}
+
+.input{
+  background-color: white;
+}
+
 .feedContainer{
-  /* background-color: aquamarine; */
   display: flex;
   justify-content: space-evenly;
   margin-top: 2rem;
