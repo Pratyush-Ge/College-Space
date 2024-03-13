@@ -58,19 +58,34 @@ const Navbar = () => {
         <li><Link to="/" className={location.pathname === '/' ? 'active' : ''}>Feed</Link></li>
           <li><Link to="/academics" className={location.pathname === '/academics' ? 'active' : ''}>Academics</Link></li>
           <li><Link to="/events" className={location.pathname === '/events' ? 'active' : ''}>Events</Link></li>
-          <li><Link to="/post" className={location.pathname === '/post' ? 'active' : ''}>Post</Link></li>
+          <li><Link to="/post" className={location.pathname === '/post' ? 'active' : ''}>Posts</Link></li>
         </ul>
       </div>
 
       <div className="navbar-end">
         {isLoggedIn ? (
-          <div className="dropdown dropdown-hover dropdown-bottom dropdown-end">
-            <div tabIndex={0} role="button" className="btn btn-sm btn-outline mx-2 text-black">Profile</div>
-            <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow rounded-box w-52 bg-black text-white">
-              <li><a onClick={() => navigate('/account')}>Account</a></li>
-              <li><a onClick={handleLogout}>Logout</a></li>
-            </ul>
-          </div>
+          <>
+            <div className="dropdown dropdown-end">
+              <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                <div className="w-10 rounded-full">
+                  <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                </div>
+              </div>
+              <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-white rounded-box w-52">
+                <li onClick={()=>{navigate('/account')}}>
+                  <a className="justify-between">
+                    Profile
+                  </a>
+                </li>
+                <li onClick={()=>{navigate('/post')}}>
+                  <a className="justify-between">
+                    Posts
+                  </a>
+                </li>
+                <li><a onClick={handleLogout} >Logout</a></li>
+              </ul>
+            </div>
+          </>
         ) : (
           <>
             <button className="btn btn-sm btn-outline mx-2 text-black" onClick={() => document.getElementById('my_modal_1').showModal()}>

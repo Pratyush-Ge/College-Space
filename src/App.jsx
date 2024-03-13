@@ -7,8 +7,10 @@ import Notices from './Components/Notices';
 import { ToastContainer } from 'react-toastify';
 import Profile from './Components/Profile';
 import Account from './Components/Account';
+import Post from './Components/Post';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
+
 
 function App() {
   return (
@@ -23,6 +25,7 @@ function App() {
         <Route path="/notices" element={<Notices />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/account" element={<Account />} />
+        <Route path="/post" element={<Post />} />
       </Routes>
     </Router>
     </div>
