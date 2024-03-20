@@ -15,6 +15,7 @@
   align-items: center;
 }
 .navbar{
+  height: 2rem;
   background-color: white;
 }
 

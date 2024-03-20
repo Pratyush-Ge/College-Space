@@ -2,7 +2,7 @@
 
 const Post = () => {
   return (
-    <div>Post</div>
+    <div className="profilePost">Post</div>
   )
 }
 

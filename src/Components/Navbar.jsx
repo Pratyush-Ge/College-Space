@@ -55,10 +55,10 @@ const Navbar = () => {
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
-        <li><Link to="/" className={location.pathname === '/' ? 'active' : ''}>Feed</Link></li>
+          <li><Link to="/" className={location.pathname === '/' ? 'active' : ''}>Feed</Link></li>
           <li><Link to="/academics" className={location.pathname === '/academics' ? 'active' : ''}>Academics</Link></li>
           <li><Link to="/events" className={location.pathname === '/events' ? 'active' : ''}>Events</Link></li>
-          <li><Link to="/post" className={location.pathname === '/post' ? 'active' : ''}>Posts</Link></li>
+          <li><a onClick={() => isLoggedIn ? navigate('/post') : document.getElementById('my_modal_2').showModal()} className={location.pathname === '/post' ? 'active' : ''}>Post</a></li>
         </ul>
       </div>
 
@@ -72,12 +72,12 @@ const Navbar = () => {
                 </div>
               </div>
               <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-white rounded-box w-52">
-                <li onClick={()=>{navigate('/account')}}>
+                <li onClick={() => { navigate('/account') }}>
                   <a className="justify-between">
                     Profile
                   </a>
                 </li>
-                <li onClick={()=>{navigate('/post')}}>
+                <li onClick={() => { navigate('/post') }}>
                   <a className="justify-between">
                     Posts
                   </a>
