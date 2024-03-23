@@ -19,8 +19,8 @@ const Account = () => {
   }
  
   return isLoggedIn ? (
-    <div className="flex justify-center items-center h-screen">
-      <div className="max-w-md w-full bg-white shadow-md rounded-lg overflow-hidden">
+    <div className="flex justify-center items-center h-screen flex-col gap-5">
+
         <div className="p-4">
           <div className="flex justify-center">
             <div className="w-24 h-24 rounded-full overflow-hidden">
@@ -28,11 +28,27 @@ const Account = () => {
             </div>
           </div>
           <div className="text-center mt-4">
-            <h1 className="text-xl font-bold">{userData.usn}</h1>
-            <p className="text-gray-500">{userData.email}</p>
+            <h1 className="text-xl font-bold text-white">{userData.usn}</h1>
+            <p className="text-gray">{userData.email}</p>
           </div>
         </div>
-      </div>
+
+        <div className="stats shadow">
+        <div className="stat place-items-center">
+          <div className="stat-title">Threads</div>
+          <div className="stat-value">Count</div>
+        </div>
+
+        <div className="stat place-items-center">
+          <div className="stat-title">Likes</div>
+          <div className="stat-value text-secondary">Count</div>
+        </div>
+
+        <div className="stat place-items-center">
+          <div className="stat-title">Liked</div>
+          <div className="stat-value">Count</div>
+        </div>
+      </div> 
     </div>
   ) : null;
 };
