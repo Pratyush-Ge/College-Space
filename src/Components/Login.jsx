@@ -24,7 +24,7 @@ const Login = () => {
       localStorage.setItem('token', token);
       setTimeout(() => {
         window.location.reload();
-      }, 1000);
+      }, 400);
       toast.success('Login successful');
     } catch (error) {
       toast.error('Login failed');

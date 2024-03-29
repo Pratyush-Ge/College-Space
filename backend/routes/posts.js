@@ -1,21 +1,22 @@
 import express from 'express';
-import Post from '../models/Posts.js';
+import Post from '../models/Post.js'; 
 
 const router = express.Router();
 
 router.post('/', async (req, res) => {
-  const { content, author } = req.body;
-
   try {
-    const post = new Post({
+    const { title, content, image, email } = req.body;
+    const newPost = new Post({
+      title,
       content,
-      author,
+      image,
+      author: email,
     });
-    await post.save();
-    res.status(201).json({ message: 'Post created successfully' });
+    const savedPost = await newPost.save();
+    res.status(201).json(savedPost);
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: 'Failed to create post' });
+    console.error('Error creating post:', err);
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 });
 

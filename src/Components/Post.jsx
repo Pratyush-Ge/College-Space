@@ -1,15 +1,36 @@
-import  { useState } from 'react';
+import { useState } from 'react';
+import axios from 'axios';
+import { jwtDecode } from "jwt-decode";
+import { toast } from 'react-toastify'
+
 
 const AddPostForm = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [image, setImage] = useState(null);
   const [previewImage, setPreviewImage] = useState('https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty-300x240.jpg');
+  const token = localStorage.getItem('token'); 
+  const userData = jwtDecode(token);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     setImage(file);
     setPreviewImage(URL.createObjectURL(file));
+  };
+
+  const handlePost = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post('http://localhost:5000/posts', {
+        title,
+        content,
+        image,
+        email: userData.email,
+      });
+      toast.success('Posted Successfully');
+    } catch (error) {
+      console.error('Error posting:', error);
+    }
   };
 
   return (
@@ -61,6 +82,12 @@ const AddPostForm = () => {
                 {content.substring(0, 300)}{content.length > 300 && '...'}
               </p>
             )}
+            <button
+              onClick={handlePost}
+              className="mt-4 btn btn-accent btn-sm"
+            >
+              Post
+            </button>
           </div>
         </div>
       </div>
