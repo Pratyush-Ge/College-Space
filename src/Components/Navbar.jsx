@@ -78,9 +78,9 @@ const Navbar = () => {
                     Profile
                   </a>
                 </li>
-                <li onClick={() => { navigate('/post') }}>
+                <li onClick={() => { navigate('/addpost') }}>
                   <a className="justify-between">
-                    Posts
+                    Add Post
                   </a>
                 </li>
                 <li><a onClick={handleLogout} >Logout</a></li>

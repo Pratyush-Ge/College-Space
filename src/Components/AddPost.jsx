@@ -8,10 +8,10 @@ const AddPostForm = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [image, setImage] = useState(null);
-  const [previewImage, setPreviewImage] = useState('https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty-300x240.jpg');
-  const token = localStorage.getItem('token'); 
+  const [previewImage, setPreviewImage] = useState('');
+  const token = localStorage.getItem('token');
   const userData = jwtDecode(token);
-
+ 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     setImage(file);
@@ -21,17 +21,27 @@ const AddPostForm = () => {
   const handlePost = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/posts', {
-        title,
-        content,
-        image,
-        email: userData.email,
+      const formData = new FormData();
+      formData.append('title', title);
+      formData.append('content', content);
+      formData.append('image', image);
+      formData.append('email', userData.email);
+  
+      await axios.post('http://localhost:5000/posts', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${token}`
+        }
       });
       toast.success('Posted Successfully');
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
     } catch (error) {
       console.error('Error posting:', error);
     }
-  };
+  };  
+  
 
   return (
     <div className="flex justify-center items-center h-screen w-full">
@@ -48,6 +58,7 @@ const AddPostForm = () => {
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 maxLength="50"
+                required
               />
             </label>
             <label className="block">
@@ -58,6 +69,8 @@ const AddPostForm = () => {
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
                 maxLength="300"
+                minLength="30"
+                required
               ></textarea>
             </label>
             <label className="block">

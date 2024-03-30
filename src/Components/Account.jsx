@@ -28,7 +28,7 @@ const Account = () => {
             </div>
           </div>
           <div className="text-center mt-4">
-            <h1 className="text-xl font-bold text-white">{userData.usn}</h1>
+            <h1 className="text-xl font-bold text-white">{userData.username}</h1>
             <p className="text-gray">{userData.email}</p>
           </div>
         </div>

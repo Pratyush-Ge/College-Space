@@ -2,12 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+body{
+  overflow-x: hidden;
+}
 
 .App{
   margin: 0;
   padding: 0;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   background: black;
   /* background: linear-gradient(335deg, rgba(255,255,255,1) 5%, rgba(160,10,172,1) 65%, rgba(0,212,255,1) 100%); */
   display: flex;

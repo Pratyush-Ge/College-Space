@@ -1,7 +1,7 @@
 import express from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import User from "../models/User.js"; 
+import User from "../models/User.js";
 
 const router = express.Router();
 
@@ -21,7 +21,7 @@ router.post("/", async (req, res) => {
       return res.status(401).json({ message: "Incorrect password" });
     }
 
-    const tokenPayload = { usn: user.usn, email: user.email };
+    const tokenPayload = { usn: user.usn, email: user.email, username: user.username };
 
     const token = jwt.sign(tokenPayload, "your-secret-key", { expiresIn: "1h" });
 

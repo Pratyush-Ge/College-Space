@@ -7,7 +7,8 @@ import Notices from './Components/Notices';
 import { ToastContainer } from 'react-toastify';
 import Profile from './Components/Profile';
 import Account from './Components/Account';
-import Post from './Components/Post';
+import Post from './Components/MyPost';
+import AddPostForm from './Components/AddPost';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 
@@ -25,6 +26,7 @@ function App() {
         <Route path="/notices" element={<Notices />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/account" element={<Account />} />
+        <Route path="/addpost" element={<AddPostForm />} />
         <Route path="/post" element={<Post />} />
       </Routes>
     </Router>
