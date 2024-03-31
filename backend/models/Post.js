@@ -21,6 +21,10 @@ const postSchema = new Schema({
     type: String,
     required: true,
   },
+  username: {
+    type: String,
+    required: true,
+  },
   createdAt: {
     type: Date,
     default: () => new Date().toISOString().slice(0, 10),

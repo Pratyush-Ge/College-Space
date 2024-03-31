@@ -1,5 +1,6 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-const FeedCard = ({ title, content, image, author, createdAt, time }) => {
+const FeedCard = ({ title, content, image, author, username, createdAt, time }) => {
   const timeAgo = (createdAt) => {
     const now = new Date();
     const createdAtDate = new Date(createdAt);
@@ -14,7 +15,7 @@ const FeedCard = ({ title, content, image, author, createdAt, time }) => {
   };
 
   return (
-    <div className="w-full md:w-1/2 lg:w-1/3 p-4">
+    <div className="w-full p-4">
       <div className="border rounded-lg shadow bg-white dark:border-gray-700 h-auto flex flex-col">
         {image && (
           <div className="relative" style={{ paddingBottom: '56.25%' }}>
@@ -30,7 +31,7 @@ const FeedCard = ({ title, content, image, author, createdAt, time }) => {
           <p className="mb-3 font-normal text-gray-700 dark:text-gray-800">{content}</p>
           <div className="flex justify-between">
             <p className="text-sm font-medium text-gray-400">
-              {`Posted by ${author}`}
+              {`Posted by ${username}`}
             </p>
             <p className="text-xs text-gray-400">
               {timeAgo(createdAt)}

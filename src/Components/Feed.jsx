@@ -10,11 +10,12 @@ const Feed = () => {
     fetchPosts();
   }, []);
 
+
+
   const fetchPosts = async () => {
     axios.get('http://localhost:5000/getposts')
       .then(response => {
-        console.log(response.data);
-        setPosts(response.data);
+        setPosts(response.data.reverse());
       })
       .catch(error => {
         console.error(error);
@@ -22,14 +23,15 @@ const Feed = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center gap-4 my-4">
+    <div className="w-1/3 flex flex-col justify-center items-center gap-4 my-4">
       {posts.map((post) => (
-        <FeedCard 
+        <FeedCard
           key={post._id}
           title={post.title}
           content={post.content}
           image={post.image}
           author={post.author}
+          username={post.username}
           createdAt={post.createdAt}
           time={post.time}
         />

@@ -59,7 +59,11 @@ const Navbar = () => {
           <li><Link to="/" className={location.pathname === '/' ? 'active' : ''}>Feed</Link></li>
           <li><Link to="/academics" className={location.pathname === '/academics' ? 'active' : ''}>Academics</Link></li>
           <li><Link to="/events" className={location.pathname === '/events' ? 'active' : ''}>Events</Link></li>
-          <li><a onClick={() => isLoggedIn ? navigate('/post') : document.getElementById('my_modal_2').showModal()} className={location.pathname === '/post' ? 'active' : ''}>Post</a></li>
+          <li>
+            <a onClick={() => isLoggedIn ? navigate('/post') : document.getElementById('my_modal_2').showModal()} className={location.pathname === '/post' ? 'active' : ''}>
+              {isLoggedIn ? 'My Post' : 'Add Post'}
+            </a>
+          </li>
         </ul>
       </div>
 

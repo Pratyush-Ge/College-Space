@@ -26,6 +26,7 @@ const AddPostForm = () => {
       formData.append('content', content);
       formData.append('image', image);
       formData.append('email', userData.email);
+      formData.append('username', userData.username);
   
       await axios.post('http://localhost:5000/posts', formData, {
         headers: {

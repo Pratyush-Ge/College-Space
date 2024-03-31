@@ -20,7 +20,7 @@ const upload = multer({
 
 router.post('/', upload.single('image'), async (req, res) => {
   try {
-    const { title, content, email } = req.body;
+    const { title, content, email, username } = req.body;
     const image = req.file ? req.file.filename : null; 
 
     const newPost = new Post({
@@ -28,6 +28,7 @@ router.post('/', upload.single('image'), async (req, res) => {
       content,
       image,
       author: email,
+      username,
     });
 
     const savedPost = await newPost.save();
