@@ -4,19 +4,35 @@
 
 body{
   overflow-x: hidden;
+  height: 100%; 
+  background: black;
 }
 
-.App{
+body::-webkit-scrollbar {
+  width: 12px;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: white;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: rgb(46, 44, 44);
+  border-radius: 10px; 
+  border: 2px solid white; 
+}
+
+
+.App {
   margin: 0;
   padding: 0;
-  width: 100vw;
-  height: 100%;
-  background: black;
-  /* background: linear-gradient(335deg, rgba(255,255,255,1) 5%, rgba(160,10,172,1) 65%, rgba(0,212,255,1) 100%); */
+  width: 100%;
+  height: 100%; 
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .navbar{
   height: 2rem;
   background-color: white;
