@@ -2,27 +2,43 @@ import { useState, useEffect } from 'react';
 import LoginForm from './Login';
 import SignupForm from './SignupForm';
 import { useNavigate } from 'react-router-dom';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import axios from 'axios'; 
+import {jwtDecode} from 'jwt-decode';
 
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const location = useLocation();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [email, setEmail] = useState('');
+  const [profilePicUrl, setProfilePicUrl] = useState(`default.avif`);
+
 
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
       setIsLoggedIn(true);
+      const userData = jwtDecode(token);
+      const emailToken = userData.email;
+      setEmail(userData.email)
+      axios.get('http://localhost:5000/getUserDetails', {
+        headers: {
+          'Authorization': `Bearer ${emailToken}`
+        }
+      })
+        .then(response => {
+          setProfilePicUrl(response.data.profilePicUrl);
+        })
+        .catch(error => {
+          console.error('Error fetching user details:', error);
+        });
     }
   }, []);
-
-
 
   const handleLogout = () => {
     localStorage.removeItem('token');
     setIsLoggedIn(false);
-    navigate('/')
+    navigate('/');
     window.location.reload();
   };
 
@@ -73,11 +89,13 @@ const Navbar = () => {
             <div className="dropdown dropdown-end">
               <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                 <div className="w-10 rounded-full">
-                  <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                  <img alt="Profile Picture"
+                    src={(profilePicUrl && `../backend/profilePic/${profilePicUrl}`) || `../backend/profilePic/default.avif`}
+                  />
                 </div>
               </div>
               <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-white rounded-box w-52">
-                <li onClick={() => { navigate('/account') }}>
+                <li onClick={() => { navigate('/account', { state: { userEmail: email } }) }}>
                   <a className="justify-between">
                     Profile
                   </a>

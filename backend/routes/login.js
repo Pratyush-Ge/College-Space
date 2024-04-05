@@ -21,7 +21,7 @@ router.post("/", async (req, res) => {
       return res.status(401).json({ message: "Incorrect password" });
     }
 
-    const tokenPayload = { usn: user.usn, email: user.email, username: user.username };
+    const tokenPayload = { usn: user.usn, email: user.email, username: user.username, profilePicUrl: user.profilePicUrl };
 
     const token = jwt.sign(tokenPayload, "your-secret-key", { expiresIn: "1h" });
 
