@@ -42,7 +42,7 @@ const MyPost = () => {
       .catch(error => {
         console.error(error);
       });
-  };
+  }; 
 
   const openDeleteModal = (postId) => {
     setPostIdToDelete(postId);
@@ -58,20 +58,16 @@ const MyPost = () => {
   }
 
   return (
-    <div className="w-1/3 flex flex-col justify-center items-center gap-4 my-4">
+    <div className="w-1/3">
       <h1 className="text-2xl font-bold my-4 text-center">My Posts</h1>
       {filteredPosts.length > 0 ? (
-        <div>
+        <div className= "flex flex-col justify-center items-center gap-4 my-4">
           {filteredPosts.map((post) => (  
             <MyPostsFeedCard
               key={post._id}
               title={post.title}
               content={post.content}
               image={post.image}
-              author={post.author}
-              username={post.username}
-              createdAt={post.createdAt}
-              time={post.time}
               onRemove={() => openDeleteModal(post._id)}
             />
           ))}

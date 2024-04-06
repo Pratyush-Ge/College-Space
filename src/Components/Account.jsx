@@ -14,7 +14,7 @@ const Account = () => {
   const [profilePicUrl, setProfilePicUrl] = useState(() => {
     const storedProfilePic = localStorage.getItem('profilePic');
     return storedProfilePic ? storedProfilePic : 'default.avif';
-  });
+  }); 
   const token = localStorage.getItem('token');
   const userData = token ? jwtDecode(token) : null;
 

@@ -34,17 +34,6 @@ const FeedCard = ({ title, content, image, author, username, createdAt, time, on
         <div className="flex-grow p-4 items-center">
           <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">{title}</h5>
           <p className="mb-3 font-normal text-gray-700 dark:text-gray-800">{content}</p>
-          <div className="flex justify-between">
-            <p className="text-sm font-medium text-gray-400">
-              {`Posted by ${username}`}
-            </p>
-            <p className="text-xs text-gray-400">
-              {timeAgo(createdAt)}
-            </p>
-            <p className="text-xs text-gray-400">
-              {time}
-            </p>
-          </div>
           <div className="flex justify-center mt-4">
             <button className="text-xs btn-sm text-red-500 btn btn-ghost" onClick={handleRemove}>Remove Post</button>
           </div>
