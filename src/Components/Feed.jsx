@@ -27,6 +27,7 @@ const Feed = () => {
       {posts.map((post) => (
         <FeedCard
           key={post._id}
+          postId={post._id} 
           title={post.title}
           content={post.content}
           image={post.image}
