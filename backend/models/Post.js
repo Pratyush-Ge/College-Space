@@ -11,7 +11,7 @@ const postSchema = new Schema({
   content: {
     type: String,
     required: true,
-    maxLength: 300,
+    maxLength: 800,
   },
   image: {
     type: String,

@@ -64,12 +64,12 @@ const AddPostForm = () => {
             </label>
             <label className="block">
               <span className="text-white">Content </span>
-              <span className="text-gray-700">(max 300 words):</span>
+              <span className="text-gray-700">(max 800 words):</span>
               <textarea
                 className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
-                maxLength="300"
+                maxLength="800"
                 minLength="30"
                 required
               ></textarea>

@@ -14,7 +14,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const mongoURL = `mongodb+srv://pratyushghatole2003:h8Nl5nq0XvDMuxrf@cluster0.sq5kjcv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
+const mongoURL = `mongodb+srv://pratyushghatole2003:s6A6QH5LY8OMvrmD@cluster0.sq5kjcv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
 mongoose.connect(mongoURL);
 
 app.use("/signup", signupRoute);
