@@ -8,7 +8,7 @@ College Space is a student-oriented website that provides a centralized platform
 - **Frontend**: React, Tailwind CSS, DaisyUI
 - **Backend**: Node.js, Express.js
 - **Database**: MongoDB
-- **Authentication**: JWT (JSON Web Tokens)
+- **Authentication**: JWT
 
 ## Features
 
