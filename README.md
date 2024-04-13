@@ -11,3 +11,8 @@ College Space is a student-oriented website that provides a centralized platform
 - **Authentication**: JWT
 
 ## Features
+
+- **Notes**: Access notes uploaded by professors or other students.
+- **Academic Calendars**: Stay updated with important dates and deadlines.
+- **Events**: Find details about upcoming events in the college and clubs.
+- **Feed**: Engage with other students through posts and comments.
