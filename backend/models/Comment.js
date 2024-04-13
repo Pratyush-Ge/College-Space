@@ -3,6 +3,10 @@ import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
 const commentSchema = new Schema({
+  commentId: {
+    type: Schema.Types.ObjectId,
+    required: true,
+  },
   postId: {
     type: Schema.Types.ObjectId,
     ref: 'Post',
@@ -23,7 +27,10 @@ const commentSchema = new Schema({
   },
   profilePicUrl: {
     type: String,
-    required: true,
+  },
+  likes: {
+    type: Number,
+    default: 0,
   },
   createdAt: {
     type: Date,

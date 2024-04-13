@@ -1,4 +1,3 @@
-// index.js
 import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
@@ -11,13 +10,16 @@ import uploadProfilePicRoute from "./routes/uploadProfilePic.js";
 import getUserDetailsRoute from "./routes/getUserDetails.js";
 import removeProfilePhotoRoute from "./routes/removeProfilePhoto.js";
 import getCommentsRoute from "./routes/getComment.js";
-import postCommentRoute from "./routes/postComment.js"; // Add this line
+import postCommentRoute from "./routes/postComment.js"; 
+import deleteCommentRoute from "./routes/deleteComment.js"; 
+// import likeCommentRoute from "./routes/likeComment.js"; 
+
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-const mongoURL = `mongodb+srv://pratyushghatole2003:MdStUp0SWOXu6CPa@cluster0.sq5kjcv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
+const mongoURL = `mongodb+srv://pratyushghatole2003:aiSbuGxMqSfoSDTH@cluster0.sq5kjcv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
 mongoose.connect(mongoURL);
 
 app.use("/signup", signupRoute);
@@ -29,7 +31,9 @@ app.use("/uploadProfilePic", uploadProfilePicRoute);
 app.use("/getUserDetails", getUserDetailsRoute);
 app.use("/removeProfilePhoto", removeProfilePhotoRoute);
 app.use("/getComments", getCommentsRoute);
-app.use("/postComment", postCommentRoute); // Add this line
+app.use("/postComment", postCommentRoute); 
+app.use("/deleteComment", deleteCommentRoute); 
+// app.use("/likeComment", likeCommentRoute);
 
 app.listen(5000, () => {
   console.log("Server is running on port 5000");

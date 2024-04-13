@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import CommentSection from './CommentSection';
 import { jwtDecode } from 'jwt-decode';
+import { toast } from 'react-toastify';
+
 
 const FeedCard = ({ postId, title, content, image, author, username, createdAt, time }) => {
   const navigate = useNavigate();
@@ -24,8 +26,8 @@ const FeedCard = ({ postId, title, content, image, author, username, createdAt, 
         },
       });
 
-      console.log(response.data.message);
 
+      toast.success('Comment posted successfully');
       setKey(prevKey => prevKey + 1);
     } catch (error) {
       console.error('Error posting comment:', error);
@@ -52,7 +54,6 @@ const FeedCard = ({ postId, title, content, image, author, username, createdAt, 
       const decodedToken = jwtDecode(token);
       const currentTime = Date.now() / 1000;
       if (decodedToken.exp < currentTime) {
-        // Token is expired
         localStorage.removeItem('token');
         setIsLoggedIn(false);
       } else {
@@ -137,14 +138,13 @@ const FeedCard = ({ postId, title, content, image, author, username, createdAt, 
 
       <div className="w-1/2 flex flex-col px-3 m-1">
         <h3 className="font-semibold p-1">Discussion</h3>
-
         {isLoggedIn ? (
           <CommentSection postId={postId} key={key} onCommentSubmit={handleCommentSubmit} />
         ) : (
           <div className="p-4">
             <h3 className="text-lg font-semibold mb-4">Login or Signup</h3>
             <p className="mb-4">You need to be logged in to comment. Please login or signup to continue.</p>
-            <div className="flex justify-end">
+            <div className="flex justify-start">
               <button className="btn btn-accent mr-2" onClick={() => document.getElementById('my_modal_2').showModal()}>Login</button>
               <button className="btn btn-accent" onClick={() => document.getElementById('my_modal_1').showModal()}>Signup</button>
             </div>

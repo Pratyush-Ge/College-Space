@@ -1,15 +1,18 @@
 import express from 'express';
 import Comment from '../models/Comment.js';
-import {jwtDecode} from 'jwt-decode';
+import {jwtDecode} from 'jwt-decode'; 
+import mongoose from "mongoose";
 
 const router = express.Router();
 
 router.post("/", async (req, res) => {
   try {
-    const { email, username, profilePicUrl } = jwtDecode(req.headers.authorization.split(' ')[1]);
+    const token = req.headers.authorization.split(' ')[1];
+    const { email, username, profilePicUrl } = jwtDecode(token);
     const { postId, content } = req.body;
 
     const comment = new Comment({
+      commentId: new mongoose.Types.ObjectId(),
       postId,
       content,
       author: email,

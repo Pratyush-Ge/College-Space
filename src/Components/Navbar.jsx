@@ -3,6 +3,7 @@ import LoginForm from './Login';
 import SignupForm from './SignupForm';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import axios from 'axios'; 
 import {jwtDecode} from 'jwt-decode';
 
@@ -42,9 +43,13 @@ const Navbar = () => {
     window.location.reload();
   };
 
+  const handleAddPostClick = () => {
+    document.getElementById('my_modal_2').showModal();
+    toast("Login to continue")
+  }
 
   return (
-    <div className="navbar bg-white text-black">
+    <div className="navbar bg-white text-black h-80 top-0 left-0 fixed z-50 mb-4">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -76,8 +81,8 @@ const Navbar = () => {
           <li><Link to="/academics" className={location.pathname === '/academics' ? 'active' : ''}>Academics</Link></li>
           <li><Link to="/events" className={location.pathname === '/events' ? 'active' : ''}>Events</Link></li>
           <li>
-            <a onClick={() => isLoggedIn ? navigate('/post') : document.getElementById('my_modal_2').showModal()} className={location.pathname === '/post' ? 'active' : ''}>
-              {isLoggedIn ? 'My Post' : 'Add Post'}
+            <a onClick={() => isLoggedIn ? navigate('/post') : handleAddPostClick()} className={location.pathname === '/post' ? 'active' : ''}>
+              {isLoggedIn ? 'My Posts' : 'Add Post'}
             </a>
           </li>
         </ul>

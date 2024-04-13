@@ -15,12 +15,12 @@ const FeedCard = ({ title, content, image, author, username, createdAt, time, on
     }
   };
 
-  const handleRemove = () => {
+  const handleRemove = () => {  
     onRemove(); 
   };
 
   return (
-    <div className="w-full p-4 relative">
+    <div className="w-full p-2 relative">
   <div className="border rounded-lg shadow bg-white dark:border-gray-700 h-auto flex flex-col overflow-y-auto myposts" style={{ maxHeight: '560px' }}>
     {image && (
       <div className="relative" style={{ paddingBottom: '56.25%' }}>

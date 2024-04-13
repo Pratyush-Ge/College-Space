@@ -59,9 +59,9 @@ const MyPost = () => {
 
   return (
     <div className="w-1/3">
-      <h1 className="text-2xl font-bold my-4 text-center">My Posts</h1>
+      <h1 className="text-2xl font-bold my-4 text-center ">My Posts</h1>
       {filteredPosts.length > 0 ? (
-        <div className= "flex flex-col justify-center items-center gap-4 my-4">
+        <div className= "flex flex-col justify-center items-center pt-2">
           {filteredPosts.map((post) => (  
             <MyPostsFeedCard
               key={post._id}

@@ -23,11 +23,11 @@ const Feed = () => {
   };
 
   return (
-    <div className="w-3/5 flex flex-col justify-center items-center gap-4 my-4">
+    <div className="w-3/5 flex flex-col justify-center items-center gap-4 mt-20">
       {posts.map((post) => (
         <FeedCard
           key={post._id}
-          postId={post._id} 
+          postId={post._id}
           title={post.title}
           content={post.content}
           image={post.image}
@@ -38,6 +38,7 @@ const Feed = () => {
         />
       ))}
     </div>
+
   );
 };
 
