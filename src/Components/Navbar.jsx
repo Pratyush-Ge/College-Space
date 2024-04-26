@@ -3,7 +3,7 @@ import LoginForm from './Login';
 import SignupForm from './SignupForm';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 import axios from 'axios'; 
 import {jwtDecode} from 'jwt-decode';
 
@@ -43,10 +43,10 @@ const Navbar = () => {
     window.location.reload();
   };
 
-  const handleAddPostClick = () => {
-    document.getElementById('my_modal_2').showModal();
-    toast("Login to continue")
-  }
+  // const handleAddPostClick = () => {
+  //   document.getElementById('my_modal_2').showModal();
+  //   toast("Login to continue")
+  // }
 
   return (
     <div className="navbar bg-white text-black h-80 top-0 left-0 fixed z-50 mb-4">
@@ -80,11 +80,11 @@ const Navbar = () => {
           <li><Link to="/" className={location.pathname === '/' ? 'active' : ''}>Feed</Link></li>
           <li><Link to="/academics" className={location.pathname === '/academics' ? 'active' : ''}>Academics</Link></li>
           <li><Link to="/events" className={location.pathname === '/events' ? 'active' : ''}>Events</Link></li>
-          <li>
+          {/* <li>
             <a onClick={() => isLoggedIn ? navigate('/post') : handleAddPostClick()} className={location.pathname === '/post' ? 'active' : ''}>
               {isLoggedIn ? 'My Posts' : 'Add Post'}
             </a>
-          </li>
+          </li> */}
         </ul>
       </div>
 
@@ -100,7 +100,8 @@ const Navbar = () => {
                 </div>
               </div>
               <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-white rounded-box w-52">
-                <li onClick={() => { navigate('/account', { state: { userEmail: email } }) }}>
+                <li onClick={() => { navigate(`/account/${email}`, { state: { userEmail: email } }) }}> 
+
                   <a className="justify-between">
                     Profile
                   </a>

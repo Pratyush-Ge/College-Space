@@ -1,18 +1,17 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { jwtDecode } from 'jwt-decode';
+// import { jwtDecode } from 'jwt-decode';
 import MyPostsFeedCard from './MyPostsFeedCard';
 
-const MyPost = () => {
+const MyPost = (props) => {
+  const { email } = props;
   const [posts, setPosts] = useState([]);
   const [filteredPosts, setFilteredPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [postIdToDelete, setPostIdToDelete] = useState('');
 
-  const token = localStorage.getItem('token');
-  const userData = jwtDecode(token);
-  const email = userData.email;
 
   useEffect(() => {
     fetchPosts();
@@ -58,10 +57,9 @@ const MyPost = () => {
   }
 
   return (
-    <div className="w-1/3">
-      <h1 className="text-2xl font-bold my-4 text-center ">My Posts</h1>
+    <div className="w-1/3 flex flex-col justify-center items-center gap-4">
       {filteredPosts.length > 0 ? (
-        <div className= "flex flex-col justify-center items-center pt-2">
+        <>
           {filteredPosts.map((post) => (  
             <MyPostsFeedCard
               key={post._id}
@@ -71,12 +69,13 @@ const MyPost = () => {
               onRemove={() => openDeleteModal(post._id)}
             />
           ))}
-        </div>
+        </>
       ) : (
         <div className="flex flex-col items-center justify-center h-full">
           <div>No activity yet.</div>
         </div>
       )}
+
 
       {showDeleteModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">

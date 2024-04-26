@@ -45,7 +45,7 @@ const AddPostForm = () => {
   
 
   return (
-    <div className="flex justify-center items-center h-screen w-full">
+    <div className="flex justify-center mt-4 h-screen w-full">
       <div className="flex justify-between w-full max-w-screen-lg">
         <div className="w-1/2 min-w-[300px] p-4">
           <h2 className="text-2xl font-bold mb-4">Add New Post</h2>

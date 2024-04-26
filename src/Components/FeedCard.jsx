@@ -3,17 +3,118 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
-import CommentSection from './CommentSection';
-import { jwtDecode } from 'jwt-decode';
+import {jwtDecode} from 'jwt-decode'; 
 import { toast } from 'react-toastify';
+import { FaHeart } from 'react-icons/fa';
+import { MdBookmark } from 'react-icons/md';
+import CommentSection from './CommentSection';
 
-
-const FeedCard = ({ postId, title, content, image, author, username, createdAt, time }) => {
+const FeedCard = ({ postId, title, content, image, author, username, createdAt }) => {
   const navigate = useNavigate();
   const [authorPic, setAuthorPic] = useState('');
   const [comment, setComment] = useState('');
   const [key, setKey] = useState(0);
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
+  const [isLiked, setIsLiked] = useState(false);
+  const [isBookmarked, setIsBookmarked] = useState(false);
+
+  const timeAgo = (createdAt) => {
+    const now = new Date();
+    const createdAtDate = new Date(createdAt);
+    const diffTime = Math.abs(now - createdAtDate);
+    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+    if (diffDays === 0) {
+      return "Today";
+    } else {
+      return `${diffDays} day${diffDays !== 1 ? 's' : ''} ago`;
+    }
+  };
+
+  const formatDateTime = (dateTime) => {
+    const date = new Date(dateTime);
+    const hours = date.getHours();
+    const minutes = date.getMinutes().toString().padStart(2, '0');
+    const amOrPm = hours >= 12 ? 'PM' : 'AM';
+    const formattedHours = (hours % 12 || 12).toString().padStart(2, '0');
+    return `${formattedHours}:${minutes} ${amOrPm}`;
+  };
+
+  const handleLike = async () => {
+    const token = localStorage.getItem('token');
+    const data = jwtDecode(token);
+    const userEmail = data.email;
+    try {
+      await axios.post('http://localhost:5000/likePost', { postId, userEmail: userEmail });
+      setIsLiked(true);
+    } catch (error) {
+      console.error('Error liking post:', error);
+    }
+  };
+
+  const handleUnlike = async () => {
+    const token = localStorage.getItem('token');
+    const data = jwtDecode(token);
+    const userEmail = data.email;
+    try {
+      await axios.delete('http://localhost:5000/likePost/toggle', { data: { postId, userEmail: userEmail } });
+      setIsLiked(false);
+    } catch (error) {
+      console.error('Error unliking post:', error);
+    }
+  };
+
+ const handleBookmark = async () => {
+    const token = localStorage.getItem('token');
+    const data = jwtDecode(token);
+    const userEmail = data.email;
+    try {
+      const bookmarks = await axios.get(`http://localhost:5000/bookmark/check/${postId}?userEmail=${userEmail}`);
+      const bookmarkedPost = bookmarks.data.bookmarked;
+      if (bookmarkedPost) {
+        await axios.delete(`http://localhost:5000/bookmark/remove/${postId}/${userEmail}`);
+        setIsBookmarked(false);
+      } else {
+        await axios.post('http://localhost:5000/bookmark/add', { postId, userEmail: userEmail });
+        setIsBookmarked(true);
+      }
+    } catch (error) {
+      console.error('Error bookmarking:', error);
+    }
+  };
+  
+
+  useEffect(() => {
+    const checkLikeStatus = async () => {
+      const token = localStorage.getItem('token');
+      const data = jwtDecode(token);
+      const userEmail = data.email;
+      try {
+        const likes = await axios.get(`http://localhost:5000/likePost/${postId}`);
+        const isLikedByUser = likes.data.some(like => like.userEmail === userEmail);
+        setIsLiked(isLikedByUser);
+      } catch (error) {
+        console.error('Error fetching likes:', error);
+      }
+    };
+    checkLikeStatus();
+  }, [postId]);
+
+  useEffect(() => {
+    const bookmarkStatus = async () => {
+      const token = localStorage.getItem('token');
+      const data = jwtDecode(token);
+      const userEmail = data.email;
+      try {
+        const bookmarks = await axios.get(`http://localhost:5000/bookmark/check/${postId}?userEmail=${userEmail}`);
+        const bookmarkedPost = bookmarks.data.bookmarked;
+        setIsBookmarked(bookmarkedPost);
+      } catch (error) {
+        console.error('Error fetching bookmarks:', error);
+      }
+    };
+    bookmarkStatus();
+  }, [postId]);
 
   const handleCommentSubmit = async () => {
     try {
@@ -25,7 +126,6 @@ const FeedCard = ({ postId, title, content, image, author, username, createdAt, 
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       });
-
 
       toast.success('Comment posted successfully');
       setKey(prevKey => prevKey + 1);
@@ -64,37 +164,43 @@ const FeedCard = ({ postId, title, content, image, author, username, createdAt, 
     }
   }, []);
 
-  const timeAgo = (createdAt) => {
-    const now = new Date();
-    const createdAtDate = new Date(createdAt);
-    const diffTime = Math.abs(now - createdAtDate);
-    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-
-    if (diffDays === 0) {
-      return "Today";
-    } else {
-      return `${diffDays} day${diffDays !== 1 ? 's' : ''} ago`;
-    }
-  };
-
-  const formatDateTime = (dateTime) => {
-    const date = new Date(dateTime);
-    const hours = date.getHours();
-    const minutes = date.getMinutes().toString().padStart(2, '0');
-    const amOrPm = hours >= 12 ? 'PM' : 'AM';
-    const formattedHours = (hours % 12 || 12).toString().padStart(2, '0');
-    return `${formattedHours}:${minutes} ${amOrPm}`;
-  };
-
   return (
-    <div className="w-full p-4 border rounded-lg shadow bg-white dark:border-gray-700 flex h-97" style={{ maxHeight: '600px' }}>
-      <div className="w-1/2 h-full flex flex-col rounded-lg shadow-lg overflow-y-auto left" style={{ maxHeight: '560px' }}>
+    <div className="w-full p-4 border rounded-lg shadow bg-gray-50 flex h-97" style={{ maxHeight: '600px' }}>
+      <div className="w-1/2 h-full flex flex-col rounded-lg shadow-2xl overflow-y-auto left bg-white" style={{ maxHeight: '560px' }}>
+        <div className="flex justify-between items-center w-80 my-2">
+          <div className="flex items-center cursor-pointer" onClick={() => { navigate(`/account/${author}`, { state: { userEmail: author } }) }}>
+            {authorPic ? (
+              <img
+                className="w-8 h-8 rounded-full mx-2"
+                src={`../backend/profilePic/${authorPic}`}
+                alt={`${username}'s Profile`}
+              />
+            ) : (
+              <img
+                className="w-8 h-8 rounded-full mx-2"
+                src={`../backend/profilePic/default.avif`}
+                alt={`${username}'s Profile`}
+              />)}
+            <p className="text-xs font-medium text-gray-700">
+              {username}
+            </p>
+          </div>
+          <div>
+            <p className="text-xs text-gray-400">
+              {timeAgo(createdAt)}
+            </p>
+            <p className="text-xs text-gray-400">
+              {formatDateTime(createdAt)}
+            </p>
+          </div>
+        </div>
+
         {image && (
           <div className="relative" style={{ paddingBottom: '56.25%' }}>
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="w-full h-full">
                 <img
-                  className="object-cover w-full h-full rounded-t-lg"
+                  className="object-cover w-full h-full"
                   src={`../backend/uploads/${image}`}
                   alt="Post Image"
                 />
@@ -105,39 +211,26 @@ const FeedCard = ({ postId, title, content, image, author, username, createdAt, 
         <div className="flex-grow p-4 relative">
           <h5 className="mb-2 text-lg font-bold tracking-tight text-gray-900">{title}</h5>
           <p className="mb-3 font-normal text-sm text-gray-700 dark:text-gray-800">{content}</p>
-
-          <div className="flex justify-between items-center">
-            <div className="flex items-center cursor-pointer" onClick={() => { navigate('/account', { state: { userEmail: author } }) }}>
-              {authorPic ? (
-                <img
-                  className="w-8 h-8 rounded-full mr-2"
-                  src={`../backend/profilePic/${authorPic}`}
-                  alt={`${username}'s Profile`}
+          {isLoggedIn && (
+            <div className="flex justify-between">
+              <div className="like"><FaHeart
+                onClick={isLiked ? handleUnlike : handleLike}
+                style={{ color: isLiked ? 'red' : '', cursor: 'pointer' }}
+              /></div>
+              <div className="bookmark">
+                <MdBookmark
+                  onClick={ handleBookmark}
+                  style={{ color: isBookmarked ? 'gold' : '', cursor: 'pointer' }}
                 />
-              ) : (
-                <img
-                  className="w-8 h-8 rounded-full mr-2"
-                  src={`../backend/profilePic/default.avif`}
-                  alt={`${username}'s Profile`}
-                />)}
-              <p className="text-xs font-medium text-gray-400">
-                {`Posted by ${username}`}
-              </p>
+              </div>
+
             </div>
-            <div>
-              <p className="text-xs text-gray-400">
-                {timeAgo(createdAt)}
-              </p>
-              <p className="text-xs text-gray-400">
-                {formatDateTime(createdAt)}
-              </p>
-            </div>
-          </div>
+          )}
         </div>
       </div>
 
       <div className="w-1/2 flex flex-col px-3 m-1">
-        <h3 className="font-semibold p-1">Discussion</h3>
+        <h3 className="font-semibold p-1 text-gray-700">Discussion</h3>
         {isLoggedIn ? (
           <CommentSection postId={postId} key={key} onCommentSubmit={handleCommentSubmit} />
         ) : (
@@ -168,4 +261,3 @@ const FeedCard = ({ postId, title, content, image, author, username, createdAt, 
 };
 
 export default FeedCard;
-

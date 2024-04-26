@@ -30,7 +30,8 @@
     "react-icons": "^5.0.1",
     "react-router-dom": "^6.22.2",
     "react-scrollbars-custom": "^4.1.1",
-    "react-toastify": "^10.0.4"
+    "react-toastify": "^10.0.4",
+    "socket.io-client": "^4.7.5"
   },
   "devDependencies": {
     "@types/react": "^18.2.56",

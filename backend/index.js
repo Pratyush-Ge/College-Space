@@ -12,14 +12,18 @@ import removeProfilePhotoRoute from "./routes/removeProfilePhoto.js";
 import getCommentsRoute from "./routes/getComment.js";
 import postCommentRoute from "./routes/postComment.js"; 
 import deleteCommentRoute from "./routes/deleteComment.js"; 
-// import likeCommentRoute from "./routes/likeComment.js"; 
+// import chatUserRoute from "./routes/chatUser.js"; 
+import likePostRoute from './routes/likePost.js';
+import bookmarkRoutes from './routes/bookmark.js';
+
+
 
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-const mongoURL = `mongodb+srv://pratyushghatole2003:aiSbuGxMqSfoSDTH@cluster0.sq5kjcv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
+const mongoURL = `mongodb+srv://pratyushghatole2003:ZH7guX0WHSawfYBt@cluster0.sq5kjcv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
 mongoose.connect(mongoURL);
 
 app.use("/signup", signupRoute);
@@ -33,7 +37,12 @@ app.use("/removeProfilePhoto", removeProfilePhotoRoute);
 app.use("/getComments", getCommentsRoute);
 app.use("/postComment", postCommentRoute); 
 app.use("/deleteComment", deleteCommentRoute); 
-// app.use("/likeComment", likeCommentRoute);
+// app.use("/chatUser", chatUserRoute); 
+app.use('/likePost', likePostRoute);
+app.use('/bookmark', bookmarkRoutes);
+
+
+
 
 app.listen(5000, () => {
   console.log("Server is running on port 5000");

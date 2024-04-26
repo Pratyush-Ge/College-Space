@@ -32,12 +32,21 @@ body::-webkit-scrollbar-thumb {
 .App {
   margin: 0;
   padding: 0;
-  width: 100%;
   height: 100%; 
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
+.content {
+  width: 100%;
+  display: flex;
+  margin: 14vh auto 4vh auto;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
+
 
 .navbar{
   height: 2rem;
@@ -72,7 +81,6 @@ body::-webkit-scrollbar-thumb {
 .feedContainer{
   display: flex;
   justify-content: space-evenly;
-  margin-top: 2rem;
   flex-wrap: wrap;
   width: 80vw;
 }

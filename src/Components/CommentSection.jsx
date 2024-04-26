@@ -35,7 +35,6 @@ const CommentSection = ({ postId, key, onCommentSubmit }) => {
   const token = localStorage.getItem('token');
   const userData = jwtDecode(token);
   const author = userData.email;
-  const [isLiked, setIsLiked] = useState(false);
 
   useEffect(() => {
     axios.get(`http://localhost:5000/getComments/${postId}`)
@@ -46,6 +45,8 @@ const CommentSection = ({ postId, key, onCommentSubmit }) => {
         console.error('Error fetching comments:', error);
       });
   }, [postId]);
+
+  
 
   const handleDelete = async (commentId) => {
     try {
@@ -66,12 +67,12 @@ const CommentSection = ({ postId, key, onCommentSubmit }) => {
   }
 
   return (
-    <div className="max-h-97 overflow-y-auto right">
+    <div className="max-h-90 overflow-y-auto right">
       {comments.map((comment, index) => (
-        <div key={index} className="flex justify-between border rounded-md m-1">
+        <div key={index} className="flex justify-between border border-gray-400 rounded-md m-1">
           <div className="p-3 relative w-full">
             <div className="flex items-center gap-3">
-              <div className="flex gap-3 items-center cursor-pointer" onClick={() => { navigate('/account', { state: { userEmail: comment.author } }) }}>
+              <div className="flex gap-3 items-center cursor-pointer" onClick={() => { navigate(`/account/${comment.author}`, { state: { userEmail: comment.author } }) }}>
                 <img src={`../backend/profilePic/${comment.profilePicUrl}`} className="object-cover w-6 h-6 rounded-full" alt="User Avatar" />
                 <h2 className="text-black text-sm">
                   {comment.username}
@@ -88,8 +89,8 @@ const CommentSection = ({ postId, key, onCommentSubmit }) => {
             <p className="text-gray-600 mt-2 text-sm">
               {comment.content}
             </p>
-            <div className="flex justify-between w-full mt-2">
-              {!isLiked ? (
+            <div className="flex justify-end w-full mt-2">
+              {/* {!isLiked ? (
                 <div className="cursor-pointer like" onClick={() => setIsLiked(prev => !prev)}>
                   <FaHeart />
                 </div>
@@ -97,7 +98,7 @@ const CommentSection = ({ postId, key, onCommentSubmit }) => {
                 <div className="cursor-pointer like" onClick={() => setIsLiked(prev => !prev)}>
                   <FaHeart style={{ color: 'red' }} />
                 </div>
-              )}
+              )} */}
 
               {(comment.author === author) && (
                 <div className="deleteComment cursor-pointer"  onClick={() => handleDelete(comment._id)}><FaTrash /></div>

@@ -18,6 +18,8 @@ router.post("/", async (req, res) => {
       author: email,
       username,
       profilePicUrl, 
+      likes: 0,
+      isLiked: false, 
     });
 
     await comment.save();

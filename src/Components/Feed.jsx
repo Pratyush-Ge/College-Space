@@ -23,7 +23,7 @@ const Feed = () => {
   };
 
   return (
-    <div className="w-3/5 flex flex-col justify-center items-center gap-4 mt-20">
+    <div className="w-3/5 flex flex-col justify-center items-center gap-4">
       {posts.map((post) => (
         <FeedCard
           key={post._id}

@@ -28,15 +28,12 @@ const commentSchema = new Schema({
   profilePicUrl: {
     type: String,
   },
-  likes: {
-    type: Number,
-    default: 0,
-  },
   createdAt: {
     type: Date,
     default: Date.now,
   },
 });
+
 
 const Comment = mongoose.model('Comment', commentSchema);
 
