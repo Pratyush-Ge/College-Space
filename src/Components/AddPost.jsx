@@ -45,9 +45,9 @@ const AddPostForm = () => {
   
 
   return (
-    <div className="flex justify-center mt-4 h-screen w-full">
-      <div className="flex justify-between w-full max-w-screen-lg">
-        <div className="w-1/2 min-w-[300px] p-4">
+    <div className="flex justify-center mt-4  w-full">
+      <div className="flex justify-center gap-4 flex-wrap items-center w-full max-w-screen-lg">
+        <div className="w-1/2 min-w-[400px] p-4">
           <h2 className="text-2xl font-bold mb-4">Add New Post</h2>
           <form className="space-y-4">
             <label className="block">
@@ -86,7 +86,7 @@ const AddPostForm = () => {
             </label>
           </form>
         </div>
-        <div className="w-2/5 min-w-[300px] p-4">
+        <div className="w-2/5 min-w-[400px] p-4">
           <div className="border border-gray-300 rounded-lg p-4">
             <h3 className="text-lg font-bold mb-2">Preview:</h3>
             {title && <h4 className="text-xl font-semibold mb-2">{title}</h4>}

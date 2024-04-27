@@ -5,11 +5,11 @@ import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 import { toast } from 'react-toastify';
 import { FaRegComment, FaEdit } from 'react-icons/fa';
+import { FiSend } from 'react-icons/fi';
 import { MdBookmark } from 'react-icons/md';
 import { IoMdPaper } from 'react-icons/io';
 import MyPost from './MyPost';
 import SavedPost from './SavedPosts';
-
 
 const Account = () => {
   const { id } = useParams();
@@ -30,7 +30,6 @@ const Account = () => {
   const handleFileChange = (e) => {
     setProfilePicUrl(e.target.files[0]);
   };
-
 
   useEffect(() => {
     if (userEmail) {
@@ -107,11 +106,33 @@ const Account = () => {
       });
   };
 
+  const renderMessageButton = () => {
+    if (!userData) {
+      return (
+        <button className="btn" onClick={() => toast.message("Login first")}>
+          <FaRegComment /> Message
+        </button>
+      );
+    }
+    if (userData && userEmail === userData.email) {
+      return (
+        <button className="btn" onClick={() => document.getElementById('my_modal_3').showModal()}>
+          <FaEdit /> Edit Profile
+        </button>
+      );
+    }
+    return (
+      <button className="btn" onClick={() => document.getElementById('my_modal_4').showModal()}>
+        <FaRegComment />
+        <span>Message</span>
+      </button>
+    );
+  };
 
   return (
-    <div className="flex h-full"> 
+    <div className="flex h-full">
       <div className="p-4 relative flex justify-center items-center flex-col">
-        <div className='flex gap-4 justify-center items-center'>
+        <div className="flex gap-4 justify-center items-center">
           <div className="w-20 h-20 rounded-full overflow-hidden">
             <img
               className="w-full h-full object-cover"
@@ -123,16 +144,7 @@ const Account = () => {
             <h1 className="text-xl font-bold text-white">{username}</h1>
             <p className="text-gray">{userEmail}</p>
           </div>
-          {userEmail && userData && userEmail === userData.email ? (
-            <button className="btn" onClick={() => document.getElementById('my_modal_3').showModal()}>
-             <FaEdit/> Edit Profile
-            </button>
-          ) : (
-            <button className="btn" onClick={() => document.getElementById('my_modal_4').showModal()}>
-              <FaRegComment/>
-            <span>Message</span>
-            </button>
-          )}
+          {renderMessageButton()}
         </div>
 
         <div role="tablist" className="tabs tabs-bordered mt-8">
@@ -157,12 +169,12 @@ const Account = () => {
         <div>
           {activeTab === 'Posts' && (
             <div className="w-full mx-auto flex justify-center">
-                <MyPost email={id} />
+              <MyPost email={id} />
             </div>
           )}
           {activeTab === 'Saved' && (
             <div className="w-full mx-auto flex justify-center">
-              <SavedPost userEmail={id}/>
+              <SavedPost userEmail={id} />
             </div>
           )}
         </div>
@@ -201,9 +213,80 @@ const Account = () => {
         </div>
       </dialog>
 
+
       <dialog id="my_modal_4" className="modal">
-        <div className="modal-box">
-          <div className="close" onClick={() => { document.getElementById('my_modal_4').close() }}>Close</div>
+        <div className="modal-box overflow-hidden" style={{ maxHeight: '650px' }}>
+
+          <div className="btns flex justify-between">
+
+            <div className="chatProfile flex gap-3 items-center">
+              <div className="chat-image avatar w-10">
+                <div className="w-10 rounded-full">
+                  <img alt="Profile pic" src={(profilePicUrl && `../backend/profilePic/${profilePicUrl}`) || '../backend/profilePic/default.avif'}/>
+                </div>
+              </div>
+              <p>{username}</p>
+            </div>
+
+            <button onClick={() => {
+              document.getElementById('my_modal_4').close()
+            }}
+              className=" rounded-full text-white focus:outline-none">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+          </div>
+
+
+
+          <div className="chatbody my-5 border border-gray-700 rounded-lg overflow-y-auto" style={{ maxHeight: '440px' }}>
+
+            <div className="chat chat-start p-2">
+              <div className="chat-bubble">I hate you!</div>
+              <div className="chat-footer">
+                <time className="text-xs opacity-50">12:46</time>
+              </div>
+            </div>
+
+            <div className="chat chat-end p-2">
+              <div className="chat-bubble">I hate you!</div>
+              <div className="chat-footer">
+                <time className="text-xs opacity-50">12:46</time>
+              </div>
+            </div>
+            <div className="chat chat-end p-2">
+              <div className="chat-bubble">I hate you!</div>
+              <div className="chat-footer">
+                <time className="text-xs opacity-50">12:46</time>
+              </div>
+            </div>
+            <div className="chat chat-end p-2">
+              <div className="chat-bubble">I hate you!</div>
+              <div className="chat-footer">
+                <time className="text-xs opacity-50">12:46</time>
+              </div>
+            </div>
+            <div className="chat chat-end p-2">
+              <div className="chat-bubble">I hate you!</div>
+              <div className="chat-footer">
+                <time className="text-xs opacity-50">12:46</time>
+              </div>
+            </div>
+            <div className="chat chat-end p-2">
+              <div className="chat-bubble">I hate you!</div>
+              <div className="chat-footer">
+                <time className="text-xs opacity-50">12:46</time>
+              </div>
+            </div>
+
+          </div>
+          <label className="input input-bordered flex items-center gap-2 text-gray-500">
+            <input type="text" className="grow text-black" placeholder="Search" />
+            <span className='cursor-pointer'>  <FiSend />
+            </span>
+          </label>
+
         </div>
       </dialog>
 

@@ -10,7 +10,7 @@ import {jwtDecode} from 'jwt-decode';
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
   const [email, setEmail] = useState('');
   const [profilePicUrl, setProfilePicUrl] = useState(`default.avif`);
 
@@ -18,23 +18,39 @@ const Navbar = () => {
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
-      setIsLoggedIn(true);
       const userData = jwtDecode(token);
       const emailToken = userData.email;
-      setEmail(userData.email)
+      setEmail(userData.email);
       axios.get('http://localhost:5000/getUserDetails', {
         headers: {
           'Authorization': `Bearer ${emailToken}`
         }
       })
-        .then(response => {
-          setProfilePicUrl(response.data.profilePicUrl);
-        })
-        .catch(error => {
-          console.error('Error fetching user details:', error);
-        });
+      .then(response => {
+        setProfilePicUrl(response.data.profilePicUrl);
+      })
+      .catch(error => {
+        console.error('Error fetching user details:', error);
+      });
     }
   }, []);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decodedToken = jwtDecode(token);
+      const currentTime = Date.now() / 1000;
+      if (decodedToken.exp < currentTime) {
+        localStorage.removeItem('token');
+        setIsLoggedIn(false);
+      } else {
+        setIsLoggedIn(true);
+      }
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, []);
+  
 
   const handleLogout = () => {
     localStorage.removeItem('token');

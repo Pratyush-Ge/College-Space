@@ -16,6 +16,7 @@ const FeedCard = ({ postId, title, content, image, author, username, createdAt }
   const [key, setKey] = useState(0);
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
   const [isLiked, setIsLiked] = useState(false);
+  // const [likes, setLikes] = useState(0); 
   const [isBookmarked, setIsBookmarked] = useState(false);
 
   const timeAgo = (createdAt) => {
@@ -42,6 +43,10 @@ const FeedCard = ({ postId, title, content, image, author, username, createdAt }
 
   const handleLike = async () => {
     const token = localStorage.getItem('token');
+    if (!token) {
+      toast.error('You need to be logged in to like a post');
+      return;
+    }
     const data = jwtDecode(token);
     const userEmail = data.email;
     try {
@@ -54,6 +59,10 @@ const FeedCard = ({ postId, title, content, image, author, username, createdAt }
 
   const handleUnlike = async () => {
     const token = localStorage.getItem('token');
+    if (!token) {
+      toast.error('You need to be logged in to unlike a post');
+      return;
+    }
     const data = jwtDecode(token);
     const userEmail = data.email;
     try {
@@ -64,8 +73,12 @@ const FeedCard = ({ postId, title, content, image, author, username, createdAt }
     }
   };
 
- const handleBookmark = async () => {
+  const handleBookmark = async () => {
     const token = localStorage.getItem('token');
+    if (!token) {
+      toast.error('You need to be logged in to bookmark a post');
+      return;
+    }
     const data = jwtDecode(token);
     const userEmail = data.email;
     try {
@@ -82,11 +95,13 @@ const FeedCard = ({ postId, title, content, image, author, username, createdAt }
       console.error('Error bookmarking:', error);
     }
   };
-  
 
   useEffect(() => {
     const checkLikeStatus = async () => {
       const token = localStorage.getItem('token');
+      if (!token) {
+        return;
+      }
       const data = jwtDecode(token);
       const userEmail = data.email;
       try {
@@ -99,10 +114,13 @@ const FeedCard = ({ postId, title, content, image, author, username, createdAt }
     };
     checkLikeStatus();
   }, [postId]);
-
+  
   useEffect(() => {
     const bookmarkStatus = async () => {
       const token = localStorage.getItem('token');
+      if (!token) {
+        return;
+      }
       const data = jwtDecode(token);
       const userEmail = data.email;
       try {
@@ -115,6 +133,7 @@ const FeedCard = ({ postId, title, content, image, author, username, createdAt }
     };
     bookmarkStatus();
   }, [postId]);
+  
 
   const handleCommentSubmit = async () => {
     try {
@@ -128,6 +147,7 @@ const FeedCard = ({ postId, title, content, image, author, username, createdAt }
       });
 
       toast.success('Comment posted successfully');
+      setComment('');
       setKey(prevKey => prevKey + 1);
     } catch (error) {
       console.error('Error posting comment:', error);
@@ -163,6 +183,9 @@ const FeedCard = ({ postId, title, content, image, author, username, createdAt }
       setIsLoggedIn(false);
     }
   }, []);
+
+
+ 
 
   return (
     <div className="w-full p-4 border rounded-lg shadow bg-gray-50 flex h-97" style={{ maxHeight: '600px' }}>
@@ -248,7 +271,7 @@ const FeedCard = ({ postId, title, content, image, author, username, createdAt }
           <>
             <div className="w-full px-3 mb-2 mt-6">
               <textarea
-                className="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-400 focus:outline-none focus:bg-white"
+                className="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 text-black placeholder-gray-400 focus:outline-none focus:bg-white"
                 name="body" placeholder="Comment" value={comment} onChange={(e) => setComment(e.target.value)} required></textarea>
             </div>
             <div className="w-full flex justify-end px-3 my-3">

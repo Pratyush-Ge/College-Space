@@ -36,6 +36,10 @@ const postSchema = new Schema({
       return date.split(", ")[1];
     }
   },
+  likes: {
+    type: Number,
+    default: 0,
+  },
 });
 
 const Post = mongoose.model('Post', postSchema);
