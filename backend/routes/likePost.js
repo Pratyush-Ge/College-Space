@@ -1,5 +1,6 @@
 import express from 'express';
 import Like from '../models/Like.js';
+import Post from '../models/Post.js';
 
 const router = express.Router();
 
@@ -14,6 +15,9 @@ router.post('/', async (req, res) => {
 
     const like = new Like({ postId, userEmail });
     await like.save();
+
+    // Update the like count in the Post model
+    await Post.findByIdAndUpdate(postId, { $inc: { likes: 1 } });
 
     res.status(201).json({ message: 'Like added successfully' });
   } catch (error) {
@@ -33,13 +37,15 @@ router.delete('/toggle', async (req, res) => {
 
     await existingLike.deleteOne();
 
+    // Update the like count in the Post model
+    await Post.findByIdAndUpdate(postId, { $inc: { likes: -1 } });
+
     res.status(200).json({ message: 'Like removed successfully' });
   } catch (error) {
     console.error('Error removing like:', error);
     res.status(500).json({ message: 'Server error' });
   }
 });
-
 
 router.get('/:postId', async (req, res) => {
   try {

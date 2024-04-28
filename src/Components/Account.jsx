@@ -107,27 +107,27 @@ const Account = () => {
   };
 
   const renderMessageButton = () => {
-    if (!userData) {
-      return (
-        <button className="btn" onClick={() => toast.message("Login first")}>
-          <FaRegComment /> Message
-        </button>
-      );
-    }
     if (userData && userEmail === userData.email) {
       return (
         <button className="btn" onClick={() => document.getElementById('my_modal_3').showModal()}>
           <FaEdit /> Edit Profile
         </button>
       );
+    } else if (userData) {
+      return (
+        <button className="btn" onClick={() => document.getElementById('my_modal_4').showModal()}>
+          <FaRegComment /> Message
+        </button>
+      );
+    } else {
+      return (
+        <button className="btn" onClick={() => toast("Login first")}>
+          <FaRegComment /> Message
+        </button>
+      );
     }
-    return (
-      <button className="btn" onClick={() => document.getElementById('my_modal_4').showModal()}>
-        <FaRegComment />
-        <span>Message</span>
-      </button>
-    );
   };
+  
 
   return (
     <div className="flex h-full">

@@ -16,7 +16,7 @@ const FeedCard = ({ postId, title, content, image, author, username, createdAt }
   const [key, setKey] = useState(0);
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
   const [isLiked, setIsLiked] = useState(false);
-  // const [likes, setLikes] = useState(0); 
+  const [likes, setLikes] = useState(0); 
   const [isBookmarked, setIsBookmarked] = useState(false);
 
   const timeAgo = (createdAt) => {
@@ -52,11 +52,12 @@ const FeedCard = ({ postId, title, content, image, author, username, createdAt }
     try {
       await axios.post('http://localhost:5000/likePost', { postId, userEmail: userEmail });
       setIsLiked(true);
+      setLikes(prevLikes => prevLikes + 1);
     } catch (error) {
       console.error('Error liking post:', error);
     }
   };
-
+  
   const handleUnlike = async () => {
     const token = localStorage.getItem('token');
     if (!token) {
@@ -68,11 +69,12 @@ const FeedCard = ({ postId, title, content, image, author, username, createdAt }
     try {
       await axios.delete('http://localhost:5000/likePost/toggle', { data: { postId, userEmail: userEmail } });
       setIsLiked(false);
+      setLikes(prevLikes => prevLikes - 1); 
     } catch (error) {
       console.error('Error unliking post:', error);
     }
   };
-
+  
   const handleBookmark = async () => {
     const token = localStorage.getItem('token');
     if (!token) {
@@ -113,9 +115,23 @@ const FeedCard = ({ postId, title, content, image, author, username, createdAt }
       }
     };
     checkLikeStatus();
-  }, [postId]);
-  
-  useEffect(() => {
+
+    const fetchLikes = async () => {
+      try {
+        const response = await axios.get(`http://localhost:5000/likePost/${postId}`);
+        setLikes(response.data.length); 
+        const token = localStorage.getItem('token');
+        if (token) {
+          const data = jwtDecode(token);
+          const userEmail = data.email;
+          setIsLiked(response.data.some(like => like.userEmail === userEmail));
+        }
+      } catch (error) {
+        console.error('Error fetching likes:', error);
+      }
+    };
+    fetchLikes();
+
     const bookmarkStatus = async () => {
       const token = localStorage.getItem('token');
       if (!token) {
@@ -133,6 +149,7 @@ const FeedCard = ({ postId, title, content, image, author, username, createdAt }
     };
     bookmarkStatus();
   }, [postId]);
+
   
 
   const handleCommentSubmit = async () => {
@@ -236,10 +253,12 @@ const FeedCard = ({ postId, title, content, image, author, username, createdAt }
           <p className="mb-3 font-normal text-sm text-gray-700 dark:text-gray-800">{content}</p>
           {isLoggedIn && (
             <div className="flex justify-between">
-              <div className="like"><FaHeart
+              <div className="like flex items-center justify-center gap-1"><FaHeart
                 onClick={isLiked ? handleUnlike : handleLike}
                 style={{ color: isLiked ? 'red' : '', cursor: 'pointer' }}
-              /></div>
+              />
+              <div className="text-xs text-gray-400">{likes}</div>
+              </div>
               <div className="bookmark">
                 <MdBookmark
                   onClick={ handleBookmark}
@@ -275,7 +294,7 @@ const FeedCard = ({ postId, title, content, image, author, username, createdAt }
                 name="body" placeholder="Comment" value={comment} onChange={(e) => setComment(e.target.value)} required></textarea>
             </div>
             <div className="w-full flex justify-end px-3 my-3">
-              <button onClick={handleCommentSubmit} className="px-2.5 py-1.5 rounded-md text-white text-sm bg-indigo-500">Post Comment</button>
+              <button onClick={handleCommentSubmit} className="rounded-md text-white text-sm btn-accent btn btn-sm">Post Comment</button>
             </div></>
         ) : null}
       </div>

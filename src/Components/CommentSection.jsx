@@ -29,7 +29,7 @@ const timeAgo = (createdAt) => {
   }
 };
 
-const CommentSection = ({ postId, key, onCommentSubmit }) => {
+const CommentSection = ({ postId, onCommentSubmit }) => {
   const [comments, setComments] = useState([]);
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
