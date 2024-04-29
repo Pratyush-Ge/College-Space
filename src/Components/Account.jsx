@@ -33,7 +33,7 @@ const Account = () => {
 
   useEffect(() => {
     if (userEmail) {
-      axios.get('http://localhost:5000/getUserDetails', {
+      axios.get('http://localhost:5000/auth/getUserDetails', {
         headers: {
           'Authorization': `Bearer ${userEmail}`
         }
@@ -48,7 +48,7 @@ const Account = () => {
         });
 
       axios
-        .get('http://localhost:5000/getposts')
+        .get('http://localhost:5000/post/getposts')
         .then((response) => {
           const userPosts = response.data.filter((post) => post.author === userEmail);
           setPostCount(userPosts.length);
@@ -64,7 +64,7 @@ const Account = () => {
     formData.append('file', profilePicUrl);
     formData.append('usn', usn);
     axios
-      .post('http://localhost:5000/uploadProfilePic', formData, {
+      .post('http://localhost:5000/user/uploadProfilePic', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`,
@@ -91,7 +91,7 @@ const Account = () => {
 
   const confirmRemovePhoto = () => {
     axios
-      .post('http://localhost:5000/removeProfilePhoto', { usn: usn }, {
+      .post('http://localhost:5000/user/deleteProfilePic', { usn: usn }, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

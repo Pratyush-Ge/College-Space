@@ -28,7 +28,7 @@ const AddPostForm = () => {
       formData.append('email', userData.email);
       formData.append('username', userData.username);
   
-      await axios.post('http://localhost:5000/posts', formData, {
+      await axios.post('http://localhost:5000/post', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`

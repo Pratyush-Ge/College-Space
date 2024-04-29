@@ -154,7 +154,7 @@ const FeedCard = ({ postId, title, content, image, author, username, createdAt }
 
   const handleCommentSubmit = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/postComment', {
+      const response = await axios.post('http://localhost:5000/comment/post', {
         postId: postId,
         content: comment,
       }, {
@@ -172,7 +172,7 @@ const FeedCard = ({ postId, title, content, image, author, username, createdAt }
   };
 
   useEffect(() => {
-    axios.get('http://localhost:5000/getUserDetails', {
+    axios.get('http://localhost:5000/auth/getUserDetails', {
       headers: {
         'Authorization': `Bearer ${author}`
       }

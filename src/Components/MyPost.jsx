@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 // import { jwtDecode } from 'jwt-decode';
 import MyPostsFeedCard from './MyPostsFeedCard';
+import { toast } from 'react-toastify';
 
 const MyPost = (props) => {
   const { email } = props;
@@ -23,7 +24,7 @@ const MyPost = (props) => {
   }, [posts, email]);
 
   const fetchPosts = async () => {
-    axios.get('http://localhost:5000/getposts')
+    axios.get('http://localhost:5000/post/getposts')
       .then(response => {
         setPosts(response.data.reverse());
       })
@@ -33,10 +34,11 @@ const MyPost = (props) => {
   };
 
   const handleRemovePost = (postId) => {
-    axios.delete(`http://localhost:5000/deletepost/${postId}`)
+    axios.delete(`http://localhost:5000/post/deletepost/${postId}`)
       .then(() => {
         setPosts(posts.filter(post => post._id !== postId));
         setShowDeleteModal(false);
+        toast.warning("Post deleted!")
       })
       .catch(error => {
         console.error(error);

@@ -37,7 +37,7 @@ const CommentSection = ({ postId, onCommentSubmit }) => {
   const author = userData.email;
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/getComments/${postId}`)
+    axios.get(`http://localhost:5000/comment/get/${postId}`)
       .then(response => {
         setComments(response.data);
       })
@@ -50,7 +50,7 @@ const CommentSection = ({ postId, onCommentSubmit }) => {
 
   const handleDelete = async (commentId) => {
     try {
-      const response = await axios.delete(`http://localhost:5000/deleteComment/${commentId}`);
+      const response = await axios.delete(`http://localhost:5000/comment/delete/${commentId}`);
       toast.success("Comment deleted successfully");
       setComments(comments.filter(comment => comment._id !== commentId));
     } catch (error) {

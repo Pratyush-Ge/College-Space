@@ -21,7 +21,7 @@ const Navbar = () => {
       const userData = jwtDecode(token);
       const emailToken = userData.email;
       setEmail(userData.email);
-      axios.get('http://localhost:5000/getUserDetails', {
+      axios.get('http://localhost:5000/auth/getUserDetails', {
         headers: {
           'Authorization': `Bearer ${emailToken}`
         }

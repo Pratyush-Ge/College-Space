@@ -5,7 +5,7 @@ import Post from '../models/Post.js'
 const router = express.Router();
 
 
-router.post('/add', async (req, res) => {
+export const addRoute =  async (req, res) => {
   const { postId, userEmail } = req.body;
   try {
     const bookmark = new Bookmark({ postId, userEmail });
@@ -15,9 +15,9 @@ router.post('/add', async (req, res) => {
     console.error('Error adding bookmark:', error);
     res.status(500).send({ message: 'Failed to add bookmark' });
   }
-});
+};
 
-router.delete('/remove/:postId/:userEmail', async (req, res) => {
+export const removeRoute = async (req, res) => {
   const { postId, userEmail } = req.params;
   try {
     await Bookmark.deleteOne({ postId, userEmail });
@@ -26,10 +26,10 @@ router.delete('/remove/:postId/:userEmail', async (req, res) => {
     console.error('Error removing bookmark:', error);
     res.status(500).send({ message: 'Failed to remove bookmark' });
   }
-});
+};
 
 
-router.get('/check/:postId', async (req, res) => {
+export const checkRoute = async (req, res) => {
   const { postId } = req.params;
   const { userEmail } = req.query;
   try {
@@ -39,9 +39,9 @@ router.get('/check/:postId', async (req, res) => {
     console.error('Error checking bookmark:', error);
     res.status(500).send({ message: 'Failed to check bookmark' });
   }
-});
+};
 
-router.get("/:userEmail", async (req, res) => {
+export const getRoute = async (req, res) => {
   try {
     const { userEmail } = req.params;
     const bookmarks = await Bookmark.find({ userEmail });
@@ -51,6 +51,6 @@ router.get("/:userEmail", async (req, res) => {
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
-});
+};
 
 export default router;

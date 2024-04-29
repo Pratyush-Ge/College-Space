@@ -13,7 +13,7 @@ const Feed = () => {
 
 
   const fetchPosts = async () => {
-    axios.get('http://localhost:5000/getposts')
+    axios.get('http://localhost:5000/post/getposts')
       .then(response => {
         setPosts(response.data.reverse());
       })

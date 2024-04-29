@@ -1,10 +1,8 @@
-import express from 'express';
 import Like from '../models/Like.js';
 import Post from '../models/Post.js';
 
-const router = express.Router();
 
-router.post('/', async (req, res) => {
+export const LikeRoute =  async (req, res) => {
   try {
     const { postId, userEmail } = req.body;
 
@@ -16,7 +14,6 @@ router.post('/', async (req, res) => {
     const like = new Like({ postId, userEmail });
     await like.save();
 
-    // Update the like count in the Post model
     await Post.findByIdAndUpdate(postId, { $inc: { likes: 1 } });
 
     res.status(201).json({ message: 'Like added successfully' });
@@ -24,9 +21,9 @@ router.post('/', async (req, res) => {
     console.error('Error adding like:', error);
     res.status(500).json({ message: 'Server error' });
   }
-});
+};
 
-router.delete('/toggle', async (req, res) => {
+export const UnlikeRoute = async (req, res) => {
   try {
     const { postId, userEmail } = req.body;
 
@@ -37,7 +34,6 @@ router.delete('/toggle', async (req, res) => {
 
     await existingLike.deleteOne();
 
-    // Update the like count in the Post model
     await Post.findByIdAndUpdate(postId, { $inc: { likes: -1 } });
 
     res.status(200).json({ message: 'Like removed successfully' });
@@ -45,9 +41,9 @@ router.delete('/toggle', async (req, res) => {
     console.error('Error removing like:', error);
     res.status(500).json({ message: 'Server error' });
   }
-});
+};
 
-router.get('/:postId', async (req, res) => {
+export const getRoute = async (req, res) => {
   try {
     const { postId } = req.params;
     const likes = await Like.find({ postId });
@@ -57,6 +53,5 @@ router.get('/:postId', async (req, res) => {
     console.error('Error fetching likes:', error);
     res.status(500).json({ message: 'Server error' });
   }
-});
+};
 
-export default router;
