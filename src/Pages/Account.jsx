@@ -8,8 +8,8 @@ import { FaRegComment, FaEdit } from 'react-icons/fa';
 import { FiSend } from 'react-icons/fi';
 import { MdBookmark } from 'react-icons/md';
 import { IoMdPaper } from 'react-icons/io';
-import MyPost from './MyPost';
-import SavedPost from './SavedPosts';
+import MyPost from '../Components/MyPost';
+import SavedPost from '../Components/SavedPosts';
 
 const Account = () => {
   const { id } = useParams();

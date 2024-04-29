@@ -68,6 +68,7 @@ const MyPost = (props) => {
               title={post.title}
               content={post.content}
               image={post.image}
+              author={post.author}
               onRemove={() => openDeleteModal(post._id)}
             />
           ))}

@@ -1,7 +1,14 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
+import { jwtDecode } from "jwt-decode";
+
 
 const FeedCard = ({ title, content, image, author, username, createdAt, time, onRemove }) => {
+
+  const token = localStorage.getItem('token');
+  const userData = token?jwtDecode(token):null;
+
+
   const timeAgo = (createdAt) => {
     const now = new Date();
     const createdAtDate = new Date(createdAt);
@@ -35,7 +42,7 @@ const FeedCard = ({ title, content, image, author, username, createdAt, time, on
           <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">{title}</h5>
           <p className="mb-3 font-normal text-gray-700 dark:text-gray-800 pb-5">{content}</p>
         </div>
-        {onRemove && (
+        {(onRemove && userData && userData.email === author) && (
           <div className="absolute bottom-4 left-0 right-0 flex justify-center">
             <button className="text-xs text-white btn btn-sm btn-error m-1" onClick={handleRemove}>Remove Post</button>
           </div>

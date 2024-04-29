@@ -1,6 +1,6 @@
 // Feed.js
 import { useEffect, useState } from "react";
-import FeedCard from "./FeedCard";
+import FeedCard from "../Components/FeedCard";
 import axios from "axios";
 
 const Feed = () => {
