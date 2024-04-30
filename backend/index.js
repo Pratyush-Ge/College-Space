@@ -2,10 +2,7 @@ import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 
-import uploadProfilePicRoute from "./routes/uploadProfilePic.js";
-import removeProfilePhotoRoute from "./routes/removeProfilePhoto.js";
-
-
+//Routes
 import AuthRoute from './routes/AuthRoute.js'
 import BookmarkRoute from './routes/BookmarkRoute.js'
 import CommentRoute from './routes/CommentRoute.js'
@@ -18,11 +15,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const mongoURL = `mongodb+srv://pratyushghatole2003:hK8Uo9pOuEYZziXs@cluster0.sq5kjcv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
+const mongoURL = `mongodb+srv://pratyushghatole2003:IiTC0tgBcJqsPYaX@cluster0.sq5kjcv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
 mongoose.connect(mongoURL);
 
-app.use("/uploadProfilePic", uploadProfilePicRoute);
-app.use("/removeProfilePhoto", removeProfilePhotoRoute);
 app.use('/auth', AuthRoute);
 app.use('/bookmark', BookmarkRoute);
 app.use('/comment', CommentRoute);
