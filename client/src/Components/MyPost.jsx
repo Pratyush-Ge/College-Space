@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 // import { jwtDecode } from 'jwt-decode';
-import MyPostsFeedCard from './MyPostsFeedCard';
+import MyPostsCard from './FeedCardLeft2.jsx';
 import { toast } from 'react-toastify';
 import BASE_API from '../api.js'
 
@@ -64,7 +64,7 @@ const MyPost = (props) => {
       {filteredPosts.length > 0 ? (
         <>
           {filteredPosts.map((post) => (  
-            <MyPostsFeedCard
+            <MyPostsCard
               key={post._id}
               title={post.title}
               content={post.content}

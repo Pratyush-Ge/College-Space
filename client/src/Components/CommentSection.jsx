@@ -52,7 +52,7 @@ const CommentSection = ({ postId, onCommentSubmit }) => {
   const handleDelete = async (commentId) => {
     try {
       const response = await axios.delete(`${BASE_API}/comment/delete/${commentId}`);
-      toast.success("Comment deleted successfully");
+      toast.warning("Comment deleted");
       setComments(comments.filter(comment => comment._id !== commentId));
     } catch (error) {
       console.error('Error deleting comment:', error);

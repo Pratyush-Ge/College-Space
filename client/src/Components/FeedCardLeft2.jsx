@@ -7,7 +7,7 @@ import BASE_API from '../api.js'
 const FeedCard = ({ title, content, image, author, username, createdAt, time, onRemove }) => {
 
   const token = localStorage.getItem('token');
-  const userData = token?jwtDecode(token):null;
+  const userData = token ? jwtDecode(token) : null;
 
 
   const timeAgo = (createdAt) => {
@@ -23,19 +23,24 @@ const FeedCard = ({ title, content, image, author, username, createdAt, time, on
     }
   };
 
-  const handleRemove = () => {  
-    onRemove(); 
+  const handleRemove = () => {
+    onRemove();
   };
 
   return (
     <div className="w-full p-2 relative">
       <div className="border rounded-lg shadow bg-white dark:border-gray-700 h-auto flex flex-col overflow-y-auto myposts" style={{ maxHeight: '560px' }}>
         {image && (
-          <div className="relative max-h-1/2 object-cover w-full rounded-t-lg flex justify-center">
-            <img
-              src={`${BASE_API}/uploadsLocation/${image}`}
-              alt="Post Image"
-            />
+          <div className="relative" style={{ paddingBottom: '56.25%' }}>
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-full h-full">
+                <img
+                  className="object-cover w-full h-full"
+                  src={`${BASE_API}/uploadsLocation/${image}`}
+                  alt="Post Image"
+                />
+              </div>
+            </div>
           </div>
         )}
 

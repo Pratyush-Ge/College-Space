@@ -1,14 +1,14 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
-import {jwtDecode} from 'jwt-decode'; 
+import { jwtDecode } from 'jwt-decode';
 import { toast } from 'react-toastify';
-import { FaHeart } from 'react-icons/fa';
-import { MdBookmark } from 'react-icons/md';
-import CommentSection from './CommentSection';
-import BASE_API from '../api.js'
+import FeedCardRight from './CommentSection';
+import FeedCardLeft from './FeedCardLeft.jsx';
+import BASE_API from '../api.js';
 
 const FeedCard = ({ postId, title, content, image, author, username, createdAt }) => {
   const navigate = useNavigate();
@@ -17,30 +17,8 @@ const FeedCard = ({ postId, title, content, image, author, username, createdAt }
   const [key, setKey] = useState(0);
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
   const [isLiked, setIsLiked] = useState(false);
-  const [likes, setLikes] = useState(0); 
+  const [likes, setLikes] = useState(0);
   const [isBookmarked, setIsBookmarked] = useState(false);
-
-  const timeAgo = (createdAt) => {
-    const now = new Date();
-    const createdAtDate = new Date(createdAt);
-    const diffTime = Math.abs(now - createdAtDate);
-    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-
-    if (diffDays === 0) {
-      return "Today";
-    } else {
-      return `${diffDays} day${diffDays !== 1 ? 's' : ''} ago`;
-    }
-  };
-
-  const formatDateTime = (dateTime) => {
-    const date = new Date(dateTime);
-    const hours = date.getHours();
-    const minutes = date.getMinutes().toString().padStart(2, '0');
-    const amOrPm = hours >= 12 ? 'PM' : 'AM';
-    const formattedHours = (hours % 12 || 12).toString().padStart(2, '0');
-    return `${formattedHours}:${minutes} ${amOrPm}`;
-  };
 
   const handleLike = async () => {
     const token = localStorage.getItem('token');
@@ -58,7 +36,7 @@ const FeedCard = ({ postId, title, content, image, author, username, createdAt }
       console.error('Error liking post:', error);
     }
   };
-  
+
   const handleUnlike = async () => {
     const token = localStorage.getItem('token');
     if (!token) {
@@ -70,12 +48,12 @@ const FeedCard = ({ postId, title, content, image, author, username, createdAt }
     try {
       await axios.delete(`${BASE_API}/likePost/toggle`, { data: { postId, userEmail: userEmail } });
       setIsLiked(false);
-      setLikes(prevLikes => prevLikes - 1); 
+      setLikes(prevLikes => prevLikes - 1);
     } catch (error) {
       console.error('Error unliking post:', error);
     }
   };
-  
+
   const handleBookmark = async () => {
     const token = localStorage.getItem('token');
     if (!token) {
@@ -120,7 +98,7 @@ const FeedCard = ({ postId, title, content, image, author, username, createdAt }
     const fetchLikes = async () => {
       try {
         const response = await axios.get(`${BASE_API}/likePost/${postId}`);
-        setLikes(response.data.length); 
+        setLikes(response.data.length);
         const token = localStorage.getItem('token');
         if (token) {
           const data = jwtDecode(token);
@@ -151,8 +129,6 @@ const FeedCard = ({ postId, title, content, image, author, username, createdAt }
     bookmarkStatus();
   }, [postId]);
 
-  
-
   const handleCommentSubmit = async () => {
     try {
       const response = await axios.post(`${BASE_API}/comment/post`, {
@@ -164,7 +140,7 @@ const FeedCard = ({ postId, title, content, image, author, username, createdAt }
         },
       });
 
-      toast.success('Comment posted successfully');
+      toast.success('Comment posted');
       setComment('');
       setKey(prevKey => prevKey + 1);
     } catch (error) {
@@ -202,80 +178,30 @@ const FeedCard = ({ postId, title, content, image, author, username, createdAt }
     }
   }, []);
 
-
- 
-
   return (
     <div className="w-full p-4 border rounded-lg shadow bg-gray-50 flex h-97" style={{ maxHeight: '600px' }}>
-      <div className="w-1/2 h-full flex flex-col rounded-lg shadow-2xl overflow-y-auto left bg-white" style={{ maxHeight: '560px' }}>
-        <div className="flex justify-between items-center w-80 my-2">
-          <div className="flex items-center cursor-pointer" onClick={() => { navigate(`/account/${author}`, { state: { userEmail: author } }) }}>
-            {authorPic ? (
-              <img
-                className="w-8 h-8 rounded-full mx-2"
-                src={`${BASE_API}/profilePicLocation/${authorPic}`}
-                alt={`${username}'s Profile`}
-              />
-            ) : (
-              <img
-                className="w-8 h-8 rounded-full mx-2"
-                src={`${BASE_API}/profilePicLocation/default.avif`}
-                alt={`${username}'s Profile`}
-              />)}
-            <p className="text-xs font-medium text-gray-700">
-              {username}
-            </p>
-          </div>
-          <div>
-            <p className="text-xs text-gray-400">
-              {timeAgo(createdAt)}
-            </p>
-            <p className="text-xs text-gray-400">
-              {formatDateTime(createdAt)}
-            </p>
-          </div>
-        </div>
-
-        {image && (
-          <div className="relative" style={{ paddingBottom: '56.25%' }}>
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-full h-full">
-                <img
-                  className="object-cover w-full h-full"
-                  src={`${BASE_API}/uploadsLocation/${image}`}
-                  alt="Post Image"
-                />
-              </div>
-            </div>
-          </div>
-        )}
-        <div className="flex-grow p-4 relative">
-          <h5 className="mb-2 text-lg font-bold tracking-tight text-gray-900">{title}</h5>
-          <p className="mb-3 font-normal text-sm text-gray-700 dark:text-gray-800">{content}</p>
-          {isLoggedIn && (
-            <div className="flex justify-between">
-              <div className="like flex items-center justify-center gap-1"><FaHeart
-                onClick={isLiked ? handleUnlike : handleLike}
-                style={{ color: isLiked ? 'red' : '', cursor: 'pointer' }}
-              />
-              <div className="text-xs text-gray-400">{likes}</div>
-              </div>
-              <div className="bookmark">
-                <MdBookmark
-                  onClick={ handleBookmark}
-                  style={{ color: isBookmarked ? 'gold' : '', cursor: 'pointer' }}
-                />
-              </div>
-
-            </div>
-          )}
-        </div>
-      </div>
-
+      <FeedCardLeft
+        postId={postId}
+        title={title}
+        content={content}
+        image={image}
+        author={author}
+        username={username}
+        createdAt={createdAt}
+        authorPic={authorPic}
+        isLoggedIn={isLoggedIn}
+        isLiked={isLiked}
+        likes={likes}
+        isBookmarked={isBookmarked}
+        handleLike={handleLike}
+        handleUnlike={handleUnlike}
+        handleBookmark={handleBookmark}
+        BASE_API={BASE_API}
+      />
       <div className="w-1/2 flex flex-col px-3 m-1">
         <h3 className="font-semibold p-1 text-gray-700">Discussion</h3>
         {isLoggedIn ? (
-          <CommentSection postId={postId} key={key} onCommentSubmit={handleCommentSubmit} />
+          <FeedCardRight postId={postId} key={key} onCommentSubmit={handleCommentSubmit} />
         ) : (
           <div className="p-4">
             <h3 className="text-lg font-semibold mb-4">Login or Signup</h3>
@@ -287,7 +213,7 @@ const FeedCard = ({ postId, title, content, image, author, username, createdAt }
           </div>
         )}
 
-        {isLoggedIn ? (
+        {isLoggedIn && (
           <>
             <div className="w-full px-3 mb-2 mt-6">
               <textarea
@@ -296,8 +222,9 @@ const FeedCard = ({ postId, title, content, image, author, username, createdAt }
             </div>
             <div className="w-full flex justify-end px-3 my-3">
               <button onClick={handleCommentSubmit} className="rounded-md text-white text-sm btn-accent btn btn-sm">Post Comment</button>
-            </div></>
-        ) : null}
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

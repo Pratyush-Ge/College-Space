@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import axios from "axios";
-import MyPostsFeedCard from "./MyPostsFeedCard";
+import SavedPostCard from "./FeedCardLeft2.jsx";
 import BASE_API from '../api.js'
 
 const SavedPosts = (props) => {
@@ -26,7 +26,7 @@ const SavedPosts = (props) => {
         <div className="w-96 flex flex-col justify-center items-center gap-4">
             {savedPosts.length > 0 ? (
                 savedPosts.map((post) => (
-                    <MyPostsFeedCard
+                    <SavedPostCard
                         key={post._id}
                         title={post.title}
                         content={post.content}

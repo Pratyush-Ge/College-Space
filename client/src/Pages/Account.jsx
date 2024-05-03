@@ -75,7 +75,7 @@ const Account = () => {
         const newProfilePic = response.data.profilePicUrl;
         setProfilePicUrl(newProfilePic);
         localStorage.setItem('profilePic', newProfilePic);
-        toast.success('Profile picture updated successfully!');
+        toast.success('Profile picture uploaded');
 
         setTimeout(() => {
           window.location.reload();
