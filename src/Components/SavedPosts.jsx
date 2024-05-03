@@ -22,7 +22,7 @@ const SavedPosts = (props) => {
     }, [userEmail]);
 
     return (
-        <div className="w-1/3 flex flex-col justify-center items-center gap-4">
+        <div className="w-96 flex flex-col justify-center items-center gap-4">
             {savedPosts.length > 0 ? (
                 savedPosts.map((post) => (
                     <MyPostsFeedCard

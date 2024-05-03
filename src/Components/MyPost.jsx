@@ -59,7 +59,7 @@ const MyPost = (props) => {
   }
 
   return (
-    <div className="w-1/3 flex flex-col justify-center items-center gap-4">
+    <div className="w-96 flex flex-col justify-center items-center gap-4">
       {filteredPosts.length > 0 ? (
         <>
           {filteredPosts.map((post) => (  
