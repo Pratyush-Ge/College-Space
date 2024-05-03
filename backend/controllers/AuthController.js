@@ -1,7 +1,11 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import User from "../models/User.js";
+import dotenv from "dotenv";
 
+dotenv.config();
+
+const jwtKey = process.env.JWT_SECRET;
 
 export const signupRoute = async (req, res) => {
     const { username, usn, email, password } = req.body;
@@ -41,7 +45,7 @@ export const loginRoute = async (req, res) => {
 
     const tokenPayload = { usn: user.usn, email: user.email, username: user.username, profilePicUrl: user.profilePicUrl };
 
-    const token = jwt.sign(tokenPayload, "your-secret-key", { expiresIn: "1h" });
+    const token = jwt.sign(tokenPayload, jwtKey, { expiresIn: "1h" });
 
     res.status(200).json({ message: "Login successful", token });
   } catch (err) {

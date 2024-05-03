@@ -1,6 +1,9 @@
 import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 //Routes
 import AuthRoute from './routes/AuthRoute.js'
@@ -10,12 +13,15 @@ import LikePostRoute from './routes/LikePostRoute.js'
 import PostRoute from './routes/PostRoute.js'
 import UserProfileRoute from './routes/UserProfileRoute.js'
 
-
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:5173',
+  credentials: true,
+}));
+
 app.use(express.json());
 
-const mongoURL = `mongodb+srv://pratyushghatole2003:puAMH4SUrBVNdFjX@cluster0.sq5kjcv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
+const mongoURL = process.env.MONGODB_URI;
 mongoose.connect(mongoURL);
 
 app.use('/auth', AuthRoute);
@@ -24,9 +30,8 @@ app.use('/comment', CommentRoute);
 app.use('/likePost', LikePostRoute);
 app.use('/post', PostRoute);
 app.use('/user', UserProfileRoute);
-
-
-
+app.use('/profilePicLocation', express.static('./profilePic'));
+app.use('/uploadsLocation', express.static('./uploads'));
 
 
 app.listen(5000, () => {
