@@ -137,7 +137,7 @@ const Account = () => {
           <div className="w-20 h-20 rounded-full overflow-hidden">
             <img
               className="w-full h-full object-cover"
-              src={(profilePicUrl && `${BASE_API}/profilePicLocation/${profilePicUrl}`) || '${BASE_API}/profilePicLocation/default.avif'}
+              src={(profilePicUrl && `${BASE_API}/profilePicLocation/${profilePicUrl}`) || `${BASE_API}/profilePicLocation/default.avif`}
               alt="Upload"
             />
           </div>
