@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
-import axios from 'axios';
+import axios from 'axios';  
 import { jwtDecode } from 'jwt-decode';
 import { toast } from 'react-toastify';
 import { FaRegComment, FaEdit } from 'react-icons/fa';
@@ -190,7 +190,7 @@ const Account = () => {
           </form>
           <h3 className="font-bold text-lg mb-4">Edit Profile</h3>
           <div className="space-y-4">
-            {profilePicUrl !== 'default.avif' && (
+            {profilePicUrl && (
               <button
                 className="btn btn-error mx-5 text-white"
                 onClick={() => {
