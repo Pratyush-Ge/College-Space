@@ -30,7 +30,11 @@ const SavedPosts = (props) => {
                         key={post._id}
                         title={post.title}
                         content={post.content}
+                        username={post.username}
                         image={post.image}
+                        author={post.author}
+                        createdAt={post.createdAt}
+                        myprofile={0}
                     />
                 ))
             ) : (
