@@ -27,7 +27,7 @@ const postSchema = new Schema({
   },
   createdAt: {
     type: Date,
-    default: () => new Date().toISOString().slice(0, 10),
+    default: Date.now,
   },
   time: {
     type: String,

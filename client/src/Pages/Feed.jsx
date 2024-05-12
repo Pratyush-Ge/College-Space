@@ -36,7 +36,6 @@ const Feed = () => {
           author={post.author}
           username={post.username}
           createdAt={post.createdAt}
-          time={post.time}
         />
       ))}
     </div>

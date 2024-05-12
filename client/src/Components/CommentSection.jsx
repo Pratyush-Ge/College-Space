@@ -37,9 +37,10 @@ const CommentSection = ({ postId, onCommentSubmit }) => {
         }
       })
         .then(response => {
+          const profilePicUrl = response.data.profilePicUrl || 'default.avif';
           setUserProfilePics(prevState => ({
             ...prevState,
-            [comment.author]: response.data.profilePicUrl
+            [comment.author]: profilePicUrl
           }));
         })
         .catch(error => {
@@ -47,6 +48,7 @@ const CommentSection = ({ postId, onCommentSubmit }) => {
         });
     });
   }, [comments]);
+  
 
   
 
