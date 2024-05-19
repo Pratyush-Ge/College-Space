@@ -1,17 +1,18 @@
-import express from "express";
-import cors from "cors";
-import mongoose from "mongoose";
-import dotenv from "dotenv";
+// index.js
+import express from 'express';
+import cors from 'cors';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 
 dotenv.config();
 
-//Routes
-import AuthRoute from './routes/AuthRoute.js'
-import BookmarkRoute from './routes/BookmarkRoute.js'
-import CommentRoute from './routes/CommentRoute.js'
-import LikePostRoute from './routes/LikePostRoute.js'
-import PostRoute from './routes/PostRoute.js'
-import UserProfileRoute from './routes/UserProfileRoute.js'
+// Routes
+import AuthRoute from './routes/AuthRoute.js';
+import BookmarkRoute from './routes/BookmarkRoute.js';
+import CommentRoute from './routes/CommentRoute.js';
+import LikePostRoute from './routes/LikePostRoute.js';
+import PostRoute from './routes/PostRoute.js';
+import UserProfileRoute from './routes/UserProfileRoute.js';
 
 const app = express();
 app.use(cors({
@@ -30,9 +31,7 @@ app.use('/comment', CommentRoute);
 app.use('/likePost', LikePostRoute);
 app.use('/post', PostRoute);
 app.use('/user', UserProfileRoute);
-app.use('/profilePicLocation', express.static('./profilePic'));
 app.use('/uploadsLocation', express.static('./uploads'));
-
 
 app.listen(5000, () => {
   console.log("Server is running on port 5000");

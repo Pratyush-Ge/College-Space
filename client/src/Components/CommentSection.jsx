@@ -8,6 +8,7 @@ import { FaTrash, FaHeart } from 'react-icons/fa';
 import {toast} from 'react-toastify';
 import BASE_API from '../api.js'
 import TimeAgo from 'react-timeago';
+import defaultImage from '../assets/default.avif';
 
 
 
@@ -37,7 +38,7 @@ const CommentSection = ({ postId, onCommentSubmit }) => {
         }
       })
         .then(response => {
-          const profilePicUrl = response.data.profilePicUrl || 'default.avif';
+          const profilePicUrl = response.data.profilePicUrl;
           setUserProfilePics(prevState => ({
             ...prevState,
             [comment.author]: profilePicUrl
@@ -49,7 +50,6 @@ const CommentSection = ({ postId, onCommentSubmit }) => {
     });
   }, [comments]);
   
-
   
 
   const handleDelete = async (commentId) => {
@@ -77,7 +77,7 @@ const CommentSection = ({ postId, onCommentSubmit }) => {
           <div className="p-3 relative w-full">
             <div className="flex items-center gap-3">
               <div className="flex gap-3 items-center cursor-pointer" onClick={() => { navigate(`/account/${comment.author}`, { state: { userEmail: comment.author } }) }}>
-                <img src={`${BASE_API}/profilePicLocation/${userProfilePics[comment.author]}`} className="object-cover w-6 h-6 rounded-full" alt="User Avatar" />
+                <img src={userProfilePics[comment.author] || defaultImage} className="object-cover w-6 h-6 rounded-full" alt="User Avatar" />
                 <h2 className="text-black text-sm">
                   {comment.username}
                 </h2>

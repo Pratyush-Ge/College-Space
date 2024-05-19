@@ -1,18 +1,20 @@
 import express from 'express';
 import multer from 'multer';
 import { uploadProfilePic, deleteProfilePic } from '../controllers/UserProfileController.js';
+import { CloudinaryStorage } from 'multer-storage-cloudinary';
+import cloudinary from '../config/cloudinary.js';
 
 const router = express.Router();
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'profilePic/');
-  },
-  filename: (req, file, cb) => {
-    cb(null, `${Date.now()}-${file.originalname}`);
+const storage = new CloudinaryStorage({
+  cloudinary,
+  params: {
+    folder: 'profile_pics',
+    allowed_formats: ['jpg', 'png'],
   },
 });
-const upload = multer({ storage: storage });
+
+const upload = multer({ storage });
 
 router.post('/uploadProfilePic', upload.single('file'), uploadProfilePic);
 router.delete('/deleteProfilePic', deleteProfilePic);

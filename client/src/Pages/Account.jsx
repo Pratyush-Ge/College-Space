@@ -11,6 +11,7 @@ import { IoMdPaper } from 'react-icons/io';
 import MyPost from '../Components/MyPost';
 import SavedPost from '../Components/SavedPosts';
 import BASE_API from '../api';
+import defaultImage from '../assets/default.avif';
 
 const Account = () => {
   const { id } = useParams();
@@ -21,16 +22,9 @@ const Account = () => {
   const [usn, setUsn] = useState('');
   const [activeTab, setActiveTab] = useState('Posts');
 
-  const [profilePicUrl, setProfilePicUrl] = useState(() => {
-    const storedProfilePic = localStorage.getItem('profilePic');
-    return storedProfilePic ? storedProfilePic : 'default.avif';
-  });
+  const [profilePicUrl, setProfilePicUrl] = useState(null);
   const token = localStorage.getItem('token');
   const userData = token ? jwtDecode(token) : null;
-
-  const handleFileChange = (e) => {
-    setProfilePicUrl(e.target.files[0]);
-  };
 
   useEffect(() => {
     if (userEmail) {
@@ -61,9 +55,16 @@ const Account = () => {
   }, [userEmail]);
 
   const handleUpload = () => {
+    const fileInput = document.getElementById('profilePicInput');
+    if (!fileInput) {
+      console.error('File input element not found');
+      return;
+    }
+  
     const formData = new FormData();
-    formData.append('file', profilePicUrl);
+    formData.append('file', fileInput.files[0]);
     formData.append('usn', usn);
+    
     axios
       .post(`${BASE_API}/user/uploadProfilePic`, formData, {
         headers: {
@@ -76,36 +77,44 @@ const Account = () => {
         setProfilePicUrl(newProfilePic);
         localStorage.setItem('profilePic', newProfilePic);
         toast.success('Profile picture uploaded');
-
+    
         setTimeout(() => {
           window.location.reload();
-        }, 2000);
+        }, 1000);
       })
       .catch((error) => {
         console.error(error);
+        toast.error('Failed to upload profile picture');
       });
   };
-
+  
   const handleRemovePhoto = () => {
     document.getElementById('confirm_remove_modal').showModal();
   };
 
   const confirmRemovePhoto = () => {
     axios
-      .post(`${BASE_API}/user/deleteProfilePic`, { usn: usn }, {
+      .delete(`${BASE_API}/user/deleteProfilePic`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
+        data: {
+          usn: usn,
+        },
       })
       .then(() => {
-        setProfilePicUrl('default.avif');
-        localStorage.removeItem('profilePic');
-        window.location.reload();
+        setProfilePicUrl(null);
+        toast.warning("Profile picture removed!")
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
       })
       .catch((error) => {
         console.error(error);
       });
   };
+  
+  
 
   const renderMessageButton = () => {
     if (userData && userEmail === userData.email) {
@@ -133,13 +142,9 @@ const Account = () => {
   return (
     <div className="flex h-full">
       <div className="p-4 relative flex justify-center items-center flex-col">
-        <div className="flex gap-4 justify-center items-center">
+        <div className="flex gap-8 justify-center items-center">
           <div className="w-20 h-20 rounded-full overflow-hidden">
-            <img
-              className="w-full h-full object-cover"
-              src={(profilePicUrl && `${BASE_API}/profilePicLocation/${profilePicUrl}`) || `${BASE_API}/profilePicLocation/default.avif`}
-              alt="Upload"
-            />
+          <img src={profilePicUrl || defaultImage} alt="Profile" className="w-full h-full object-cover"/>
           </div>
           <div className="text-center mt-4">
             <h1 className="text-xl font-bold text-white">{username}</h1>
@@ -202,10 +207,10 @@ const Account = () => {
               </button>
             )}
             <input
+              id="profilePicInput"
               type="file"
               accept="image/*"
               className="file-input file-input-bordered file-input-accent w-full max-w-xs mx-5"
-              onChange={handleFileChange}
             />
             <button className="btn btn-accent" onClick={handleUpload}>
               Upload

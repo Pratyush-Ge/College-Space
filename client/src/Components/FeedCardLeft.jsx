@@ -4,6 +4,8 @@ import { MdBookmark } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 import TimeAgo from 'react-timeago';
 import BASE_API from '../api.js';
+import defaultImage from '../assets/default.avif';
+
 
 const FeedCardPost = ({ title, content, image, author, username, createdAt, authorPic, isLoggedIn, isLiked, likes, isBookmarked, handleLike, handleUnlike, handleBookmark }) => {
     const navigate = useNavigate();
@@ -12,18 +14,11 @@ const FeedCardPost = ({ title, content, image, author, username, createdAt, auth
         <div className="w-1/2 h-full flex flex-col rounded-lg shadow-2xl overflow-y-auto left bg-white" style={{ maxHeight: '560px' }}>
             <div className="flex justify-between items-center w-80 my-2">
                 <div className="flex items-center cursor-pointer" onClick={() => { navigate(`/account/${author}`, { state: { userEmail: author } }) }}>
-                    {authorPic ? (
-                        <img
-                            className="w-8 h-8 rounded-full mx-2"
-                            src={`${BASE_API}/profilePicLocation/${authorPic}`}
-                            alt={`${username}'s Profile`}
-                        />
-                    ) : (
-                        <img
-                            className="w-8 h-8 rounded-full mx-2"
-                            src={`${BASE_API}/profilePicLocation/default.avif`}
-                            alt={`${username}'s Profile`}
-                        />)}
+                    <img
+                        className="w-8 h-8 rounded-full mx-2"
+                        src={authorPic || defaultImage} 
+                        alt={`${username}'s Profile`}
+                    />
                     <p className="text-xs font-medium text-gray-700">
                         {username}
                     </p>

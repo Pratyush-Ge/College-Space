@@ -7,12 +7,14 @@ import { Link } from 'react-router-dom';
 import axios from 'axios'; 
 import {jwtDecode} from 'jwt-decode';
 import BASE_API from '../api.js'
+import defaultImage from '../assets/default.avif';
+
 
 const Navbar = () => {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
   const [email, setEmail] = useState('');
-  const [profilePicUrl, setProfilePicUrl] = useState(`default.avif`);
+  const [profilePicUrl, setProfilePicUrl] = useState(null);
 
 
   useEffect(() => {
@@ -33,7 +35,7 @@ const Navbar = () => {
         console.error('Error fetching user details:', error);
       });
     }
-  }, []);
+  }, [email]);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -110,9 +112,7 @@ const Navbar = () => {
             <div className="dropdown dropdown-end">
               <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                 <div className="w-10 rounded-full">
-                  <img alt="Profile Picture"
-                    src={(profilePicUrl && `${BASE_API}/profilePicLocation/${profilePicUrl}`) || `${BASE_API}/profilePicLocation/default.avif`}
-                    />
+                <img src={profilePicUrl || defaultImage} alt="Profile" className="profile-picture" />
                 </div>
               </div>
               <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-white rounded-box w-52">

@@ -6,6 +6,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import BASE_API from '../api.js';
 import TimeAgo from 'react-timeago';
+import defaultImage from '../assets/default.avif';
+
 
 const FeedCard = ({ title, content, image, author, username, createdAt, onRemove, myprofile }) => {
   const token = localStorage.getItem('token');
@@ -45,7 +47,7 @@ const FeedCard = ({ title, content, image, author, username, createdAt, onRemove
 
               <img
                 className="w-8 h-8 rounded-full mx-2"
-                src={`${BASE_API}/profilePicLocation/${ppUrl}`}
+                src={ppUrl || defaultImage} 
                 alt={`${username}'s Profile`}
               />
 
