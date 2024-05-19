@@ -24,7 +24,7 @@ const FeedCard = ({ title, content, image, author, username, createdAt, onRemove
             'Authorization': `Bearer ${author}`
           }
         });
-        setPpUrl(response.data.profilePicUrl || 'default.avif');
+        setPpUrl(response.data.profilePicUrl);
       } catch (error) {
         console.error('Error fetching user details:', error);
       }

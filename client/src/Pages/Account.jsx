@@ -228,7 +228,7 @@ const Account = () => {
             <div className="chatProfile flex gap-3 items-center">
               <div className="chat-image avatar w-10">
                 <div className="w-10 rounded-full">
-                  <img alt="Profile pic" src={(profilePicUrl && `${BASE_API}/profilePicLocation/${profilePicUrl}`) || '${BASE_API}/profilePicLocation/default.avif'}/>
+                 <img alt="Profile pic" src={profilePicUrl || defaultImage}/>
                 </div>
               </div>
               <p>{username}</p>
