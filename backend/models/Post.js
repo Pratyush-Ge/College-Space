@@ -15,7 +15,6 @@ const postSchema = new Schema({
   },
   image: {
     type: String,
-    default: 'https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty-300x240.jpg',
   },
   author: {
     type: String,

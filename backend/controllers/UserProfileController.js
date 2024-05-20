@@ -37,8 +37,8 @@ export const deleteProfilePic = async (req, res) => {
 
     if (user.profilePicUrl) {
       const publicId = extractPublicId(user.profilePicUrl);
-
-      const deletionResult = await cloudinary.uploader.destroy(publicId);
+      // console.log(publicId)
+      await cloudinary.uploader.destroy(publicId);
     }
 
     user.profilePicUrl = null;

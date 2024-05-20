@@ -1,14 +1,17 @@
 import Post from '../models/Post.js';
 import cloudinary from '../config/cloudinary.js';
+import { extractPublicId } from 'cloudinary-build-url';
 
 export const postRoute = async (req, res) => {
   try {
     const { title, content, email, username } = req.body;
-    let image = null;
-    if (req.file) {
-      const result = await cloudinary.uploader.upload(req.file.path);
-      image = result.secure_url;
-    }
+    const image = req.file.path?req.file.path:null;
+    
+    // if (req.file) {
+    //   const result = await cloudinary.uploader.upload(req.file.path);
+    //   image = result.secure_url;
+    //   imageId = result.public_id;
+    // }
 
     const newPost = new Post({
       title,
@@ -42,6 +45,12 @@ export const deleteRoute = async (req, res) => {
 
     if (!deletedPost) {
       return res.status(404).json({ message: 'Post not found' });
+    }
+
+    if (deletedPost.image) {
+      const publicId = extractPublicId(deletedPost.image);
+
+      await cloudinary.uploader.destroy(publicId);
     }
 
     res.json({ message: 'Post deleted successfully' });
