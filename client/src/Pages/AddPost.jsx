@@ -4,7 +4,8 @@ import {jwtDecode} from 'jwt-decode';
 import { toast } from 'react-toastify';
 import BASE_API from '../api.js';
 
-const AddPostForm = () => {
+const AddPostForm = () => 
+{
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [image, setImage] = useState(null);

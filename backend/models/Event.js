@@ -19,11 +19,10 @@ const eventSchema = new Schema({
   },
   link: {
     type: String,
-    required: true,
   },
   imageUrl: {
     type: String,
-    required: true,
+    default: null,
   },
   createdAt: {
     type: Date,

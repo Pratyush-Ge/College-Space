@@ -1,57 +1,86 @@
 /* eslint-disable no-unused-vars */
-import EventCard from "../Components/EventCard";
+import { useState } from "react";
+import axios from "axios";
+import { jwtDecode } from "jwt-decode";
+import { toast } from "react-toastify";
+import BASE_API from "../api.js";
+import EventCard from "../Components/EventCard.jsx";
 
-const Events = () => {
-  // Sample data for events
-  const eventData = [
-    {
-      eventName: 1,
-      title: "Event One",
-      eventDescription: "2024-01-01",
-      eventDate: "New York",
-      eventImage: "Description of Event One.",
-      eventLink : "null"
-    },
-    {
-      eventName: 1,
-      title: "Event One",
-      eventDescription: "2024-01-01",
-      eventDate: "New York",
-      eventImage: "Description of Event One.",
-      eventLink : "null"
-    },
-    {
-      eventName: 1,
-      title: "Event One",
-      eventDescription: "2024-01-01",
-      eventDate: "New York",
-      eventImage: "Description of Event One.",
-      eventLink : "null"
-    },
-  ];
 
-  
+// const eventData = [
+//   {
+//     eventName: 1,
+//     title: "Event One",
+//     eventDescription: "2024-01-01",
+//     eventDate: "New York",
+//     eventImage: "Description of Event One.",
+//     eventLink: "null",
+//   },
+//   {
+//     eventName: 1,
+//     title: "Event One",
+//     eventDescription: "2024-01-01",
+//     eventDate: "New York",
+//     eventImage: "Description of Event One.",
+//     eventLink: "null",
+//   },
+//   {
+//     eventName: 1,
+//     title: "Event One",
+//     eventDescription: "2024-01-01",
+//     eventDate: "New York",
+//     eventImage: "Description of Event One.",
+//     eventLink: "null",
+//   },
+// ];
 
-  const handleSubmit = (e) => {
+const AddEventForm = () => {
+  const [eventName, setEventName] = useState("");
+  // const [email,setEmail] = useState("");
+  const [eventDate, setEventDate] = useState("");
+  const [description, setDescription] = useState("");
+  const [link, setLink] = useState("");
+  const [image, setImage] = useState("");
+  const token = localStorage.getItem("token");
+  const userData = jwtDecode(token);
+
+  // const handleImageChange = (e) => {
+  //   const file = e.target.files[0];
+  //   setImage(file);
+  //   setPreviewImage(URL.createObjectURL(file));
+  // };
+
+  const handleAddEvent = async (e) => {
     e.preventDefault();
-    const eventName = e.target.eventName.value;
-    const eventDescription = e.target.eventDescription.value;
-    const eventDate = e.target.eventDate.value;
-    const eventImage = e.target.eventImage.value;
-    const eventLink = e.target.eventLink.value;
-    // console.log(eventName, eventDescription, eventDate, eventImage);
-    const eventObj = {
-      eventName,
-      eventDescription,
-      eventDate,
-      eventImage,
-      eventLink
-    };
-    console.log(eventObj);
+    try {
+      const formData = new FormData();
+      formData.append("eventName", eventName);
+      // formData.append("email",email );
+      formData.append("eventDate", eventDate);
+      formData.append("description", description);
+      formData.append("link", link);
+      formData.append("image", image);
+      formData.append("username", userData.username);
+
+      await axios.post(`${BASE_API}/event`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      toast.success("Event Added Successfully");
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+    } catch (error) {
+      console.error("Error adding event:", error);
+      toast.error("Error adding event. Please try again.");
+    }
   };
+
   return (
     <div>
-      <div className="flex flex-wrap justify-center align-middle">
+      {/* <div className="flex flex-wrap justify-center align-middle">
         {eventData.map((event) => (
           <div key={event.id} className="mr-4 mb-4">
             <EventCard
@@ -59,9 +88,9 @@ const Events = () => {
               date={event.date}
               description={event.description}
             />
-          </div>
-        ))}
-      </div>
+          </div> */}
+        {/* ))} */}
+      {/* </div> */}
       <div className="flex">
         <button
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
@@ -70,12 +99,15 @@ const Events = () => {
           Add Event
         </button>
       </div>
-      <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
+      <dialog
+        id="my_modal_5"
+        className="modal modal-bottom sm:modal-middle"
+      >
         <div className="modal-box">
           <div>
             <form
               className="max-w-sm mx-auto"
-              onSubmit={handleSubmit}
+              onSubmit={handleAddEvent}
               action="post"
             >
               <div className="mb-5">
@@ -94,7 +126,22 @@ const Events = () => {
                   required
                 />
               </div>
-
+              {/* <div className="mb-5">
+                <label
+                  htmlFor="email"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Enter organization mail"
+                  required
+                />
+              </div> */}
               <div className="mb-5">
                 <label
                   htmlFor="eventDate"
@@ -180,4 +227,4 @@ const Events = () => {
   );
 };
 
-export default Events;
+export default AddEventForm;
