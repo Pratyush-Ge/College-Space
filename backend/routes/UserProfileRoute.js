@@ -10,7 +10,7 @@ const storage = new CloudinaryStorage({
   cloudinary,
   params: {
     folder: 'profile_pics',
-    allowed_formats: ['jpg', 'png'],
+    allowed_formats: ['jpg', 'png', 'avif', 'jpeg'],
   },
 });
 

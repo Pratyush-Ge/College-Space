@@ -67,7 +67,7 @@ const FeedCard = ({ title, content, image, author, username, createdAt, onRemove
               <div className="w-full h-full">
                 <img
                   className="object-cover w-full h-full"
-                  src={`${BASE_API}/uploadsLocation/${image}`}
+                  src={image}
                   alt="Post Image"
                 />
               </div>

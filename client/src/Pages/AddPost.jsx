@@ -1,10 +1,8 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { jwtDecode } from "jwt-decode";
-import { toast } from 'react-toastify'
-import BASE_API from '../api.js'
-
-
+import {jwtDecode} from 'jwt-decode';
+import { toast } from 'react-toastify';
+import BASE_API from '../api.js';
 
 const AddPostForm = () => {
   const [title, setTitle] = useState('');
@@ -13,7 +11,7 @@ const AddPostForm = () => {
   const [previewImage, setPreviewImage] = useState('');
   const token = localStorage.getItem('token');
   const userData = jwtDecode(token);
- 
+
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     setImage(file);
@@ -29,12 +27,12 @@ const AddPostForm = () => {
       formData.append('image', image);
       formData.append('email', userData.email);
       formData.append('username', userData.username);
-  
+
       await axios.post(`${BASE_API}/post`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
-          Authorization: `Bearer ${token}`
-        }
+          Authorization: `Bearer ${token}`,
+        },
       });
       toast.success('Posted Successfully');
       setTimeout(() => {
@@ -42,16 +40,16 @@ const AddPostForm = () => {
       }, 1000);
     } catch (error) {
       console.error('Error posting:', error);
+      toast.error('Error posting. Please try again.');
     }
-  };  
-  
+  };
 
   return (
-    <div className="flex justify-center mt-4  w-full">
+    <div className="flex justify-center mt-4 w-full">
       <div className="flex justify-center gap-4 flex-wrap items-center w-full max-w-screen-lg">
         <div className="w-1/2 min-w-[400px] p-4">
           <h2 className="text-2xl font-bold mb-4">Add New Post</h2>
-          <form className="space-y-4">
+          <form className="space-y-4" onSubmit={handlePost}>
             <label className="block">
               <span className="text-white">Title </span>
               <span className="text-gray-700">(max 50 words):</span>
@@ -86,6 +84,12 @@ const AddPostForm = () => {
                 className="mt-1 block file-input file-input-bordered file-input-accent w-full max-w-xs"
               />
             </label>
+            <button
+              type="submit"
+              className="mt-4 btn btn-accent btn-sm"
+            >
+              Post
+            </button>
           </form>
         </div>
         <div className="w-2/5 min-w-[400px] p-4">
@@ -98,12 +102,6 @@ const AddPostForm = () => {
                 {content.substring(0, 300)}{content.length > 300 && '...'}
               </p>
             )}
-            <button
-              onClick={handlePost}
-              className="mt-4 btn btn-accent btn-sm"
-            >
-              Post
-            </button>
           </div>
         </div>
       </div>

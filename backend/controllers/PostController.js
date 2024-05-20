@@ -1,9 +1,14 @@
 import Post from '../models/Post.js';
+import cloudinary from '../config/cloudinary.js';
 
 export const postRoute = async (req, res) => {
   try {
     const { title, content, email, username } = req.body;
-    const image = req.file ? req.file.filename : null; 
+    let image = null;
+    if (req.file) {
+      const result = await cloudinary.uploader.upload(req.file.path);
+      image = result.secure_url;
+    }
 
     const newPost = new Post({
       title,
@@ -31,17 +36,16 @@ export const getRoute = async (req, res) => {
 };
 
 export const deleteRoute = async (req, res) => {
-    const { id } = req.params;
-    try {
-      const deletedPost = await Post.findByIdAndDelete(id);
-  
-      if (!deletedPost) {
-        return res.status(404).json({ message: 'Post not found' });
-      }
-  
-      res.json({ message: 'Post deleted successfully' });
-    } catch (error) {
-      res.status(500).json({ message: error.message });
-    }
-  };
+  const { id } = req.params;
+  try {
+    const deletedPost = await Post.findByIdAndDelete(id);
 
+    if (!deletedPost) {
+      return res.status(404).json({ message: 'Post not found' });
+    }
+
+    res.json({ message: 'Post deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};

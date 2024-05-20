@@ -3,7 +3,7 @@ import { FaHeart } from 'react-icons/fa';
 import { MdBookmark } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 import TimeAgo from 'react-timeago';
-import BASE_API from '../api.js';
+// import BASE_API from '../api.js';
 import defaultImage from '../assets/default.avif';
 
 
@@ -36,7 +36,7 @@ const FeedCardPost = ({ title, content, image, author, username, createdAt, auth
                         <div className="w-full h-full">
                             <img
                                 className="object-cover w-full h-full"
-                                src={`${BASE_API}/uploadsLocation/${image}`}
+                                src={image}
                                 alt="Post Image"
                             />
                         </div>

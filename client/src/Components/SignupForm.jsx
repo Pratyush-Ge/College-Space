@@ -5,7 +5,6 @@ import { toast } from 'react-toastify';
 import BASE_API from '../api.js'
 
 
-
 const SignupForm = () => {
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
@@ -57,6 +56,7 @@ const SignupForm = () => {
       setTimeout(() => {
         navigate('/');
         document.getElementById('my_modal_1').close();
+        document.getElementById('my_modal_2').show();
       }, 1000);
     } catch (err) {
       console.error(err);
