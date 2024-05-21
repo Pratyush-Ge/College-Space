@@ -1,4 +1,3 @@
-// index.js
 import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
@@ -13,6 +12,7 @@ import CommentRoute from './routes/CommentRoute.js';
 import LikePostRoute from './routes/LikePostRoute.js';
 import PostRoute from './routes/PostRoute.js';
 import UserProfileRoute from './routes/UserProfileRoute.js';
+import MessageRoute from './routes/MessageRoute.js';
 
 const app = express();
 app.use(cors({
@@ -31,6 +31,7 @@ app.use('/comment', CommentRoute);
 app.use('/likePost', LikePostRoute);
 app.use('/post', PostRoute);
 app.use('/user', UserProfileRoute);
+app.use('/messages', MessageRoute);
 
 app.listen(5000, () => {
   console.log("Server is running on port 5000");

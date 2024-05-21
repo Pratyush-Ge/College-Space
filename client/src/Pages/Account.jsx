@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';  
 import { jwtDecode } from 'jwt-decode';
 import { toast } from 'react-toastify';
 import { FaRegComment, FaEdit } from 'react-icons/fa';
-import { FiSend } from 'react-icons/fi';
+// import { FiSend } from 'react-icons/fi';
 import { MdBookmark } from 'react-icons/md';
 import { IoMdPaper } from 'react-icons/io';
 import MyPost from '../Components/MyPost';
@@ -14,7 +14,8 @@ import BASE_API from '../api';
 import defaultImage from '../assets/default.avif';
 
 const Account = () => {
-  const { id } = useParams();
+  const { id } = useParams(); 
+  const navigate = useNavigate();
   const location = useLocation();
   const { userEmail } = location.state || {};
   const [postCount, setPostCount] = useState(0);
@@ -92,6 +93,7 @@ const Account = () => {
     document.getElementById('confirm_remove_modal').showModal();
   };
 
+
   const confirmRemovePhoto = () => {
     axios
       .delete(`${BASE_API}/user/deleteProfilePic`, {
@@ -125,7 +127,7 @@ const Account = () => {
       );
     } else if (userData) {
       return (
-        <button className="btn" onClick={() => document.getElementById('my_modal_4').showModal()}>
+        <button className="btn" onClick={()=>{navigate(`/message/${id}`)}}>
           <FaRegComment /> Message
         </button>
       );
@@ -220,7 +222,7 @@ const Account = () => {
       </dialog>
 
 
-      <dialog id="my_modal_4" className="modal">
+      {/* <dialog id="my_modal_4" className="modal">
         <div className="modal-box overflow-hidden" style={{ maxHeight: '650px' }}>
 
           <div className="btns flex justify-between">
@@ -294,7 +296,7 @@ const Account = () => {
           </label>
 
         </div>
-      </dialog>
+      </dialog> */}
 
       <dialog id="confirm_remove_modal" className="modal">
         <div className="modal-box">

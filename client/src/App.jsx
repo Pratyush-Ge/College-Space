@@ -12,6 +12,7 @@ import Academics from './Pages/Academics';
 import Notices from './Pages/Notices';
 import Account from './Pages/Account';
 import AddPostForm from './Pages/AddPost';
+import MessageSection from './Pages/MessageSection/Message';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             <Route path="/notices" element={<Notices />} />
             <Route path="/account/:id" element={<Account />} />
             <Route path="/addpost" element={<AddPostForm />} />
+            <Route path="/message/:recieverId" element={<MessageSection />} />
           </Routes>
         </div>
       </Router>
