@@ -33,6 +33,6 @@ app.use('/post', PostRoute);
 app.use('/user', UserProfileRoute);
 app.use('/messages', MessageRoute);
 
-app.listen(5000, () => {
-  console.log("Server is running on port 5000");
+app.listen(7071, () => {
+  console.log("Server is running on port 7071");
 });

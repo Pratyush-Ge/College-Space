@@ -1,2 +1,2 @@
-const BASE_API = 'http://localhost:5000';
+const BASE_API = 'http://localhost:7071';
 export default BASE_API;

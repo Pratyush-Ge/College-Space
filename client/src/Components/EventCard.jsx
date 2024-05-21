@@ -1,9 +1,9 @@
 import localImage from '../assets/local.jpg';
+
 const EventCard = () => {
     const handleOnClick = () => {
         window.location.href = 'https://google.com';
     };
-
     return (
       <div>
         <div className="card card-compact w-96 bg-base-100 shadow-xl">
