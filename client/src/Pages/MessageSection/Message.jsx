@@ -68,7 +68,7 @@ const MessageSection = () => {
             });
     };
     return (
-        <div className="container">
+        <div className="container w-2/3">
             <div className="row clearfix">
                 <div className="col-lg-12">
                     <div className="card chat-app flex">

@@ -3,8 +3,6 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 
-
-
 import Navbar from './Components/Navbar';
 import Feed from './Pages/Feed';
 import Events from './Pages/Events';
@@ -19,7 +17,7 @@ function App() {
     <div className="App">
       <Router>
         <Navbar />
-        <div className="content">
+        <div className="content relative">
           <ToastContainer />
           <Routes>
             <Route path="/" element={<Feed />} />

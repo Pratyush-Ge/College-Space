@@ -1,7 +1,7 @@
-/* body{
-    background-color: #f4f7f6;
-    margin-top:20px;
-} */
+.container{
+    position: fixed;
+    top: 15vh;
+}
 
 .card {
     background: #040404;
@@ -24,7 +24,7 @@
 }
 
 .peopleList{
-    height: 55vh;
+    height: 60vh;
 }
 
 .chat-app .chat {
@@ -54,7 +54,7 @@
 }
 
 .chat .chat-history {
-    height: 55vh; 
+    height: 60vh; 
     padding: 10px 20px;
     border-bottom: 2px solid #fff;
     overflow-y: auto;  
