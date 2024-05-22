@@ -3,6 +3,7 @@ import LoginForm from './Login';
 import SignupForm from './SignupForm';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { IoMdChatbubbles } from 'react-icons/io';
 // import { toast } from 'react-toastify';
 import axios from 'axios'; 
 import {jwtDecode} from 'jwt-decode';
@@ -109,7 +110,12 @@ const Navbar = () => {
       <div className="navbar-end">
         {isLoggedIn ? (
           <>
-            <div className="dropdown dropdown-end">
+            <div className="btn btn-ghost btn-circle m-1 text-lg"
+              onClick={()=>{navigate(`/message/${email}`)}}
+            >
+                  <IoMdChatbubbles/>
+            </div>
+            <div className="dropdown dropdown-end flex">
               <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                 <div className="w-10 rounded-full">
                 <img src={profilePicUrl || defaultImage} alt="Profile" className="profile-picture" />

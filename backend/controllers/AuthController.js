@@ -68,3 +68,18 @@ export const getUserDetailsRoute = async (req, res) => {
     }
   };
 
+  export const getAllUsersRoute = async (req, res) => {
+    try {
+        const users = await User.find().select('profilePicUrl username email usn');
+        
+        if (!users || users.length === 0) {
+            return res.status(404).json({ message: 'No users found' });
+        }
+
+        res.json(users);
+    } catch (error) {
+        console.error('Error fetching all users:', error);
+        res.status(500).json({ message: 'Server error' });
+    }
+};
+
