@@ -45,7 +45,7 @@ export const loginRoute = async (req, res) => {
 
     const tokenPayload = { usn: user.usn, email: user.email, username: user.username, profilePicUrl: user.profilePicUrl };
 
-    const token = jwt.sign(tokenPayload, jwtKey, { expiresIn: "1h" });
+    const token = jwt.sign(tokenPayload, jwtKey, { expiresIn: "1d" });
 
     res.status(200).json({ message: "Login successful", token });
   } catch (err) {

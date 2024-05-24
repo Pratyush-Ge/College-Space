@@ -74,10 +74,9 @@ const FriendsList = () => {
   return (
     <div className="people-list w-full">
       <div className="listHeader flex flex-col gap-1 border-b-2 border-gray-700">
-        <div className="headerDetails flex gap-3 items-baseline">
+        <div className="headerDetails flex gap-3 items-center justify-between">
           <p className="text-xl font-bold text-white pb-3">Friends</p>
           <p className="text-sm text-gray-500 pb-3">Total: {users.length}</p>
-          <p className="text-sm text-gray-500 pb-3">Online: </p>
         </div>
 
         <div className="flex mb-3">

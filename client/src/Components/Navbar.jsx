@@ -9,6 +9,7 @@ import axios from 'axios';
 import {jwtDecode} from 'jwt-decode';
 import BASE_API from '../api.js'
 import defaultImage from '../assets/default.avif';
+import logo from '../assets/logo.png'
 
 
 const Navbar = () => {
@@ -88,11 +89,13 @@ const Navbar = () => {
                 <li><a>Club</a></li>
               </ul>
             </li>
-            <li><a onClick={() => navigate('/sex')}>Sex</a></li>
           </ul>
         </div>
 
-        <h1 className="ml-3 text-xl font-bold">Uni-Verse</h1>
+        <div className="logoTitle flex items-center">
+          <img src={logo} alt="Logo" className='w-14' />
+        <h1 className="text-xl font-bold">UniVerse</h1>
+        </div>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">

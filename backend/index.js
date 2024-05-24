@@ -2,6 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import http from 'http';
+import socketConfig from './config/Socket.js';
 
 dotenv.config();
 
@@ -33,6 +35,9 @@ app.use('/post', PostRoute);
 app.use('/user', UserProfileRoute);
 app.use('/messages', MessageRoute);
 
-app.listen(7071, () => {
+const server = http.createServer(app);
+socketConfig(server); 
+
+server.listen(7071, () => {
   console.log("Server is running on port 7071");
 });
