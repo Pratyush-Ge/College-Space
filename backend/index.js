@@ -15,6 +15,7 @@ import LikePostRoute from './routes/LikePostRoute.js';
 import PostRoute from './routes/PostRoute.js';
 import UserProfileRoute from './routes/UserProfileRoute.js';
 import MessageRoute from './routes/MessageRoute.js';
+import NotesRoute from './routes/NotesRoute.js';
 
 const app = express();
 app.use(cors({
@@ -34,6 +35,7 @@ app.use('/likePost', LikePostRoute);
 app.use('/post', PostRoute);
 app.use('/user', UserProfileRoute);
 app.use('/messages', MessageRoute);
+app.use('/notes', NotesRoute);
 
 const server = http.createServer(app);
 socketConfig(server); 

@@ -1,0 +1,755 @@
+[
+    {
+        "branch": "Computer Related",
+        "subjects": [
+            {
+                "id": 1,
+                "name": "Data Structures and Algorithms",
+                "category": "CS/Algorithms",
+                "videos": [
+                    { "title": "Abdul Bari" },
+                    { "title": "take U forward" },
+                    { "title": "Kevin Naughton Jr." },
+                    { "title": "Love Babbar" },
+                    { "title": "Gaurav Sen" }
+                ],
+                "materials": [
+                    { "title": "JavaScript Algorithms and Data Structures", "url": "https://github.com/trekhleb/javascript-algorithms" },
+                    { "title": "GeeksforGeeks Data Structures", "url": "https://www.geeksforgeeks.org/data-structures/" }
+                ]
+            },
+            {
+                "id": 2,
+                "name": "Computer Networks",
+                "category": "CS/Networking",
+                "videos": [
+                    { "title": "Neso Academy" },
+                    { "title": "Computer Networking by Georgia Tech" },
+                    { "title": "Keith Barker" },
+                    { "title": "Gaurav Sen" }
+                ],
+                "materials": [
+                    { "title": "GeeksforGeeks Computer Network Tutorials", "url": "https://www.geeksforgeeks.org/computer-network-tutorials/" },
+                    { "title": "Python Socket Programming by Keith Weaver", "url": "https://github.com/keithweaver/python-socket-programming" }
+                ]
+            },
+            {
+                "id": 3,
+                "name": "Operating Systems",
+                "category": "CS/OS",
+                "videos": [
+                    { "title": "mycodeschool" },
+                    { "title": "Gate Smashers" },
+                    { "title": "Operating Systems by Neso Academy" },
+                    { "title": "Carnegie Mellon University" }
+                ],
+                "materials": [
+                    { "title": "GeeksforGeeks Operating Systems", "url": "https://www.geeksforgeeks.org/operating-systems/" },
+                    { "title": "Linux Kernel Source on GitHub", "url": "https://github.com/torvalds/linux" }
+                ]
+            },
+            {
+                "id": 4,
+                "name": "Computer Organization",
+                "category": "CS/Architecture",
+                "videos": [
+                    { "title": "Neso Academy" },
+                    { "title": "David Black-Schaffer" },
+                    { "title": "Computer Organization by Bharat Acharya" }
+                ],
+                "materials": [
+                    { "title": "GeeksforGeeks Computer Organization", "url": "https://www.geeksforgeeks.org/computer-organization-and-design-tutorials/" },
+                    { "title": "Collection View Layouts by Ramotion", "url": "https://github.com/Ramotion/collection-view-layouts" }
+                ]
+            },
+            {
+                "id": 5,
+                "name": "Database Management Systems",
+                "category": "CS/Database",
+                "videos": [
+                    { "title": "Jenny's Lectures CS IT" },
+                    { "title": "Gate Smashers" },
+                    { "title": "Database Management Systems by Neso Academy" }
+                ],
+                "materials": [
+                    { "title": "GeeksforGeeks DBMS Tutorials", "url": "https://www.geeksforgeeks.org/dbms-tutorials/" },
+                    { "title": "System Design Primer by donnemartin", "url": "https://github.com/donnemartin/system-design-primer" }
+                ]
+            },
+            {
+                "id": 6,
+                "name": "Software Engineering",
+                "category": "CS/Software Engineering",
+                "videos": [
+                    { "title": "Apna College" },
+                    { "title": "Simplilearn" },
+                    { "title": "Programming with Mosh" }
+                ],
+                "materials": [
+                    { "title": "GeeksforGeeks Software Engineering", "url": "https://www.geeksforgeeks.org/software-engineering-tutorials/" },
+                    { "title": "Design Resources for Developers by Brad Traversy", "url": "https://github.com/bradtraversy/design-resources-for-developers" }
+                ]
+            },
+            {
+                "id": 7,
+                "name": "Artificial Intelligence",
+                "category": "CS/AI",
+                "videos": [
+                    { "title": "codebasics" },
+                    { "title": "edureka!" },
+                    { "title": "Sentdex" },
+                    { "title": "Andrew Ng's Machine Learning" }
+                ],
+                "materials": [
+                    { "title": "GeeksforGeeks Artificial Intelligence", "url": "https://www.geeksforgeeks.org/artificial-intelligence-tutorials/" },
+                    { "title": "Deep Reinforcement Learning Course by simoninithomas", "url": "https://github.com/simoninithomas/Deep_reinforcement_learning_Course" }
+                ]
+            },
+            {
+                "id": 8,
+                "name": "Web Development",
+                "category": "CS/IT",
+                "videos": [
+                    { "title": "Traversy Media" },
+                    { "title": "freeCodeCamp" },
+                    { "title": "The Net Ninja" },
+                    { "title": "Academind" }
+                ],
+                "materials": [
+                    { "title": "freeCodeCamp", "url": "https://www.freecodecamp.org/" },
+                    { "title": "Web Development P1xt Guides by P1xt", "url": "https://github.com/P1xt/p1xt-guides" }
+                ]
+            }
+        ]
+    },
+    {
+        "branch": "Electronics/Core",
+        "subjects": [
+            {
+                "id": 1,
+                "name": "Analog Electronics",
+                "videos": [
+                    { "title": "Neso Academy" },
+                    { "title": "GATE Lectures by Ravindrababu Ravula" },
+                    { "title": "NPTEL" }
+                ],
+                "materials": [
+                    { "title": "NPTEL Analog Electronics Course", "url": "https://nptel.ac.in/courses/117/101/117101086/" },
+                    { "title": "Electronics Tutorials Point", "url": "https://www.electronics-tutorials.ws/" }
+                ]
+            },
+            {
+                "id": 2,
+                "name": "Digital Electronics",
+                "videos": [
+                    { "title": "Neso Academy" },
+                    { "title": "GATE Lectures by Ravindrababu Ravula" },
+                    { "title": "NPTEL" }
+                ],
+                "materials": [
+                    { "title": "NPTEL Digital Electronics Course", "url": "https://nptel.ac.in/courses/117/107/117107083/" },
+                    { "title": "All About Circuits", "url": "https://www.allaboutcircuits.com/" }
+                ]
+            },
+            {
+                "id": 3,
+                "name": "Signals and Systems",
+                "videos": [
+                    { "title": "Neso Academy" },
+                    { "title": "GATE Lectures by Ravindrababu Ravula" },
+                    { "title": "NPTEL" }
+                ],
+                "materials": [
+                    { "title": "NPTEL Signals and Systems Course", "url": "https://nptel.ac.in/courses/117/106/117106085/" },
+                    { "title": "MIT OpenCourseWare", "url": "https://ocw.mit.edu/index.htm" }
+                ]
+            },
+            {
+                "id": 4,
+                "name": "Electromagnetic Theory",
+                "videos": [
+                    { "title": "Neso Academy" },
+                    { "title": "GATE Lectures by Ravindrababu Ravula" },
+                    { "title": "NPTEL" }
+                ],
+                "materials": [
+                    { "title": "NPTEL Electromagnetic Theory Course", "url": "https://nptel.ac.in/courses/117/108/117108086/" },
+                    { "title": "Khan Academy Physics", "url": "https://www.khanacademy.org/science/physics" }
+                ]
+            },
+            {
+                "id": 5,
+                "name": "Microprocessors and Microcontrollers",
+                "videos": [
+                    { "title": "Neso Academy" },
+                    { "title": "GATE Lectures by Ravindrababu Ravula" },
+                    { "title": "NPTEL" }
+                ],
+                "materials": [
+                    { "title": "NPTEL Microprocessors and Microcontrollers Course", "url": "https://nptel.ac.in/courses/117/102/117102088/" },
+                    { "title": "Tutorials Point Microprocessor 8085", "url": "https://www.tutorialspoint.com/microprocessor/microprocessor_8085.htm" }
+                ]
+            },
+            {
+                "id": 6,
+                "name": "Control Systems",
+                "videos": [
+                    { "title": "Neso Academy" },
+                    { "title": "GATE Lectures by Ravindrababu Ravula" },
+                    { "title": "NPTEL" }
+                ],
+                "materials": [
+                    { "title": "NPTEL Control Systems Course", "url": "https://nptel.ac.in/courses/117/103/117103084/" },
+                    { "title": "Electrical4U Control Systems", "url": "https://www.electrical4u.com/control-systems/" }
+                ]
+            },
+            {
+                "id": 7,
+                "name": "VLSI Design",
+                "videos": [
+                    { "title": "Neso Academy" },
+                    { "title": "GATE Lectures by Ravindrababu Ravula" },
+                    { "title": "NPTEL" }
+                ],
+                "materials": [
+                    { "title": "NPTEL VLSI Design Course", "url": "https://nptel.ac.in/courses/117/104/117104083/" },
+                    { "title": "VLSI Encyclopedia", "url": "http://www.vlsiencyclopedia.com/" }
+                ]
+            }
+        ]
+    },
+    {
+        "branch": "Mechanical",
+        "subjects": [
+            {
+                "id": 1,
+                "name": "Engineering Mechanics",
+                "videos": [
+                    { "title": "NPTEL" },
+                    { "title": "Structurefree" },
+                    { "title": "LectureOnline" }
+                ],
+                "materials": [
+                    { "title": "Engineering Mechanics by Hibbeler", "url": "https://www.amazon.com/Engineering-Mechanics-Statics-Russell-Hibbeler/dp/0133918920" },
+                    { "title": "NPTEL Engineering Mechanics Course", "url": "https://nptel.ac.in/courses/112/103/112103110/" }
+                ]
+            },
+            {
+                "id": 2,
+                "name": "Thermodynamics",
+                "videos": [
+                    { "title": "NPTEL" },
+                    { "title": "LearnChemE" },
+                    { "title": "Structurefree" }
+                ],
+                "materials": [
+                    { "title": "Thermodynamics: An Engineering Approach by Cengel and Boles", "url": "https://www.amazon.com/Thermodynamics-Engineering-Approach-Yunus-Cengel/dp/0073398179" },
+                    { "title": "NPTEL Thermodynamics Course", "url": "https://nptel.ac.in/courses/112/105/112105113/" }
+                ]
+            },
+            {
+                "id": 3,
+                "name": "Fluid Mechanics",
+                "videos": [
+                    { "title": "NPTEL" },
+                    { "title": "Mechanical Engineering - IIT Roorkee" },
+                    { "title": "Structurefree" }
+                ],
+                "materials": [
+                    { "title": "Fluid Mechanics by Frank M. White", "url": "https://www.amazon.com/Fluid-Mechanics-Frank-M-White/dp/0073398276" },
+                    { "title": "NPTEL Fluid Mechanics Course", "url": "https://nptel.ac.in/courses/112/106/112106115/" }
+                ]
+            },
+            {
+                "id": 4,
+                "name": "Machine Design",
+                "videos": [
+                    { "title": "NPTEL" },
+                    { "title": "Learn Engineering" },
+                    { "title": "Structurefree" }
+                ],
+                "materials": [
+                    { "title": "Machine Design by Robert L. Norton", "url": "https://www.amazon.com/Machine-Design-Robert-L-Norton/dp/013335671X" },
+                    { "title": "NPTEL Machine Design Course", "url": "https://nptel.ac.in/courses/112/108/112108117/" }
+                ]
+            },
+            {
+                "id": 5,
+                "name": "Manufacturing Processes",
+                "videos": [
+                    { "title": "NPTEL" },
+                    { "title": "Learn Engineering" },
+                    { "title": "Mechanical Engineering - IIT Kharagpur" }
+                ],
+                "materials": [
+                    { "title": "Manufacturing Engineering and Technology by Kalpakjian and Schmid", "url": "https://www.amazon.com/Manufacturing-Engineering-Technology-Serope-Kalpakjian/dp/0133128741" },
+                    { "title": "NPTEL Manufacturing Processes Course", "url": "https://nptel.ac.in/courses/112/109/112109118/" }
+                ]
+            },
+            {
+                "id": 6,
+                "name": "Automobile Engineering",
+                "videos": [
+                    { "title": "NPTEL" },
+                    { "title": "Learn Engineering" },
+                    { "title": "Structurefree" }
+                ],
+                "materials": [
+                    { "title": "Automobile Engineering by Kirpal Singh", "url": "https://www.amazon.com/Automobile-Engineering-Kirpal-Singh/dp/8121925242" },
+                    { "title": "NPTEL Automobile Engineering Course", "url": "https://nptel.ac.in/courses/112/110/112110119/" }
+                ]
+            },
+            {
+                "id": 7,
+                "name": "Mechanical Vibrations",
+                "videos": [
+                    { "title": "NPTEL" },
+                    { "title": "Structurefree" },
+                    { "title": "Mechanical Engineering - IIT Kanpur" }
+                ],
+                "materials": [
+                    { "title": "Mechanical Vibrations by Singiresu S. Rao", "url": "https://www.amazon.com/Mechanical-Vibrations-6th-Singiresu-Rao/dp/013436130X" },
+                    { "title": "NPTEL Mechanical Vibrations Course", "url": "https://nptel.ac.in/courses/112/111/112111120/" }
+                ]
+            }
+        ]
+    },
+    {
+        "branch": "Civil",
+        "subjects": [
+            {
+                "id": 1,
+                "name": "Structural Analysis",
+                "videos": [
+                    { "title": "NPTEL" },
+                    { "title": "Structurefree" },
+                    { "title": "Engineering Academy" }
+                ],
+                "materials": [
+                    { "title": "Structural Analysis by Hibbeler", "url": "https://www.amazon.com/Structural-Analysis-Russell-Hibbeler/dp/013257053X" },
+                    { "title": "NPTEL Structural Analysis Course", "url": "https://nptel.ac.in/courses/105/101/105101087/" }
+                ]
+            },
+            {
+                "id": 2,
+                "name": "Geotechnical Engineering",
+                "videos": [
+                    { "title": "NPTEL" },
+                    { "title": "Structurefree" },
+                    { "title": "Engineering Academy" }
+                ],
+                "materials": [
+                    { "title": "Principles of Geotechnical Engineering by Braja M. Das", "url": "https://www.amazon.com/Principles-Geotechnical-Engineering-Braja-Das/dp/133710164X" },
+                    { "title": "NPTEL Geotechnical Engineering Course", "url": "https://nptel.ac.in/courses/105/102/105102088/" }
+                ]
+            },
+            {
+                "id": 3,
+                "name": "Fluid Mechanics",
+                "videos": [
+                    { "title": "NPTEL" },
+                    { "title": "Structurefree" },
+                    { "title": "Mechanical Engineering - IIT Roorkee" }
+                ],
+                "materials": [
+                    { "title": "Fluid Mechanics by Yunus A. Cengel and John M. Cimbala", "url": "https://www.amazon.com/Fluid-Mechanics-Fundamentals-Applications-Cengel/dp/0073380326" },
+                    { "title": "NPTEL Fluid Mechanics Course", "url": "https://nptel.ac.in/courses/105/103/105103089/" }
+                ]
+            },
+            {
+                "id": 4,
+                "name": "Transportation Engineering",
+                "videos": [
+                    { "title": "NPTEL" },
+                    { "title": "Structurefree" },
+                    { "title": "Engineering Academy" }
+                ],
+                "materials": [
+                    { "title": "Principles of Highway Engineering and Traffic Analysis by Fred L. Mannering", "url": "https://www.amazon.com/Principles-Highway-Engineering-Traffic-Analysis/dp/0470290757" },
+                    { "title": "NPTEL Transportation Engineering Course", "url": "https://nptel.ac.in/courses/105/104/105104090/" }
+                ]
+            },
+            {
+                "id": 5,
+                "name": "Environmental Engineering",
+                "videos": [
+                    { "title": "NPTEL" },
+                    { "title": "Structurefree" },
+                    { "title": "Engineering Academy" }
+                ],
+                "materials": [
+                    { "title": "Introduction to Environmental Engineering and Science by Gilbert M. Masters", "url": "https://www.amazon.com/Introduction-Environmental-Engineering-Science-3rd/dp/0131481932" },
+                    { "title": "NPTEL Environmental Engineering Course", "url": "https://nptel.ac.in/courses/105/105/105105091/" }
+                ]
+            },
+            {
+                "id": 6,
+                "name": "Construction Management",
+                "videos": [
+                    { "title": "NPTEL" },
+                    { "title": "Structurefree" },
+                    { "title": "Engineering Academy" }
+                ],
+                "materials": [
+                    { "title": "Construction Planning, Equipment, and Methods by Robert L. Peurifoy", "url": "https://www.amazon.com/Construction-Planning-Equipment-Methods-Peurifoy/dp/0073401129" },
+                    { "title": "NPTEL Construction Management Course", "url": "https://nptel.ac.in/courses/105/106/105106092/" }
+                ]
+            },
+            {
+                "id": 7,
+                "name": "Surveying",
+                "videos": [
+                    { "title": "NPTEL" },
+                    { "title": "Structurefree" },
+                    { "title": "Engineering Academy" }
+                ],
+                "materials": [
+                    { "title": "Elementary Surveying by Paul R. Wolf and Charles D. Ghilani", "url": "https://www.amazon.com/Elementary-Surveying-Charles-Ghilani-Wolf/dp/0133758885" },
+                    {
+                        "title": "NPTEL Surveying Course",
+                        "url": "https://nptel.ac.in/courses/105/107/105107093/"
+                    }
+                ]
+            },
+            {
+                "id": 8,
+                "name": "Structural Design",
+                "videos": [
+                    { "title": "NPTEL" },
+                    { "title": "Structurefree" },
+                    { "title": "Engineering Academy" }
+                ],
+                "materials": [
+                    { "title": "Design of Concrete Structures by Arthur H. Nilson", "url": "https://www.amazon.com/Design-Concrete-Structures-Arthur-Nilson/dp/0073397946" },
+                    { "title": "NPTEL Structural Design Course", "url": "https://nptel.ac.in/courses/105/108/105108094/" }
+                ]
+            }
+        ]
+    },
+    {
+        "branch": "Chemical",
+        "subjects": [
+            {
+                "id": 1,
+                "name": "Chemical Process Principles",
+                "videos": [
+                    { "title": "LearnChemE" },
+                    { "title": "Chemical Engineering Guy" },
+                    { "title": "NPTEL" }
+                ],
+                "materials": [
+                    { "title": "Chemical Engineering Thermodynamics by Y.V.C. Rao", "url": "https://www.amazon.com/Chemical-Engineering-Thermodynamics-Y-V-C-Rao/dp/8120347710" },
+                    { "title": "NPTEL Chemical Process Principles Course", "url": "https://nptel.ac.in/courses/103/102/103102082/" }
+                ]
+            },
+            {
+                "id": 2,
+                "name": "Chemical Reaction Engineering",
+                "videos": [
+                    { "title": "LearnChemE" },
+                    { "title": "Chemical Engineering Guy" },
+                    { "title": "NPTEL" }
+                ],
+                "materials": [
+                    { "title": "Chemical Reaction Engineering by Octave Levenspiel", "url": "https://www.amazon.com/Chemical-Reaction-Engineering-3rd-Levenspiel/dp/047125424X" },
+                    { "title": "NPTEL Chemical Reaction Engineering Course", "url": "https://nptel.ac.in/courses/103/103/103103083/" }
+                ]
+            },
+            {
+                "id": 3,
+                "name": "Mass Transfer Operations",
+                "videos": [
+                    { "title": "LearnChemE" },
+                    { "title": "Chemical Engineering Guy" },
+                    { "title": "NPTEL" }
+                ],
+                "materials": [
+                    { "title": "Mass Transfer Operations by Robert E. Treybal", "url": "https://www.amazon.com/Mass-Transfer-Operations-Robert-Treybal/dp/0070651782" },
+                    { "title": "NPTEL Mass Transfer Operations Course", "url": "https://nptel.ac.in/courses/103/104/103104084/" }
+                ]
+            },
+            {
+                "id": 4,
+                "name": "Heat Transfer Operations",
+                "videos": [
+                    { "title": "LearnChemE" },
+                    { "title": "Chemical Engineering Guy" },
+                    { "title": "NPTEL" }
+                ],
+                "materials": [
+                    { "title": "Heat Transfer by Yunus A. Cengel and Afshin J. Ghajar", "url": "https://www.amazon.com/Heat-Transfer-Yunus-Cengel/dp/0073529362" },
+                    { "title": "NPTEL Heat Transfer Operations Course", "url": "https://nptel.ac.in/courses/103/105/103105085/" }
+                ]
+            },
+            {
+                "id": 5,
+                "name": "Process Control",
+                "videos": [
+                    { "title": "LearnChemE" },
+                    { "title": "Chemical Engineering Guy" },
+                    { "title": "NPTEL" }
+                ],
+                "materials": [
+                    { "title": "Process Dynamics and Control by Dale E. Seborg", "url": "https://www.amazon.com/Process-Dynamics-Control-Dale-Seborg/dp/0470128674" },
+                    { "title": "NPTEL Process Control Course", "url": "https://nptel.ac.in/courses/103/106/103106086/" }
+                ]
+            },
+            {
+                "id": 6,
+                "name": "Chemical Engineering Thermodynamics",
+                "videos": [
+                    { "title": "LearnChemE" },
+                    { "title": "Chemical Engineering Guy" },
+                    { "title": "NPTEL" }
+                ],
+                "materials": [
+                    { "title": "Introduction to Chemical Engineering Thermodynamics by J. M. Smith", "url": "https://www.amazon.com/Introduction-Chemical-Engineering-Thermodynamics-7th/dp/0073104450" },
+                    { "title": "NPTEL Chemical Engineering Thermodynamics Course", "url": "https://nptel.ac.in/courses/103/101/103101081/" }
+                ]
+            },
+            {
+                "id": 7,
+                "name": "Chemical Engineering Economics",
+                "videos": [
+                    { "title": "LearnChemE" },
+                    { "title": "Chemical Engineering Guy" },
+                    { "title": "NPTEL" }
+                ],
+                "materials": [
+                    { "title": "Engineering Economic Analysis by Donald G. Newnan", "url": "https://www.amazon.com/Engineering-Economic-Analysis-Donald-Newnan/dp/0195168079" },
+                    { "title": "NPTEL Chemical Engineering Economics Course", "url": "https://nptel.ac.in/courses/103/107/103107087/" }
+                ]
+            },
+            {
+                "id": 8,
+                "name": "Process Engineering",
+                "videos": [
+                    { "title": "LearnChemE" },
+                    { "title": "Chemical Engineering Guy" },
+                    { "title": "NPTEL" }
+                ],
+                "materials": [
+                    { "title": "Process Engineering Economics by James R. Couper", "url": "https://www.amazon.com/Process-Engineering-Economics-James-Couper/dp/0824743039" },
+                    { "title": "NPTEL Process Engineering Course", "url": "https://nptel.ac.in/courses/103/108/103108088/" }
+                ]
+            }
+        ]
+    },
+    {
+        "branch": "Biotechnology",
+        "subjects": [
+            {
+                "id": 1,
+                "name": "Cell Biology",
+                "videos": [
+                    { "title": "Khan Academy - Biology" },
+                    { "title": "Bozeman Science - Biology" },
+                    { "title": "MIT OpenCourseWare - Biology" }
+                ],
+                "materials": [
+                    { "title": "Molecular Biology of the Cell by Bruce Alberts", "url": "https://www.amazon.com/Molecular-Biology-Cell-Bruce-Alberts/dp/0815341059" },
+                    { "title": "Cell Biology by Thomas D. Pollard", "url": "https://www.amazon.com/Cell-Biology-Thomas-D-Pollard/dp/0323341268" }
+                ]
+            },
+            {
+                "id": 2,
+                "name": "Genetics",
+                "videos": [
+                    { "title": "Khan Academy - Genetics" },
+                    { "title": "Bozeman Science - Genetics" },
+                    { "title": "MIT OpenCourseWare - Genetics" }
+                ],
+                "materials": [
+                    { "title": "Principles of Genetics by D. Peter Snustad", "url": "https://www.amazon.com/Principles-Genetics-D-Peter-Snustad/dp/1119142288" },
+                    { "title": "Genetics: Analysis and Principles by Robert J. Brooker", "url": "https://www.amazon.com/Genetics-Analysis-Principles-Robert-Brooker/dp/1259700933" }
+                ]
+            },
+            {
+                "id": 3,
+                "name": "Biochemistry",
+                "videos": [
+                    { "title": "Khan Academy - Biochemistry" },
+                    { "title": "Bozeman Science - Biochemistry" },
+                    { "title": "MIT OpenCourseWare - Biochemistry" }
+                ],
+                "materials": [
+                    { "title": "Lehninger Principles of Biochemistry by David L. Nelson and Michael M. Cox", "url": "https://www.amazon.com/Lehninger-Principles-Biochemistry-David-Nelson/dp/1464126119" },
+                    { "title": "Biochemistry by Lubert Stryer", "url": "https://www.amazon.com/Biochemistry-Jeremy-M-Berg/dp/071677108X" }
+                ]
+            },
+            {
+                "id": 4,
+                "name": "Microbiology",
+                "videos": [
+                    { "title": "Khan Academy - Microbiology" },
+                    { "title": "Bozeman Science - Microbiology" },
+                    { "title": "MIT OpenCourseWare - Microbiology" }
+                ],
+                "materials": [
+                    { "title": "Microbiology: An Introduction by Gerard J. Tortora", "url": "https://www.amazon.com/Microbiology-Introduction-Gerard-J-Tortora/dp/032192892X" },
+                    { "title": "Prescott's Microbiology by Joanne Willey", "url": "https://www.amazon.com/Prescotts-Microbiology-Joanne-Willey/dp/1259281590" }
+                ]
+            },
+            {
+                "id": 5,
+                "name": "Bioprocess Engineering",
+                "videos": [
+                    { "title": "MIT OpenCourseWare - Bioprocess Engineering" },
+                    { "title": "NPTEL - Bioprocess Engineering" }
+                ],
+                "materials": [
+                    { "title": "Bioprocess Engineering: Basic Concepts by Shuler and Kargi", "url": "https://www.amazon.com/Bioprocess-Engineering-Basic-Concepts-3rd/dp/0130819085" },
+                    { "title": "Bioprocess Engineering Principles by Pauline M. Doran", "url": "https://www.amazon.com/Bioprocess-Engineering-Principles-Pauline-Doran/dp/0122208518" }
+                ]
+            },
+            {
+                "id": 6,
+                "name": "Molecular Biology",
+                "videos": [
+                    { "title": "Khan Academy - Molecular Biology" },
+                    { "title": "Bozeman Science - Molecular Biology" },
+                    { "title": "MIT OpenCourseWare - Molecular Biology" }
+                ],
+                "materials": [
+                    { "title": "Molecular Biology of the Gene by James D. Watson", "url": "https://www.amazon.com/Molecular-Biology-Gene-Books-Carte/dp/0321762436" },
+                    { "title": "Molecular Biology by David P. Clark", "url": "https://www.amazon.com/Molecular-Biology-Clark-David/dp/0123785953" }
+                ]
+            },
+            {
+                "id": 7,
+                "name": "Bioinformatics",
+                "videos": [
+                    { "title": "MIT OpenCourseWare - Bioinformatics" },
+                    { "title": "NPTEL - Bioinformatics" }
+                ],
+                "materials": [
+                    { "title": "Bioinformatics: Sequence and Genome Analysis by David W. Mount", "url": "https://www.amazon.com/Bioinformatics-Sequence-Genome-David-Mount/dp/0879697121" },
+                    { "title": "Bioinformatics For Dummies by Jean-Michel Claverie", "url": "https://www.amazon.com/Bioinformatics-Dummies-Jean-Michel-Claverie/dp/0764526146" }
+                ]
+            },
+            {
+                "id": 8,
+                "name": "Biotechnology and Society",
+                "videos": [
+                    { "title": "MIT OpenCourseWare - Biotechnology and Society" },
+                    { "title": "NPTEL - Biotechnology and Society" }
+                ],
+                "materials": [
+                    { "title": "Biotechnology and Society: An Introduction by Hallam Stevens", "url": "https://www.amazon.com/Biotechnology-Society-Introduction-Hallam-Stevens/dp/022608000X" },
+                    { "title": "Biotechnology and Society: Ethics, Democracy and Public Policy by Michael A. Martello", "url": "https://www.amazon.com/Biotechnology-Society-Democracy-Public-Philosophy/dp/0761969440" }
+                ]
+            }
+        ]
+    }
+    ,
+    {
+        "branch": "Industrial Engineering and Management",
+        "subjects": [
+            {
+                "id": 1,
+                "name": "Engineering Mathematics",
+                "videos": [
+                    { "title": "Khan Academy - Linear Algebra" },
+                    { "title": "MIT OpenCourseWare - Multivariable Calculus" },
+                    { "title": "The Essence of Calculus by 3Blue1Brown" }
+                ],
+                "materials": [
+                    { "title": "Advanced Engineering Mathematics by Erwin Kreyszig", "url": "https://www.wiley.com/en-us/Advanced+Engineering+Mathematics%2C+10th+Edition-p-9780470458365" },
+                    { "title": "Engineering Mathematics by K.A. Stroud", "url": "https://www.amazon.com/Engineering-Mathematics-K-Stroud/dp/0831134704" }
+                ]
+            },
+            {
+                "id": 2,
+                "name": "Production and Operations Management",
+                "videos": [
+                    { "title": "NPTEL - Production and Operations Management" },
+                    { "title": "MIT OpenCourseWare - Operations Management" },
+                    { "title": "edX - Supply Chain and Logistics Fundamentals" }
+                ],
+                "materials": [
+                    { "title": "Operations Management by William J. Stevenson", "url": "https://www.amazon.com/Operations-Management-William-J-Stevenson/dp/0078024102" },
+                    { "title": "Production and Operations Analysis by Steven Nahmias", "url": "https://www.amazon.com/Production-Operations-Analysis-Steven-Nahmias/dp/1259666107" }
+                ]
+            },
+            {
+                "id": 3,
+                "name": "Quality Engineering",
+                "videos": [
+                    { "title": "Six Sigma - What is Six Sigma?" },
+                    { "title": "ASQ TV - Quality Engineering" },
+                    { "title": "Lean Six Sigma Training by Lean Sigma Corporation" }
+                ],
+                "materials": [
+                    { "title": "The Certified Quality Engineer Handbook by Connie M. Borror", "url": "https://www.amazon.com/Certified-Quality-Engineer-Handbook-Borror/dp/0873899004" },
+                    { "title": "Introduction to Quality Engineering by Genichi Taguchi", "url": "https://www.amazon.com/Introduction-Quality-Engineering-Taguchi/dp/0873892719" }
+                ]
+            },
+            {
+                "id": 4,
+                "name": "Supply Chain Management",
+                "videos": [
+                    { "title": "MIT OpenCourseWare - Supply Chain Management" },
+                    { "title": "Coursera - Supply Chain Management Fundamentals" },
+                    { "title": "edX - Supply Chain Management MicroMasters Program" }
+                ],
+                "materials": [
+                    { "title": "Supply Chain Management: Strategy, Planning, and Operation by Sunil Chopra", "url": "https://www.amazon.com/Supply-Chain-Management-Strategy-Planning/dp/0133800202" },
+                    { "title": "Designing and Managing the Supply Chain by David Simchi-Levi", "url": "https://www.amazon.com/Designing-Managing-Chain-3e/dp/0073403842" }
+                ]
+            },
+            {
+                "id": 5,
+                "name": "Industrial Safety Engineering",
+                "videos": [
+                    { "title": "NPTEL - Industrial Safety Engineering" },
+                    { "title": "Safety Training Videos by Convergence Training" },
+                    { "title": "Health and Safety Essentials by Safetycare" }
+                ],
+                "materials": [
+                    { "title": "Safety Engineering by Joel M. Haight", "url": "https://www.amazon.com/Safety-Engineering-Joel-M-Haight/dp/1498762231" },
+                    { "title": "Introduction to Safety Engineering by Joshua Gassman", "url": "https://www.amazon.com/Introduction-Safety-Engineering-Joshua-Gassman/dp/0815366463" }
+                ]
+            },
+            {
+                "id": 6,
+                "name": "Project Management",
+                "videos": [
+                    { "title": "Project Management Videos by ProjectManager.com" },
+                    { "title": "edX - Project Management for Beginners" },
+                    { "title": "Coursera - Fundamentals of Project Planning and Management" }
+                ],
+                "materials": [
+                    { "title": "A Guide to the Project Management Body of Knowledge (PMBOK Guide)", "url": "https://www.amazon.com/Guide-Project-Management-Knowledge-PMBOK/dp/1628251840" },
+                    { "title": "Project Management: A Systems Approach to Planning, Scheduling, and Controlling by Harold Kerzner", "url": "https://www.amazon.com/Project-Management-Scheduling-Controlling-Edition/dp/1118022270" }
+                ]
+            },
+            {
+                "id": 7,
+                "name": "Engineering Economics",
+                "videos": [
+                    { "title": "NPTEL - Engineering Economics" },
+                    { "title": "Coursera - Economics of Money and Banking" },
+                    { "title": "edX - Microeconomics Principles" }
+                ],
+                "materials": [
+                    { "title": "Engineering Economic Analysis by Donald G. Newnan", "url": "https://www.amazon.com/Engineering-Economic-Analysis-Donald-Newnan/dp/0199339279" },
+                    { "title": "Engineering Economy by Anthony J. Tarquin", "url": "https://www.amazon.com/Engineering-Economy-Anthony-J-Tarquin/dp/0073401297" }
+                ]
+            },
+            {
+                "id": 8,
+                "name": "Industrial Engineering Design",
+                "videos": [
+                    { "title": "NPTEL - Industrial Engineering Design" },
+                    { "title": "MIT OpenCourseWare - Industrial Engineering" },
+                    { "title": "Introduction to Industrial Engineering by Coursera" }
+                ],
+                "materials": [
+                    { "title": "Facilities Planning by James A. Tompkins", "url": "https://www.amazon.com/Facilities-Planning-James-Tompkins/dp/1118886573" },
+                    { "title": "Operations Research: An Introduction by Hamdy A. Taha", "url": "https://www.amazon.com/Operations-Research-Introduction-Hamdy-Taha/dp/0134444019" }
+                ]
+            }
+        ]
+    }
+]
+

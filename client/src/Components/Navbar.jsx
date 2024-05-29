@@ -69,7 +69,7 @@ const Navbar = () => {
   // }
 
   return (
-    <div className="navbar bg-white text-black h-80 top-0 left-0 fixed z-50 mb-4">
+    <div className="navbar bg-white text-black top-0 left-0 fixed z-50 mb-4">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -124,7 +124,7 @@ const Navbar = () => {
                 <img src={profilePicUrl || defaultImage} alt="Profile" className="profile-picture" />
                 </div>
               </div>
-              <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-white rounded-box w-52">
+              <ul tabIndex={0} className="menu menu-sm dropdown-content mt-16 z-[1] p-2 shadow bg-white rounded-box w-52">
                 <li onClick={() => { navigate(`/account/${email}`, { state: { userEmail: email } }) }}> 
 
                   <a className="justify-between">

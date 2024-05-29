@@ -37,15 +37,17 @@ body{
 .content {
   width: 100%;
   display: flex;
-  margin: 14vh auto 4vh auto;
+  margin: 80px auto 0 auto;
   flex: 1;
   align-items: center;
   justify-content: center;
 }
 
+.acaMenu{
+  width:15rem;
+}
 
 .navbar{
-  height: 2rem;
   background-color: white;
 }
 

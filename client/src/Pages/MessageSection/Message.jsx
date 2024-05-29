@@ -83,7 +83,7 @@ const MessageSection = () => {
       <div className="row clearfix">
         <div className="col-lg-12">
           <div className="card chat-app flex">
-            <div className='people-list'><FriendsList /></div>
+            <div className='people-list h-full'><FriendsList /></div>
             <div className="chat flex flex-col">
               <div className="m-2 flex gap-3 items-center h-10">
                 {profilePicUrlR && userEmail !== recieverId && (

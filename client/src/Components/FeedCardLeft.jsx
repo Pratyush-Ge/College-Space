@@ -12,7 +12,7 @@ const FeedCardPost = ({ title, content, image, author, username, createdAt, auth
 
     return (
         <div className="w-1/2 h-full flex flex-col rounded-lg shadow-2xl overflow-y-auto left bg-white" style={{ maxHeight: '560px' }}>
-            <div className="flex justify-between items-center w-80 my-2">
+            <div className="flex gap-5 items-center w-80 my-2">
                 <div className="flex items-center cursor-pointer" onClick={() => { navigate(`/account/${author}`, { state: { userEmail: author } }) }}>
                     <img
                         className="w-8 h-8 rounded-full mx-2"

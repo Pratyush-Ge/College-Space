@@ -142,7 +142,7 @@ const Account = () => {
   
 
   return (
-    <div className="flex h-full">
+    <div className="flex h-full mt-4">
       <div className="p-4 relative flex justify-center items-center flex-col">
         <div className="flex gap-8 justify-center items-center">
           <div className="w-20 h-20 rounded-full overflow-hidden">

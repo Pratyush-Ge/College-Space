@@ -7,7 +7,7 @@ import { jwtDecode } from 'jwt-decode';
 const FriendsList = () => {
   const navigate = useNavigate();
   const [users, setUsers] = useState([]);
-  const [filteredUsers, setFilteredUsers] = useState([]); 
+  const [filteredUsers, setFilteredUsers] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const token = localStorage.getItem('token');
   const userData = token ? jwtDecode(token) : null;
@@ -72,7 +72,7 @@ const FriendsList = () => {
   };
 
   return (
-    <div className="people-list w-full">
+    <>
       <div className="listHeader flex flex-col gap-1 border-b-2 border-gray-700">
         <div className="headerDetails flex gap-3 items-center justify-between">
           <p className="text-xl font-bold text-white pb-3">Friends</p>
@@ -89,7 +89,7 @@ const FriendsList = () => {
               required
               onChange={handleSearch}
             />
-                        <button type="submit" className="absolute top-0 end-0 p-2 text-sm font-medium h-full text-white rounded-e-lg border border-teal-700 hover:bg-teal-800 dark:bg-teal-500 dark:hover:bg-teal-700 dark:focus:ring-teal-800">
+            <button type="submit" className="absolute top-0 end-0 p-2 text-sm font-medium h-full text-white rounded-e-lg border border-teal-700 hover:bg-teal-800 dark:bg-teal-500 dark:hover:bg-teal-700 dark:focus:ring-teal-800">
               <svg className="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
               </svg>
@@ -112,7 +112,7 @@ const FriendsList = () => {
           ) : (
             <p className="text-gray-500 text-center mt-5">No users found</p>
           )
-        ) : ( 
+        ) : (
           users.length > 0 ? (
             users.map(user => (
               <div key={user.usn} className="user-item flex gap-2 items-center border-b-2 pb-3 pt-3 border-gray-800 hover:bg-gray-950 cursor-pointer px-2"
@@ -127,7 +127,7 @@ const FriendsList = () => {
           )
         )}
       </div>
-    </div>
+    </>
   );
 };
 

@@ -81,7 +81,7 @@ const CommentSection = ({ postId, onCommentSubmit }) => {
                 <h2 className="text-black text-sm">
                   {comment.username}
                 </h2>
-                <div className="text-gray-400 text-xs  mr-2">
+                <div className="text-gray-400 text-xs mr-2">
                   {<TimeAgo date={comment.createdAt} />}
                 </div>
               </div>

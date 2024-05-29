@@ -42,7 +42,7 @@ const FeedCard = ({ title, content, image, author, username, createdAt, onRemove
     <div className="w-full p-2 relative">
       <div className="border rounded-lg shadow bg-white dark:border-gray-700 h-auto flex flex-col overflow-y-auto myposts" style={{ maxHeight: '560px' }}>
         {(myprofile === 0) && (
-          <div className="flex justify-between items-center w-80 my-2">
+          <div className="flex gap-5 items-center w-80 my-2">
             <div className="flex items-center cursor-pointer" onClick={() => { navigate(`/account/${author}`, { state: { userEmail: author } }) }}>
 
               <img
