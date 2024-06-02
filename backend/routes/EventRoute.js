@@ -1,6 +1,6 @@
 import express from 'express';
+import { addEvent, getAllEvents } from '../controllers/EventController.js';
 import multer from 'multer';
-import { createEvent, getEvents, deleteEvent } from '../controllers/EventController.js';
 import { CloudinaryStorage } from 'multer-storage-cloudinary';
 import cloudinary from '../config/cloudinary.js';
 
@@ -9,15 +9,14 @@ const router = express.Router();
 const storage = new CloudinaryStorage({
   cloudinary,
   params: {
-    folder: 'event_images',
+    folder: 'post_images',
     allowed_formats: ['jpg', 'png', 'avif', 'jpeg'],
   },
 });
 
 const upload = multer({ storage });
 
-router.post('/event', upload.single('image'), createEvent);
-router.get('/events', getEvents);
-router.delete('/event/:id', deleteEvent);
+router.post('/addEvent', upload.single('eventImage'), addEvent);
+router.get('/getEvents', getAllEvents);
 
 export default router;

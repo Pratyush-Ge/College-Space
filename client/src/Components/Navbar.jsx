@@ -16,6 +16,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
   const [email, setEmail] = useState('');
+  const [admin, setAdminControl] = useState(false);
   const [profilePicUrl, setProfilePicUrl] = useState(null);
 
 
@@ -32,6 +33,7 @@ const Navbar = () => {
       })
       .then(response => {
         setProfilePicUrl(response.data.profilePicUrl);
+        setAdminControl(response.data.admin);
       })
       .catch(error => {
         console.error('Error fetching user details:', error);
@@ -62,11 +64,6 @@ const Navbar = () => {
     navigate('/');
     window.location.reload();
   };
-
-  // const handleAddPostClick = () => {
-  //   document.getElementById('my_modal_2').showModal();
-  //   toast("Login to continue")
-  // }
 
   return (
     <div className="navbar bg-white text-black top-0 left-0 fixed z-50 mb-4">
@@ -136,6 +133,12 @@ const Navbar = () => {
                     Add Post
                   </a>
                 </li>
+                {admin && 
+                <li onClick={() => {navigate('/addEvent')}}>
+                <a className="justify-between">
+                  Add Event
+                </a>
+              </li>}
                 <li><a onClick={handleLogout} >Logout</a></li>
               </ul>
             </div>
@@ -174,6 +177,7 @@ const Navbar = () => {
             <SignupForm />
           </div>
         </dialog>
+
         <dialog id="my_modal_2" className="modal">
           <div className="modal-box bg-white">
             <div className="btns flex justify-between">
@@ -197,6 +201,7 @@ const Navbar = () => {
             <LoginForm />
           </div>
         </dialog>
+
       </div>
     </div>
   );

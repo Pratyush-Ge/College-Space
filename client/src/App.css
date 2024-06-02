@@ -2,8 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-html{
-  background-color: black;
+#root{
+  /* background-color: rgb(36, 35, 35); */
+  height: 100%;
 }
 
 body{

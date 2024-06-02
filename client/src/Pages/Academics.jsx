@@ -2,6 +2,16 @@ import { useState } from 'react';
 import Notes from '../Components/Notes';
 
 const Academics = () => {
+  const subjects = [
+    'Computer Related',
+    'Electronics',
+    'Mechanical',
+    'Civil',
+    'Chemical',
+    'Biotechnology',
+    'IEM'
+  ];
+
   const [selectedBranch, setSelectedBranch] = useState('Computer Related');
 
   const handleBranchChange = (branch) => {
@@ -10,39 +20,29 @@ const Academics = () => {
 
   return (
     <div className="w-full">
-      <div className="drawer lg:drawer-open bg-gray-200 relative h-screen">
-        <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content flex flex-col items-start w-full relative">
-          <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden z-30">Open drawer</label>
-
-          <div className="header w-full bg-gray-600 h-20 flex justify-center items-center absolute">
-            <h2 className="text-2xl font-bold">Notes</h2>
+      <div className="bg-gray-200 relative h-screen">
+        <div className="flex flex-col items-start w-full relative h-full">
+          <div className="header w-full bg-gray-300  h-20 flex justify-center items-center absolute">
+            <div className="flex justify-evenly w-full">
+              {subjects.map((subject) => (
+                <div key={subject} className="px-4 py-2">
+                  <button 
+                    onClick={() => handleBranchChange(subject)} 
+                    className={`text-white focus:outline-none ${selectedBranch === subject ? 'bg-teal-600' : 'bg-gray-500 hover:bg-teal-600'} rounded-md px-4 py-2 transition-all duration-200 ease-in-out transform hover:scale-110`}
+                  >
+                    {subject}
+                  </button>
+                </div>
+              ))}
+            </div>
           </div>
-
-          <div className="middleContent flex-grow w-full overflow-y-auto justify-center mt-20 flex items-center">
-            <Notes branch={selectedBranch} />
+          <div className="middleContent flex-grow w-full justify-center mt-20 flex items-center" style={{ overflowY: "auto", position: "relative" }}>
+            <div className="absolute top-0 left-0 w-full h-full">
+              <Notes branch={selectedBranch} />
+            </div>
           </div>
-
-          <div className="footer w-full bg-gray-600 h-20 flex justify-center items-center">
+          <div className="footer w-full bg-gray-600 h-10 flex justify-center items-center">
             <h2 className="text-2xl font-bold">UniVerse</h2>
-          </div>
-        </div>
-
-        <div className="drawer-side z-40">
-          <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
-          <div className="branches h-full menu acaMenu p-4 min-h-full bg-base-200 text-lg text-base-content flex flex-col items-center">
-
-            <p className='text-2xl font-bold h-20 mt-4'>BRANCHES</p>
-
-            <ul className="flex flex-col justify-center items-center gap-4">
-              <li><a onClick={() => handleBranchChange('Computer Related')}>Computer Related</a></li>
-              <li><a onClick={() => handleBranchChange('Electronics')}>Electronics/Core</a></li>
-              <li><a onClick={() => handleBranchChange('Mechanical')}>Mechanical</a></li>
-              <li><a onClick={() => handleBranchChange('Civil')}>Civil</a></li>
-              <li><a onClick={() => handleBranchChange('Chemical')}>Chemical</a></li>
-              <li><a onClick={() => handleBranchChange('Biotechnology')}>Biotechnology</a></li>
-              <li><a onClick={() => handleBranchChange('IEM')}>IEM</a></li>
-            </ul>
           </div>
         </div>
       </div>
