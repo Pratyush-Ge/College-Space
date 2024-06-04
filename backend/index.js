@@ -20,7 +20,7 @@ import EventRoute from './routes/EventRoute.js';
 
 const app = express();
 app.use(cors({
-  origin: 'https://uni-verse-lemon.vercel.app/',
+  origin: 'https://uni-verse-omega.vercel.app/',
   credentials: true,
 }));
 
