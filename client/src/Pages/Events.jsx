@@ -2,6 +2,10 @@ import { useState, useEffect } from 'react';
 import { BiCalendar, BiTime, BiMap } from 'react-icons/bi';
 import axios from 'axios';
 import BASE_API from '../api';
+import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css'; 
+
+
 
 const Events = () => {
   const [events, setEvents] = useState([]);
@@ -31,16 +35,31 @@ const Events = () => {
 
   return (
     <div className="EventsContainer w-full flex flex-col justify-center items-center gap-5">
-      <div className="carousel carousel-center w-2/3 p-4 space-x-4 bg-neutral rounded-box text-center mt-8  " style={{ height: "750px" }}>
-        {events.map(event => (
-          <div key={event._id} className="carousel-item w-full flex flex-col gap-5">
-            <img src={event.eventImage} alt={event.name} className="rounded-box w-full" style={{ height: "90%" }} />
-            <div className="eventDetails text-2xl font-bold x">{event.eventName} - {event.clubName}</div>
-          </div>
-        ))}
+
+      <div className="carouselContainer w-1/2 h-1/2 mt-6">
+      <Carousel
+      autoPlay
+      interval={2500}
+      transitionTime={1000} 
+      infiniteLoop
+      showThumbs={false}
+      showStatus={false}
+      showIndicators={false}
+      className="rounded-xl"
+    >
+      {events.map(event => (
+        <div key={event._id} className="h-full w-full">
+          <img 
+            src={event.eventImage} 
+            alt={event.name} 
+            className="h-full w-full object-cover rounded-xl" 
+          />
+        </div>
+      ))}
+    </Carousel>
       </div>
 
-        <h1 className="text-3xl my-4 font-extrabold">Timeline</h1>
+      <h1 className="text-3xl my-4 font-extrabold text-white">Timeline</h1>
 
       <div className="timeLine w-1/2 mb-20">
         <ol className="relative border-l border-gray-300 dark:border-gray-700">
@@ -56,7 +75,7 @@ const Events = () => {
               <div className="flex items-center mb-1 text-lg font-semibold leading-none text-gray-500 dark:text-gray-400">
                 <BiMap className="inline-block mr-1" /> {event.venue}
               </div>
-              <h3 className="text-2xl font-extrabold text-gray-900 dark:text-white">{event.eventName} - {event.clubName}</h3>
+              <h3 className="text-2xl font-extrabold text-white dark:text-white">{event.eventName} - {event.clubName}</h3>
               <p className="mb-4 text-lg font-normal text-gray-700 dark:text-gray-400">{event.eventDescription}</p>
               <a href="#" className="inline-flex items-center px-4 py-2 text-lg font-medium text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-100 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700">
                 Register
