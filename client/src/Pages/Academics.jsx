@@ -20,9 +20,9 @@ const Academics = () => {
 
   return (
     <div className="w-full">
-      <div className="bg-gray-200 relative h-screen">
+      <div className="relative h-screen">
         <div className="flex flex-col items-start w-full relative h-full">
-          <div className="header w-full bg-gray-300  h-20 flex justify-center items-center absolute">
+          <div className="header w-full bg-gray-800  h-20 flex justify-center items-center absolute">
             <div className="flex justify-evenly w-full">
               {subjects.map((subject) => (
                 <div key={subject} className="px-4 py-2">

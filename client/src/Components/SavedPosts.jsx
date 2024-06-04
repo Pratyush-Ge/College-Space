@@ -23,7 +23,7 @@ const SavedPosts = (props) => {
     }, [userEmail]);
 
     return (
-        <div className="w-96 flex flex-col justify-center items-center gap-4">
+        <div className="w-96 flex flex-col justify-center items-center gap-4 my-4">
             {savedPosts.length > 0 ? (
                 savedPosts.map((post) => (
                     <SavedPostCard
@@ -38,7 +38,7 @@ const SavedPosts = (props) => {
                     />
                 ))
             ) : (
-                <div className="flex flex-col items-center justify-center h-full">
+                <div className="flex flex-col items-center justify-center h-full my-8">
                     <div>No saved post.</div>
                 </div>
             )}

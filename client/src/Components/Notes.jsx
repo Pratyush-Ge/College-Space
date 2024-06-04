@@ -20,10 +20,10 @@ const Notes = ({ branch }) => {
     }, [branch]);
 
     return (
-        <div className="overflow-x-auto w-full text-black">
+        <div className="overflow-x-auto w-full text-white">
             <table className="table">
                 <thead>
-                    <tr className="text-lg text-black">
+                    <tr className="text-lg text-white">
                         <th>Course</th>
                         <th>Videos</th>
                         <th>Material</th>

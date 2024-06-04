@@ -60,7 +60,7 @@ const MyPost = (props) => {
   }
 
   return (
-    <div className="w-96 flex flex-col justify-center items-center gap-4">
+    <div className="w-96 flex flex-col justify-center items-center gap-4 my-4">
       {filteredPosts.length > 0 ? (
         <>
           {filteredPosts.map((post) => (  
@@ -75,7 +75,7 @@ const MyPost = (props) => {
           ))}
         </>
       ) : (
-        <div className="flex flex-col items-center justify-center h-full">
+        <div className="flex flex-col items-center justify-center my-8">
           <div>No activity yet.</div>
         </div>
       )}

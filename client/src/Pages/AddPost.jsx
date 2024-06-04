@@ -3,9 +3,11 @@ import axios from 'axios';
 import {jwtDecode} from 'jwt-decode';
 import { toast } from 'react-toastify';
 import BASE_API from '../api.js';
+import { useNavigate } from 'react-router-dom';
 
 const AddPostForm = () => 
 {
+  const navigate = useNavigate();
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [image, setImage] = useState(null);
@@ -37,6 +39,7 @@ const AddPostForm = () =>
       });
       toast.success('Posted Successfully');
       setTimeout(() => {
+        navigate('/');
         window.location.reload();
       }, 1000);
     } catch (error) {

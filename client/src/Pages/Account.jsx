@@ -80,6 +80,7 @@ const Account = () => {
         toast.success('Profile picture uploaded');
     
         setTimeout(() => {
+          navigate('/');
           window.location.reload();
         }, 1000);
       })
@@ -108,6 +109,7 @@ const Account = () => {
         setProfilePicUrl(null);
         toast.warning("Profile picture removed!")
         setTimeout(() => {
+          navigate('/');
           window.location.reload();
         }, 1000);
       })
@@ -142,9 +144,9 @@ const Account = () => {
   
 
   return (
-    <div className="flex h-full mt-4">
-      <div className="p-4 relative flex justify-center items-center flex-col">
-        <div className="flex gap-8 justify-center items-center">
+    <div className="flex h-full mt-4 min-h-screen">
+      <div className="p-4 relative flex items-center flex-col">
+        <div className="flex gap-8 justify-center items-cente">
           <div className="w-20 h-20 rounded-full overflow-hidden">
           <img src={profilePicUrl || defaultImage} alt="Profile" className="w-full h-full object-cover"/>
           </div>
@@ -220,83 +222,6 @@ const Account = () => {
           </div>
         </div>
       </dialog>
-
-
-      {/* <dialog id="my_modal_4" className="modal">
-        <div className="modal-box overflow-hidden" style={{ maxHeight: '650px' }}>
-
-          <div className="btns flex justify-between">
-
-            <div className="chatProfile flex gap-3 items-center">
-              <div className="chat-image avatar w-10">
-                <div className="w-10 rounded-full">
-                 <img alt="Profile pic" src={profilePicUrl || defaultImage}/>
-                </div>
-              </div>
-              <p>{username}</p>
-            </div>
-
-            <button onClick={() => {
-              document.getElementById('my_modal_4').close()
-            }}
-              className=" rounded-full text-white focus:outline-none">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
-              </svg>
-            </button>
-          </div>
-
-
-
-          <div className="chatbody my-5 border border-gray-700 rounded-lg overflow-y-auto" style={{ maxHeight: '440px' }}>
-
-            <div className="chat chat-start p-2">
-              <div className="chat-bubble">I hate you!</div>
-              <div className="chat-footer">
-                <time className="text-xs opacity-50">12:46</time>
-              </div>
-            </div>
-
-            <div className="chat chat-end p-2">
-              <div className="chat-bubble">I hate you!</div>
-              <div className="chat-footer">
-                <time className="text-xs opacity-50">12:46</time>
-              </div>
-            </div>
-            <div className="chat chat-end p-2">
-              <div className="chat-bubble">I hate you!</div>
-              <div className="chat-footer">
-                <time className="text-xs opacity-50">12:46</time>
-              </div>
-            </div>
-            <div className="chat chat-end p-2">
-              <div className="chat-bubble">I hate you!</div>
-              <div className="chat-footer">
-                <time className="text-xs opacity-50">12:46</time>
-              </div>
-            </div>
-            <div className="chat chat-end p-2">
-              <div className="chat-bubble">I hate you!</div>
-              <div className="chat-footer">
-                <time className="text-xs opacity-50">12:46</time>
-              </div>
-            </div>
-            <div className="chat chat-end p-2">
-              <div className="chat-bubble">I hate you!</div>
-              <div className="chat-footer">
-                <time className="text-xs opacity-50">12:46</time>
-              </div>
-            </div>
-
-          </div>
-          <label className="input input-bordered flex items-center gap-2 text-gray-500">
-            <input type="text" className="grow text-black" placeholder="Search" />
-            <span className='cursor-pointer'>  <FiSend />
-            </span>
-          </label>
-
-        </div>
-      </dialog> */}
 
       <dialog id="confirm_remove_modal" className="modal">
         <div className="modal-box">
