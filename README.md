@@ -1,4 +1,4 @@
-# College Space
+# UniVerse
 
 
 College Space is a student-oriented website that provides a centralized platform for students to access notes, academic calendars, event details, and a feed for students to start threads and engage in discussions.
