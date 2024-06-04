@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import BASE_API from '../api';
 import { jwtDecode } from 'jwt-decode';
+import defaultImage from '../assets/default.avif'
 
 const FriendsList = () => {
   const navigate = useNavigate();
@@ -105,7 +106,7 @@ const FriendsList = () => {
               <div key={user.usn} className="user-item flex gap-2 items-center border-b-2 pb-3 pt-3 border-gray-800 hover:bg-gray-950 cursor-pointer px-2"
                 onClick={() => { navigate(`/message/${user.email}`) }}
               >
-                <img src={user.profilePicUrl} alt={user.username} className="object-cover w-8 h-8 rounded-full" />
+                <img src={user.profilePicUrl || defaultImage} alt={user.username} className="object-cover w-8 h-8 rounded-full" />
                 <p className="username">{user.username}</p>
               </div>
             ))
@@ -118,7 +119,7 @@ const FriendsList = () => {
               <div key={user.usn} className="user-item flex gap-2 items-center border-b-2 pb-3 pt-3 border-gray-800 hover:bg-gray-950 cursor-pointer px-2"
                 onClick={() => { navigate(`/message/${user.email}`) }}
               >
-                <img src={user.profilePicUrl} alt={user.username} className="object-cover w-8 h-8 rounded-full" />
+                <img src={user.profilePicUrl || defaultImage} alt={user.username} className="object-cover w-8 h-8 rounded-full" />
                 <p className="username">{user.username}</p>
               </div>
             ))

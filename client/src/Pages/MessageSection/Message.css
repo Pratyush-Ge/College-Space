@@ -1,10 +1,10 @@
 .container {
-    position: fixed;
-    top: 15vh;
+    margin: 50px;
+    width: 70%;
 }
 
+
 .card {
-    background: #121212;
     transition: .5s;
     border: 0;
     margin-bottom: 30px;

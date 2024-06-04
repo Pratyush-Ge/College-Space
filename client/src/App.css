@@ -2,14 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-#root{
-  /* background-color: rgb(36, 35, 35); */
-  height: 100%;
-}
 
-body{
-  overflow-x: hidden;
-  height: 100%; 
+
+body, html{
+  --dot-bg: black;
+  --dot-color: white;
+  --dot-size: 1px;
+  --dot-space: 22px;
+  background:
+    linear-gradient(90deg, var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+    linear-gradient(var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+    var(--dot-color);
 }
 
 ::-webkit-scrollbar {
@@ -18,18 +21,20 @@ body{
 
 ::-webkit-scrollbar-thumb {
   background-color: rgba(255, 255, 255, 0.581);
-  border-radius: 10px; 
+  border-radius: 10px;
 }
 
-.myposts::-webkit-scrollbar, .left::-webkit-scrollbar, .right::-webkit-scrollbar{
+/* Hide the scrollbar in specific elements */
+.myposts::-webkit-scrollbar,
+.left::-webkit-scrollbar,
+.right::-webkit-scrollbar {
   display: none;
 }
-
 
 .App {
   margin: 0;
   padding: 0;
-  height: 100%; 
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -37,6 +42,7 @@ body{
 
 .content {
   width: 100%;
+  height: 100;
   display: flex;
   margin: 80px auto 0 auto;
   flex: 1;
@@ -44,47 +50,45 @@ body{
   justify-content: center;
 }
 
-.acaMenu{
-  width:15rem;
+.acaMenu {
+  width: 15rem;
 }
 
-.navbar{
+.navbar {
   background-color: white;
 }
 
 .menu-horizontal > li {
   margin-right: 1rem;
-  transition: linear 0.2s;
+  transition: transform 0.2s; 
 }
 
-.menu-horizontal > li:hover{
-  scale: 1.03;
+.menu-horizontal > li:hover {
+  transform: scale(1.03);
 }
-
-
 
 .modal-content {
   overflow-y: scroll;
-  -ms-overflow-style: none;  
-  scrollbar-width: none;  
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .modal-content::-webkit-scrollbar {
   display: none;
 }
 
-.input{
+.input {
   background-color: white;
 }
 
-.feedContainer{
+.feedContainer {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
   width: 80vw;
 }
 
-.card{
+.card {
   margin-bottom: 2rem;
 }
 
@@ -107,11 +111,7 @@ body{
 .card__img {
   height: 192px;
   width: 100%;
-}
-
-.card__img svg {
-  height: 100%;
-  border-radius: 20px 20px 0 0;
+  border-radius: 20px 20px 0 0; 
 }
 
 .card__avatar {

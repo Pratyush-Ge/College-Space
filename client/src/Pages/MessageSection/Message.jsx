@@ -7,6 +7,7 @@ import io from 'socket.io-client';
 import BASE_API from '../../api';
 import FriendsList from '../../Components/FriendsList';
 import './Message.css';
+import defaultImage from '../../assets/default.avif';
 
 const socket = io('http://localhost:7071');
 
@@ -89,7 +90,7 @@ const MessageSection = () => {
                 {profilePicUrlR && userEmail !== recieverId && (
                   <>
                     <div className="w-10 h-10 rounded-full overflow-hidden row">
-                      <img src={profilePicUrlR} alt="Profile" className="w-full h-full object-cover" />
+                      <img src={profilePicUrlR || defaultImage} alt="Profile" className="w-full h-full object-cover" />
                     </div>
                     <div className="text-center chat-about">
                       <h1 className="text">{usernameR}</h1>
