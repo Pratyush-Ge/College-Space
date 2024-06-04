@@ -1,4 +1,5 @@
-import  { useEffect, useState, useRef } from 'react';
+/* eslint-disable no-unused-vars */
+import { useEffect, useState, useRef } from 'react';
 import { FiSend } from 'react-icons/fi';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
@@ -7,8 +8,9 @@ import io from 'socket.io-client';
 import BASE_API from '../../api';
 import FriendsList from '../../Components/FriendsList';
 import './Message.css';
+import defaultImage from '../../assets/default.avif';
 
-const socket = io('http://localhost:7071');
+const socket = io(BASE_API);
 
 const MessageSection = () => {
   const { recieverId } = useParams();
@@ -30,7 +32,7 @@ const MessageSection = () => {
   useEffect(() => {
     axios.get(`${BASE_API}/auth/getUserDetails`, {
       headers: {
-        'Authorization': `Bearer ${recieverId}`
+        Authorization: `Bearer ${recieverId}`
       }
     })
     .then(response => {
@@ -55,16 +57,22 @@ const MessageSection = () => {
   }, [userEmail, recieverId]);
 
   useEffect(() => {
-    socket.emit('join', { userId: userEmail });
+    if (userEmail && recieverId) {
+      const roomId = [userEmail, recieverId].sort().join('_');
+      socket.emit('join', { userId: userEmail, receiverId: recieverId });
 
-    socket.on('receiveMessage', (message) => {
-      setMessages((prevMessages) => [...prevMessages, message]);
-    });
+      socket.on('receiveMessage', (message) => {
+        if ((message.senderId === userEmail && message.receiverId === recieverId) ||
+            (message.senderId === recieverId && message.receiverId === userEmail)) {
+          setMessages((prevMessages) => [...prevMessages, message]);
+        }
+      });
 
-    return () => {
-      socket.off('receiveMessage');
-    };
-  }, [userEmail]);
+      return () => {
+        socket.off('receiveMessage');
+      };
+    }
+  }, [userEmail, recieverId]);
 
   const handleSendMessage = () => {
     if (newMessage.trim() === '') return;
@@ -89,7 +97,7 @@ const MessageSection = () => {
                 {profilePicUrlR && userEmail !== recieverId && (
                   <>
                     <div className="w-10 h-10 rounded-full overflow-hidden row">
-                      <img src={profilePicUrlR} alt="Profile" className="w-full h-full object-cover" />
+                      <img src={profilePicUrlR || defaultImage} alt="Profile" className="w-full h-full object-cover" />
                     </div>
                     <div className="text-center chat-about">
                       <h1 className="text">{usernameR}</h1>
@@ -108,7 +116,7 @@ const MessageSection = () => {
                   <ul className="m-b-0 text-black">
                     {messages.map((msg, index) => (
                       <li key={index} className={`clearfix flex ${msg.senderId === userEmail ? 'justify-end' : 'justify-start'}`}>
-                        <div className={`message  ${msg.senderId === userEmail ? 'my-message' : 'other-message float-right'}`}>
+                        <div className={`message ${msg.senderId === userEmail ? 'my-message' : 'other-message float-right'}`}>
                           {msg.message}
                         </div>
                       </li>
@@ -119,7 +127,7 @@ const MessageSection = () => {
               </div>
 
               <div className="chat-message clearfix w-full flex items-center gap-2 h-auto">
-                {profilePicUrlR && userEmail !== recieverId && (
+                {userEmail !== recieverId && (
                   <>
                     <input
                       type="text"

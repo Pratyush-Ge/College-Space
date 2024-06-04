@@ -10,18 +10,17 @@ const socketConfig = (server) => {
   });
 
   io.on('connection', (socket) => {
-    // console.log('A user connected');
-
-    socket.on('join', ({ userId }) => {
-      socket.join(userId);
-      // console.log(`User with ID: ${userId} joined the room`); 
+    socket.on('join', ({ userId, receiverId }) => {
+      const roomId = [userId, receiverId].sort().join('_');
+      socket.join(roomId);
+      // console.log(`User with ID: ${userId} joined room: ${roomId}`); 
     });
 
     socket.on('sendMessage', async ({ senderId, receiverId, message }) => {
       const newMessage = new Message({ senderId, receiverId, message });
       await newMessage.save();
-      io.to(receiverId).emit('receiveMessage', newMessage);
-      io.to(senderId).emit('receiveMessage', newMessage);
+      const roomId = [senderId, receiverId].sort().join('_');
+      io.to(roomId).emit('receiveMessage', newMessage);
     });
 
     socket.on('disconnect', () => {

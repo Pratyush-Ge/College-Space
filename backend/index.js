@@ -18,9 +18,11 @@ import MessageRoute from './routes/MessageRoute.js';
 import NotesRoute from './routes/NotesRoute.js';
 import EventRoute from './routes/EventRoute.js';
 
+const front_server = process.env.REACT_SERVER;
+
 const app = express();
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: front_server,
   credentials: true,
 }));
 
