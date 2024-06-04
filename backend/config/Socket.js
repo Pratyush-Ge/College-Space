@@ -4,7 +4,7 @@ import Message from '../models/Messages.js';
 const socketConfig = (server) => {
   const io = new Server(server, {
     cors: {
-      origin: 'http://localhost:5173',
+      origin: ['http://localhost:5173', 'https://uni-verse-murex.vercel.app'], 
       credentials: true,
     },
   });
