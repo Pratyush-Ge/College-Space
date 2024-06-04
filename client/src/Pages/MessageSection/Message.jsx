@@ -9,7 +9,7 @@ import FriendsList from '../../Components/FriendsList';
 import './Message.css';
 import defaultImage from '../../assets/default.avif';
 
-const socket = io('http://localhost:7071');
+const socket = io('https://uni-verse-lemon.vercel.app/');
 
 const MessageSection = () => {
   const { recieverId } = useParams();
