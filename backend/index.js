@@ -18,11 +18,9 @@ import MessageRoute from './routes/MessageRoute.js';
 import NotesRoute from './routes/NotesRoute.js';
 import EventRoute from './routes/EventRoute.js';
 
-const front_server = process.env.REACT_SERVER;
-
 const app = express();
 app.use(cors({
-  origin: front_server,
+  origin: ['http://localhost:5173', 'https://uni-verse-murex.vercel.app'], 
   credentials: true,
 }));
 
@@ -41,9 +39,8 @@ app.use('/messages', MessageRoute);
 app.use('/notes', NotesRoute);
 app.use('/events', EventRoute);
 
-
 const server = http.createServer(app);
-socketConfig(server); 
+socketConfig(server);
 
 server.listen(7071, () => {
   console.log("Server is running on port 7071");
