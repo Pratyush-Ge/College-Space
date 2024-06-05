@@ -1,6 +1,6 @@
 <p>
-  <img src="https://www.simpleimageresizer.com/_uploads/photos/129acee4/Designer__1_-removebg-preview_13.png" alt="Logo" width="50" />
-  <span style="font-size: 24px; font-weight: bold;">UniVerse</span>
+  <img src="https://www.simpleimageresizer.com/_uploads/photos/129acee4/Designer__1_-removebg-preview_13.png" alt="Logo" width="50" style="vertical-align: middle; margin-right: 10px;" />
+  <h1 style="display: inline; vertical-align: middle;">UniVerse</h1>
 </p>
 
 
