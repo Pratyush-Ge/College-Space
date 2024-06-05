@@ -1,8 +1,8 @@
 
-![Logo](https://www.simpleimageresizer.com/_uploads/photos/129acee4/Designer__1_-removebg-preview_13.png)
 
 
-# UniVerse
+
+![Logo](https://www.simpleimageresizer.com/_uploads/photos/129acee4/Designer__1_-removebg-preview_13.png) # UniVerse
 
 
 College Space is a student-oriented website that provides a centralized platform for students to access notes, event details, a feed for students to start threads and engage in discussions, and private chat options.
