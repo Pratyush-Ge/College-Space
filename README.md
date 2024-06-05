@@ -38,8 +38,6 @@ Run Client-Side
 
 ![App Screenshot](https://res.cloudinary.com/dea2qvovj/image/upload/v1717587601/my-images/Screenshot_2024-06-05_170602_q5afdq.png)
 
-![App Screenshot](https://res.cloudinary.com/dea2qvovj/image/upload/v1717587604/my-images/Screenshot_2024-06-05_170620_zxfni5.png)
-
 ![App Screenshot](https://res.cloudinary.com/dea2qvovj/image/upload/v1717587595/my-images/Screenshot_2024-06-05_170514_owlg4i.png)
 
 
