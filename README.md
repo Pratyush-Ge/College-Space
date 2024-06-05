@@ -1,5 +1,5 @@
 
-![Logo](https://res.cloudinary.com/dea2qvovj/image/upload/v1717587517/my-images/favicon2_crczgb.ico)
+![Logo](https://www.simpleimageresizer.com/_uploads/photos/129acee4/Designer__1_-removebg-preview_13.png)
 
 
 # UniVerse
