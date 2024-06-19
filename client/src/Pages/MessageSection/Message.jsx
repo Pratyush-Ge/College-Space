@@ -2,7 +2,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { FiSend } from 'react-icons/fi';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import {jwtDecode} from 'jwt-decode';
 import io from 'socket.io-client';
 import BASE_API from '../../api';
@@ -13,6 +13,7 @@ import defaultImage from '../../assets/default.avif';
 const socket = io(BASE_API);
 
 const MessageSection = () => {
+  const navigate = useNavigate();
   const { recieverId } = useParams();
   const [usernameR, setUsernameR] = useState('');
   const [profilePicUrlR, setProfilePicUrlR] = useState(null);
@@ -94,9 +95,9 @@ const MessageSection = () => {
             <div className='people-list h-full' style={{borderRadius:'8px 0 0 8px'}}><FriendsList /></div>
             <div className="chat flex flex-col">
               <div className="m-2 flex gap-3 items-center h-10">
-                {profilePicUrlR && userEmail !== recieverId && (
+                { userEmail !== recieverId && (
                   <>
-                    <div className="w-10 h-10 rounded-full overflow-hidden row">
+                    <div className="w-10 h-10 rounded-full overflow-hidden row cursor-pointer" onClick={() => { navigate(`/account/${recieverId}`, { state: { userEmail: recieverId } }) }}>
                       <img src={profilePicUrlR || defaultImage} alt="Profile" className="w-full h-full object-cover" />
                     </div>
                     <div className="text-center chat-about">
