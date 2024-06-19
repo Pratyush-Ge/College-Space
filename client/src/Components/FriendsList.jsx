@@ -75,7 +75,7 @@ const FriendsList = () => {
   return (
     <>
       <div className="listHeader flex flex-col gap-1 border-b-2 border-gray-700">
-        <div className="headerDetails flex gap-3 items-center justify-between">
+        <div className="headerDetails flex gap-3 items-center justify-between" >
           <p className="text-xl font-bold text-white pb-3">Friends</p>
           <p className="text-sm text-gray-500 pb-3">Total: {users.length}</p>
         </div>
@@ -99,7 +99,7 @@ const FriendsList = () => {
           </div>
         </div>
       </div>
-      <div className="peopleList flex flex-col mt-5 overflow-y-auto ">
+      <div className="peopleList flex flex-col mt-5 overflow-y-auto max-h-80">
         {searchTerm ? (
           sortUsersByMatch(filteredUsers).length > 0 ? (
             sortUsersByMatch(filteredUsers).map(user => (
@@ -107,7 +107,7 @@ const FriendsList = () => {
                 onClick={() => { navigate(`/message/${user.email}`) }}
               >
                 <img src={user.profilePicUrl || defaultImage} alt={user.username} className="object-cover w-8 h-8 rounded-full" />
-                <p className="username">{user.username}</p>
+                <p className="username overflow-hidden text-ellipsis whitespace-nowrap max-w-full">{user.username}</p>
               </div>
             ))
           ) : (
@@ -120,7 +120,7 @@ const FriendsList = () => {
                 onClick={() => { navigate(`/message/${user.email}`) }}
               >
                 <img src={user.profilePicUrl || defaultImage} alt={user.username} className="object-cover w-8 h-8 rounded-full" />
-                <p className="username">{user.username}</p>
+                <p className="username overflow-hidden text-ellipsis whitespace-nowrap max-w-full">{user.username}</p>
               </div>
             ))
           ) : (
@@ -133,4 +133,3 @@ const FriendsList = () => {
 };
 
 export default FriendsList;
-

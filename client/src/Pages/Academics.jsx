@@ -19,10 +19,10 @@ const Academics = () => {
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full ">
       <div className="relative h-screen">
         <div className="flex flex-col items-start w-full relative h-full">
-          <div className="header w-full h-20 flex justify-center items-center absolute">
+          <div className="header w-full h-20 flex justify-center items-center absolute ">
               {subjects.map((subject) => (
                 <div key={subject} className="px-4 py-2 z-10">
                   <button 
@@ -34,12 +34,12 @@ const Academics = () => {
                 </div>
               ))}
           </div>
-          <div className="middleContent flex-grow w-full justify-center mt-20 flex items-center m-auto" style={{ overflowY: "auto", position: "relative", width:"80%"}}>
+          <div className="middleContent flex-grow w-full justify-center mt-20 flex items-center m-auto bg-gray-800 rounded-lg" style={{ overflowY: "auto", position: "relative", width:"80%"}}>
             <div className="absolute top-0 left-0 w-full h-full">
               <Notes branch={selectedBranch} />
             </div>
           </div>
-          <div className="footer w-full bg-gray-700 h-10 flex justify-center items-center">
+          <div className="footer w-full bg-gray-700 h-10 mt-7 flex justify-center items-center">
             <h2 className="text-2xl text-white font-bold">UniVerse</h2>
           </div>
         </div>

@@ -59,24 +59,24 @@ const Events = () => {
     </Carousel>
       </div>
 
-      <h1 className="text-3xl my-4 font-extrabold text-white">Timeline</h1>
+      <div className="timeLine w-1/2 mb-20 p-8 rounded-lg bg-gray-200">
+      <h1 className="text-3xl mb-4 font-extrabold text-black text-center">Timeline</h1>
 
-      <div className="timeLine w-1/2 mb-20">
         <ol className="relative border-l border-gray-300 dark:border-gray-700">
           {events.map(event => (
             <li key={event._id} className="mb-10 ml-4">
               <div className="absolute w-3 h-3 bg-gray-300 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
-              <div className="flex items-center mb-1 text-lg font-semibold leading-none text-gray-500 dark:text-gray-400">
+              <div className="flex items-center mb-1 text-lg font-semibold leading-none text-gray-700">
                 <BiCalendar className="inline-block mr-1" /> {trimDate(event.eventDate)}
               </div>
-              <div className="flex items-center mb-1 text-lg font-semibold leading-none text-gray-500 dark:text-gray-400">
+              <div className="flex items-center mb-1 text-lg font-semibold leading-none text-gray-700">
                 <BiTime className="inline-block mr-1" /> {event.eventTime}
               </div>
-              <div className="flex items-center mb-1 text-lg font-semibold leading-none text-gray-500 dark:text-gray-400">
+              <div className="flex items-center mb-1 text-lg font-semibold leading-none text-gray-700">
                 <BiMap className="inline-block mr-1" /> {event.venue}
               </div>
-              <h3 className="text-2xl font-extrabold text-white dark:text-white">{event.eventName} - {event.clubName}</h3>
-              <p className="mb-4 text-lg font-normal text-gray-700 dark:text-gray-400">{event.eventDescription}</p>
+              <h3 className="text-2xl font-extrabold text-black">{event.eventName} - {event.clubName}</h3>
+              <p className="mb-4 text-lg font-normal text-gray-800">{event.eventDescription}</p>
               <a href="#" className="inline-flex items-center px-4 py-2 text-lg font-medium text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-100 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700">
                 Register
                 <svg className="w-4 h-4 ml-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
