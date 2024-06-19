@@ -39,7 +39,7 @@ const Login = () => {
         <label className="label">
           <span className="label-text text-black">USN</span>
         </label>
-        <input type="text" placeholder="1si21csxxx" className="input input-bordered border-black" required value={usn} onChange={handleUsnChange} />
+        <input type="text" placeholder="eg. 1si21csxxx" className="input input-bordered border-black" required value={usn} onChange={handleUsnChange} />
       </div>
       <div className="form-control">
         <label className="label">

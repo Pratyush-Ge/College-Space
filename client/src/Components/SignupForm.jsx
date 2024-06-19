@@ -13,7 +13,7 @@ const SignupForm = () => {
   const navigate = useNavigate();
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const usnRegex = /^\d{1}[a-zA-Z]{2}\d{2}[a-zA-Z]{2}\d{3}$/;
+  // const usnRegex = /^\d{1}[a-zA-Z]{2}\d{2}[a-zA-Z]{2}\d{3}$/;
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -33,10 +33,6 @@ const SignupForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!usnRegex.test(usn)) {
-      toast.error('Invalid USN format. eg.1si21csxxx');
-      return;
-    } 
     if (!emailRegex.test(email)) {
       toast.error('Invalid email address');
       return;
@@ -72,7 +68,7 @@ const SignupForm = () => {
         <input type="text" placeholder="Username" className="input input-bordered border-black" required value={username} onChange={handleUsernameChange} />
       </div>
       <div className="form-control">
-        <input type="text" placeholder="USN (1si21csxxx)" className="input input-bordered border-black" required value={usn} onChange={handleUsnChange} />
+        <input type="text" placeholder="USN (eg. 1si21csxxx)" className="input input-bordered border-black" required value={usn} onChange={handleUsnChange} />
       </div>
       <div className="form-control">
         <input type="text" placeholder="Email" className="input input-bordered border-black" required value={email} onChange={handleEmailChange} />
